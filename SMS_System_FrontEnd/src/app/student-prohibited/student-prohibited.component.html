@@ -1,0 +1,105 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header ">
+        <h4 class="card-title">
+          <b>Student Prohibited</b>
+        </h4>
+      </div>
+      <div class="card-body p-4">
+        <div *ngIf="upperPart">
+          <div class="row flexrow justify-content-center no-gutters">
+            <div class="col d-flex justify-content-end">Semester/Year:</div>
+            <div class="col justify-content-start ml-2" style="padding:-5px;">
+              <b>{{convertToSemester(semesterInfo.semester)}}/{{semesterInfo.acaYear}}</b>
+            </div>
+          </div>
+          <div class="row flexrow justify-content-center no-gutters">
+            <div class="col d-flex justify-content-end">Student Name:</div>
+            <div class="col justify-content-start ml-2" style="padding:-5px;">
+              <b>{{currStudent.lastName}} {{currStudent.firstName}}</b>
+            </div>
+          </div>
+
+          <div class="row flexrow justify-content-center no-gutters">
+            <div class="col d-flex justify-content-end">Student Id:</div>
+            <div class="col justify-content-start ml-2" style="padding:-5px;">
+              <b>{{currStudent.studentID}}</b>
+            </div>
+          </div>
+          <div class="row flexrow justify-content-center no-gutters">
+            <div class="col d-flex justify-content-end">Grade/Semester:</div>
+            <div class="col justify-content-start ml-2" style="padding:-5px;">
+              <select size="1" name="semester" id="semester" (change)="updateTableInformation()" [(ngModel)]="semesterInfo.semester">
+                <option id="summer" value="1">SUMMER</option>
+                <option id="fall" value="3">FALL</option>
+                <option id="spring" value="4">SPRING</option>
+              </select>
+              /
+              <select size="1" id="academicYear" name="academicyear" class="ml-2" (change)="updateTableInformation()" [(ngModel)]="semesterInfo.acaYear">
+                <option *ngFor="let item of academicYearInfo[0]">{{item.acaYear}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row flexrow justify-content-center no-gutters">
+          <div class="col d-flex justify-content-start">
+            <span style="width:7rem; background:#FFFF00"></span>
+            <span style="margin-left:10px;">
+              <b>
+                Nearly Prohibited
+              </b>
+            </span>
+          </div>
+        </div>
+
+        <div class="row flexrow justify-content-center no-gutters mt-1">
+          <div class="col d-flex justify-content-start">
+            <span style="width:7rem; background:#FF3300"></span>
+            <span style="margin-left:10px;">
+              <b>
+                Prohibited
+              </b>
+            </span>
+          </div>
+        </div>
+
+        <div class="row flexrow justify-content-center no-gutters mt-4">
+          <div id="studentPro-mainTable" class="col d-flex justify-content-center" *ngIf="lowerPart">
+            <table width="100%" border="1" cellspacing="1" class="table-hover">
+              <thead>
+                <th width="7%">
+                  <span class="text_white_bold">No.</span>
+                </th>
+                <th width="15%">
+                  <span class="text_white_bold">Class Code</span>
+                </th>
+                <th>
+                  <span class="text_white_bold">Class Name</span>
+                </th>
+                <th width="20%">
+                  <span class="text_white_bold">Total Absent Hours</span>
+                </th>
+                <th width="20%">
+                  <span class="text_white_bold">Percentage (%)</span>
+                </th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of attendanceData, let i = index">
+                  <td>{{i+1}}</td>
+                  <td>{{item.classid}}</td>
+                  <td>{{item.name}}</td>
+                  <td>{{item.tong}}</td>
+                  <td>{{item.percent}}</td>
+                </tr> 
+              </tbody>
+            </table>
+          </div>
+          <img id="studentPro-loadingImg" src="assets/img/loading.gif" *ngIf="!lowerPart" />
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

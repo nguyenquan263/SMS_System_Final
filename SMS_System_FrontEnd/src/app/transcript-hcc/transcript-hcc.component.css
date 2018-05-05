@@ -1,0 +1,57 @@
+table
+{
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid rgb(119, 119, 119);
+ }
+
+thead
+{
+    background:rgb(187, 223, 253);
+}
+th
+{
+    text-align: center;  
+    height:2.5rem; 
+}
+
+tr
+{
+    height:2rem
+}
+
+td
+{
+    text-align: center;
+}
+
+#loadingImg
+{
+    width:5%;
+    height:100%;
+}
+
+#hccImage
+{
+    width:90%;
+}
+
+@media (max-width: 576px) {
+    .row
+    {
+        font-size:90%;
+    }
+    table
+    {
+        font-size:85%;
+    }
+    #hccImage
+    {
+        width:60%;
+        height:95%;
+        margin-left:20%;
+    }
+
+}

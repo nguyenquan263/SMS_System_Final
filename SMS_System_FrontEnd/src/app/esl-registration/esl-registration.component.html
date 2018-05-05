@@ -1,0 +1,219 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header ">
+        <h4 class="card-title">
+          <b class="text-info">ESL Registration</b>
+        </h4>
+      </div>
+      <div class="card-body p-3" style="padding:8rem;">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="row flexrow justify-content-center no-gutters">
+              <div class="col d-flex ">Semester/Year:
+                <span style="padding:-5px;">
+                  <b *ngIf="currStudent != null">{{currStudent.semesterYear}}</b>
+                </span>
+              </div>
+            </div>
+            <div class="row flexrow justify-content-center no-gutters">
+              <div class="col d-flex ">Student Id:
+                <span style="padding:-5px;">
+                  <b *ngIf="currStudent != null">{{currStudent.studentID}}</b>
+                </span>
+              </div>
+            </div>
+            <div class="row flexrow justify-content-center no-gutters">
+              <div class="col d-flex ">Student Name:
+                <span style="padding:-5px;">
+                  <b *ngIf="currStudent != null">{{currStudent.studentName}}</b>
+                </span>
+              </div>
+            </div>
+            <div class="row flexrow justify-content-center no-gutters">
+              <div class="col d-flex ">Catalog:
+                <span style="padding:-5px;">
+                  <b *ngIf="currStudent != null">{{currStudent.catalog}}</b>
+                </span>
+              </div>
+            </div>
+            <div class="row flexrow justify-content-center no-gutters">
+              <div class="col d-flex ">Specialization:
+                <span style="padding:-5px;">
+                  <b *ngIf="currStudent != null">{{currStudent.specialization}}</b>
+                </span>
+              </div>
+            </div>
+            <div class="row flexrow justify-content-center no-gutters">
+              <div class="col d-flex ">ESL Level:
+                <span style="padding:-5px;">
+                  <b *ngIf="currStudent != null">{{currStudent.eslLevel}}</b>
+                </span>
+              </div>
+            </div>
+            <div class="row flexrow justify-content-start no-gutters">
+              <div class="col d-flex">
+                <a href="http://www.saigontech.edu.vn/thoi-khoa-bieu-bang-diem.html" target="_blank" style="font-weight:bold; text-decoration: underline; color:#1441e4">Overall Timetable</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="text-danger ">
+              <p class="font-weight-bold">Registration hotlines: 0932 172 334</p>
+            </div>
+            <div class="text-info ">
+              <p class="font-weight-bold">
+                The registration period expired. Please come to see Ms. Ngoc Phuong for further request! </p>
+            </div>
+            <div class="text-danger ">
+              <p class="font-weight-bold">Registration Time: 08:00 AM Jan 13, 2018 - 08:00 PM Jan 15, 2018</p>
+            </div>
+          </div>
+        </div>
+        <hr>
+
+        <div class="row justify-content-start">
+          <button class="btn btn-danger ml-5" (click)="deleteClass()">Delete</button>
+        </div>
+        <div class="row flexrow justify-content-center no-gutters">
+          <h5 class="text-dark font-weight-bold">CLASS(ES) REGISTERED</h5>
+          <div class="table-responsive">
+          <table id="classRegistered" class="table table-hover table-striped table-bordered mt-2">
+            <thead>
+              <tr align="center" style="height: 32px;">
+                <th width="5%">No</th>
+                <th width="5%">Del.</th>
+                <th width="20%">Class Code</th>
+                <th width="20%">Course Code</th>
+                <th width="30%">Course Name</th>
+                <th width="10%">#/Max</th>
+                <th width="10%">Timetable</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let classRegistered of eslClassregistered; let i = index" bgcolor="#ffffff">
+                <td>{{i+1}}</td>
+                <td>
+                  <input class="registeredChecked" type="checkbox" [value] = "classRegistered.classCode+ '|' +classRegistered.studyCode" (click)="testCheckbox($event);">
+                </td>
+                <td>{{classRegistered.classID}}</td>
+                <td>{{classRegistered.subjectID}}</td>
+                <td>{{classRegistered.subjectName}}</td>
+                <td>{{classRegistered.numberStudentregistered}}/{{classRegistered.numberStudentclass}}</td>
+                <td><button type="button" class="btn btn-primary" (click)="showTimetable(classRegistered.classCode)">Show</button></td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+
+        <div class="row justify-content-start mt-5">
+          <button class="btn btn-success ml-5" (click)="addClass()">Add</button>
+        </div>
+        <div class="row flexrow justify-content-center no-gutters ">
+          <h5 class="text-dark font-weight-bold">CLASS(ES) OFFERED</h5>
+          <div class="table-responsive">
+          <table id="classOffered" class="table table-hover table-striped table-bordered mt-2">
+            <thead>
+              <tr align="center" style="height: 32px;">
+                <th width="5%">No</th>
+                <th width="5%">Del.</th>
+                <th width="20%">Class Code</th>
+                <th width="20%">Course Code</th>
+                <th width="30%">Course Name</th>
+                <th width="10%">#/Max</th>
+                <th width="10%">Timetable</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let classOpened of eslClassavailable; let i = index" bgcolor="#ffffff">
+                <td>{{i+1}}</td>
+                <td>
+                  <input class="openedChecked" type="checkbox" [value]="classOpened.classCode" (click)="testCheckbox($event);">
+                </td>
+                <td>{{classOpened.classID}}</td>
+                <td>{{classOpened.subjectID}}</td>
+                <td>{{classOpened.subjectName}}</td>
+                <td>{{classOpened.numberStudentregistered}}/{{classOpened.numberStudentclass}}</td>
+                <td><button type="button" class="btn btn-primary" (click)="showTimetable(classOpened.classCode)">Show</button></td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+
+        
+        
+        
+      </div>
+
+    </div>
+  </div>
+
+  <!---->
+
+  
+
+  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      
+      <div class="modal-content">
+          <div class="modal-header">
+              <h2 class="modal-title" id="exampleModalLabel">TIMETABLE</h2>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <p>Class:</p> 
+                </div>
+                <div class="col">
+                  <p *ngIf="currTimetable != null">{{currTimetable.classCode}}</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <p>Semester / Year:</p> 
+                </div>
+                <div class="col">
+                  <p *ngIf="currTimetable != null">{{currTimetable.semesterYear}}</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <p>Course Name:</p> 
+                </div>
+                <div class="col">
+                  <p *ngIf="currTimetable != null">{{currTimetable.className}}</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <p>Instructor Name:</p> 
+                </div>
+                <div class="col">
+                  <p *ngIf="currTimetable != null">{{currTimetable.instructorName}}</p>
+                </div>
+              </div>
+
+              <div class="row">
+                  <div class="table-responsive"  *ngIf="currTimetable != null">
+                    <table class="table-bordered">
+                      <tr  *ngFor="let r of currTimetable.timetableMatrix">
+                        <td *ngFor="let c of r">{{c}}</td>
+                      </tr>
+                    </table>
+                  </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

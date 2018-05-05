@@ -1,0 +1,85 @@
+#gradeAnSemester-loadingImg
+{
+    width:5%;
+    height:100%;
+}
+
+table
+{
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid rgb(119, 119, 119);
+ }
+
+#header
+{
+    background:rgb(187, 223, 253);
+}
+th
+{
+    text-align: center;  
+    height:2.5rem; 
+}
+
+tr
+{
+    height:2.2rem
+}
+
+td
+{
+    text-align: center;
+}
+
+/* Format for assignment row */
+#assignmentCol
+{
+    text-align: center !important;
+    border:none;
+}
+
+#assignmentRow table
+{
+    border:none;
+}
+
+#assignmentRow td
+{
+    text-align: left;
+    padding-left:4px;
+}
+
+.mainPartTitle
+{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+     
+
+/* End format for assignment row */
+
+/* Resoinsive format */
+@media (max-width: 576px) {
+    #semester, #academicYear
+    {
+        width:40%;
+    }
+
+    table{
+        font-size: 80%;
+    }
+
+    body
+    {
+        font-size:90%;
+    }
+
+    .mainPartTitle
+    {
+        font-size:98%;
+    }
+
+}
+/* End resoinsive format */

@@ -1,0 +1,151 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header ">
+        <h4 class="card-title">
+          <b>HCC Workforce Transcript</b>
+        </h4>
+      </div>
+      <div class="card-body p-4">
+        <div class="row flexrow justify-content-center no-gutters">
+          <img id="loadingImg" src="assets/img/loading.gif" *ngIf="!showContent" />
+        </div>
+        <ng-container *ngIf="showContent">
+          <div class="row">
+            <div class="col-sm-4" id="hccContainer">
+              <img id="hccImage" src="assets/img/hcc.jpg" />
+            </div>
+            <div class="col-sm-8">
+
+              <div class="row">
+                <div class="col-5 col-sm-4 justify-content-start">Student Name:</div>
+                <div class="col-7 col-sm-8 justify-content-start" style="padding:-5px;">
+                  <b>{{currStudent.lastName}} {{currStudent.firstName}}</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5 col-sm-4 justify-content-start">Student ID:</div>
+                <div class="col-7 col-sm-8 justify-content-start" style="padding:-5px;">
+                  <b>{{currStudent.studentID}}</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5 col-sm-4 justify-content-start">PID:</div>
+                <div class="col-7 col-sm-8 justify-content-start" style="padding:-5px;">
+                  <b>{{currStudent.hccsID}}</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5 col-sm-4 justify-content-start">EMPID:</div>
+                <div class="col-7 col-sm-8 justify-content-start" style="padding:-5px;">
+                  <b>{{currStudent.hccsPID}}</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5 col-sm-4 justify-content-start">Date of Birth:</div>
+                <div class="col-7 col-sm-8 justify-content-start" style="padding:-5px;">
+                  <b>{{currStudent.dob}}</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5 col-sm-4 justify-content-start">Institution:</div>
+                <div class="col-7 col-sm-8 justify-content-start" style="padding:-5px;">
+                  <b>SAIGON INSTITUTE OF TECHNOLOGY</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5 col-sm-4 justify-content-start">Degree:</div>
+                <div class="col-7 col-sm-8 justify-content-start" style="padding:-5px;">
+                  <b>ASSOCIATE IN APPLIED SCIENCE</b>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-5 col-sm-4 justify-content-start">Catalog of Choice:</div>
+                <div class="col-7 col-sm-8 justify-content-start" style="padding:-5px;">
+                  <b>{{additionInfo[0].catalog}}</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5 col-sm-4 justify-content-start">Specialization:</div>
+                <div class="col-7 col-sm-8 justify-content-start" style="padding:-5px;">
+                  <b>{{additionInfo[0].program}}</b>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <table width="100%" border="1" cellspacing="1" class="table-hover">
+              <thead>
+                <tr>
+                  <th width="5%" rowspan="2">
+                    <span class="text_white_bold">No.</span>
+                  </th>
+                  <th width="12%" rowspan="2">
+                    <span class="text_white_bold">Semester</span>
+                  </th>
+                  <th width="12%" rowspan="2">
+                    <span class="text_white_bold">Course</span>
+                  </th>
+                  <th width="38%" rowspan="2">
+                    <span class="text_white_bold">Description</span>
+                  </th>
+                  <th width="12%" colspan="2">
+                    <span class="text_white_bold">Grade</span>
+                  </th>
+                  <th width="12%" rowspan="2">
+                    <span class="text_white_bold">Credits Attempted</span>
+                  </th>
+                  <th width="12%" rowspan="2">
+                    <span class="text_white_bold">Credits Earned</span>
+                  </th>
+                </tr>
+                <tr>
+                  <th>
+                    <span class="text_white_bold">Letter</span>
+                  </th>
+                  <th>
+                    <span class="text_white_bold">Point</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let item of hccTranscriptData; let i = index">
+                  <ng-container *ngIf="canShowCheck(semesterInfo.semester, semesterInfo.acaYear,convertSemesterToNumber(item.semester_name),item.acaYear)">
+                    <tr>
+                      <td>{{i+1}}</td>
+                      <td>{{item.semester_name}} {{item.acaYear}}</td>
+                      <td>{{item.subjectId}}</td>
+                      <td style="text-align:left;padding-left:4px;">{{item.subjectName}}</td>
+                      <td>{{item.letter_mark}}</td>
+                      <td>{{item.grade}}</td>
+                      <td>{{item.credits}}</td>
+                      <td>{{item.credits_Earn}}</td>
+                    </tr>
+                  </ng-container>
+                  <ng-container *ngIf="!canShowCheck(semesterInfo.semester, semesterInfo.acaYear,convertSemesterToNumber(item.semester_name),item.acaYear)">
+                    <tr>
+                      <td>{{i+1}}</td>
+                      <td>{{item.semester_name}} {{item.acaYear}}</td>
+                      <td>{{item.subjectId}}</td>
+                      <td style="text-align:left;padding-left:4px;">{{item.subjectName}}</td>
+                      <td></td>
+                      <td></td>
+                      <td>{{item.credits}}</td>
+                      <td></td>
+                    </tr>
+                  </ng-container>
+                </ng-container>
+                <tr>
+                  <td colspan="4" style="text-align: right; font-weight:bold;">Workforce GPA:&nbsp;</td>
+                  <td colspan="4" style="text-align: left; font-weight:bold;">{{averageGPA[0].averageGPA}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+        </ng-container>
+      </div>
+    </div>
+  </div>

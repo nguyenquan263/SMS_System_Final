@@ -1,0 +1,390 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header ">
+        <h4 class="card-title">
+          <b>AAS Transcript</b>
+        </h4>
+      </div>
+      <div class="card-body p-4">
+        <div class="row flexrow justify-content-center no-gutters">
+          <img id="loadingImg" src="assets/img/loading.gif" *ngIf="!showContent" />
+        </div>
+        <ng-container *ngIf="showContent">
+          <div class="row justify-content-center" id="firstHeading">
+            SAIGON INSTITUTE TECHNOLOGY
+          </div>
+          <div class="row justify-content-center" id="secondHeading">
+            ACADEMIC RECORD
+          </div>
+          <div class="row justify-content-center" id="thirdHeading">
+            BẢNG ĐIỂM
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <img id="sgtImage" src="assets/img/sgtlogo.png">
+            </div>
+            <div class="col-sm-8">
+
+              <div class="row">
+                <div class="col-5 col-sm-5 justify-content-start">
+                  Student Name
+                  <i>(Họ tên sinh viên)</i>
+                </div>
+                <div class="col-7 col-sm-7 justify-content-start" style="padding:-5px;">
+                  <b>: {{currStudent.lastName}} {{currStudent.firstName}}</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5 col-sm-5 justify-content-start">
+                  Student ID
+                  <i>(Mã số sinh viên)</i>
+                </div>
+                <div class="col-7 col-sm-7 justify-content-start" style="padding:-5px;">
+                  <b>: {{currStudent.studentID}}</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5 col-sm-5 justify-content-start">PID</div>
+                <div class="col-7 col-sm-7 justify-content-start" style="padding:-5px;">
+                  <b>: {{currStudent.hccsID}}</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5 col-sm-5 justify-content-start">EMPID</div>
+                <div class="col-7 col-sm-7 justify-content-start" style="padding:-5px;">
+                  <b>: {{currStudent.hccsPID}}</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5 col-sm-5 justify-content-start">
+                  Date of Birth
+                  <i>(Ngày sinh dd/mm/yyyy)</i>
+                </div>
+                <div class="col-7 col-sm-7 justify-content-start" style="padding:-5px;">
+                  <b>: {{currStudent.dob}}</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5 col-sm-5 justify-content-start">
+                  Institution
+                  <i>(Trường)</i>
+                </div>
+                <div class="col-7 col-sm-7 justify-content-start" style="padding:-5px;">
+                  <b>: SAIGON INSTITUTE OF TECHNOLOGY</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5 col-sm-5 justify-content-start">Degree
+                  <i>(Bằng cấp)</i>
+                </div>
+                <div class="col-7 col-sm-7 justify-content-start" style="padding:-5px;">
+                  <b>: ASSOCIATE IN APPLIED SCIENCE</b>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-5 col-sm-5 justify-content-start">
+                  Catalog of Choice
+                  <i>(Catalog)</i>
+                </div>
+                <div class="col-7 col-sm-7 justify-content-start" style="padding:-5px;">
+                  <b>: {{additionInfo[0].catalog}}</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5 col-sm-5 justify-content-start">
+                  Specialization
+                  <i>(Chuyên ngành)</i>
+                </div>
+                <div class="col-7 col-sm-7 justify-content-start" style="padding:-5px;">
+                  <b>: {{additionInfo[0].program}}</b>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-2 justify-content-center" style="font-size:1.2rem">
+            DATE ISSSUE: {{dateAndTimeInfo.dateAndTime}}
+          </div>
+          <div class="row mt-2">
+            <div class="col">
+              <table width="100%" border="1" cellspacing="1" class="table-responsive" id="mainTable">
+                <thead>
+                  <th width="15%">
+                    Semester
+                    <br/>
+                    <i style="font-weight: normal">(Học kỳ)</i>
+                  </th>
+                  <th width="15%">
+                    Course
+                    <br/>
+                    <i style="font-weight: normal">(Mã số môn học)</i>
+                  </th>
+                  <th width="30%">
+                    Description
+                    <br/>
+                    <i style="font-weight: normal">(Tên môn học)</i>
+                  </th>
+                  <th width="5%">
+                    Grade
+                    <br/>
+                    <i style="font-weight: normal">(Điểm)</i>
+                  </th>
+                  <th width="5%">
+                    Credit Attempts
+                    <br/>
+                    <i style="font-weight: normal">(Tín chỉ dự định)</i>
+                  </th>
+                  <th width="5%">
+                    Credit Earned
+                    <br/>
+                    <i style="font-weight: normal">(Tín chỉ đạt được)</i>
+                  </th>
+                  <th width="5%">
+                    Term GPA
+                    <br/>
+                    <i style="font-weight: normal">(TB kỳ)</i>
+                  </th>
+                  <th width="20%">
+                    Cummulative GPA
+                    <br/>
+                    <i style="font-weight: normal">(TB tích lũy)</i>
+                  </th>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let item of finalResult">
+                    <tr *ngFor="let course of item.courseData; let i = index">
+                      <td *ngIf="i == 0" [attr.rowspan]='item.courseData.length'>{{item.semester}}</td>
+                      <td style="text-align:left;padding-left:4px;">{{course.subjectId}}</td>
+                      <td style="text-align:left;padding-left:4px;">{{course.subjectName}}</td>
+                      <td>{{course.letter_mark}}</td>
+                      <td>{{course.credits}}</td>
+                      <td>{{course.credits_earned}}</td>
+                      <td *ngIf="i == 0" [attr.rowspan]='item.courseData.length+1' style="vertical-align: bottom;font-weight:bold;">
+                        {{item.termGPA}}
+                      </td>
+                      <td *ngIf="i == 0" [attr.rowspan]='item.courseData.length+1' style="vertical-align: bottom;font-weight:bold;">
+                        {{item.cumGPA}}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="6"></td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-6" style="text-align:center;">
+              CHANCELLOR
+              <br/> HIỆU TRƯỞNG
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <b>Nguyễn Thị Anh Thư</b>
+            </div>
+
+            <div class="col-6" style="text-align:center;">
+              REGISTRAR
+              <br/> GIÁO VỤ
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <b>Huỳnh Kim Thủy Tiên</b>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col">
+              <table width="100%" border="0" cellpadding="0" bordercolorlight="#000000" bordercolordark="#000000" id="table1" style="border-collapse: collapse; font-family: Tahoma, Geneva, sans-serif; font-size: 8pt;">
+                <tbody>
+                  <tr>
+                    <td width="4">&nbsp;</td>
+                    <td colspan="5" height="25">
+                      <p align="left">LEGEND
+                        <em> (HƯỚNG DẪN)</em>
+                        <br> Grade and Grade Points
+                        <em>(Điểm và Điểm số)</em>
+                      </p>
+                    </td>
+                    <td width="11" height="25">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td width="75" align="center">&nbsp;</td>
+                    <td width="121" align="center">
+                      <font face="Tahoma" style="font-size:8pt">
+                        <u>Symbol</u>
+                        <em>(Ký hiệu)</em>
+                      </font>
+                    </td>
+                    <td width="313" align="center">
+                      <div align="left">
+                        <font face="Tahoma" style="font-size:8pt">
+                          <u>Meaning</u>
+                          <em>(Xếp loại)</em>
+                        </font>
+                      </div>
+                    </td>
+                    <td width="157" align="center">
+                      <font face="Tahoma" style="font-size:8pt">
+                        <u>Grade Points</u>
+                        <em>(Điểm số)</em>
+                      </font>
+                    </td>
+                    <td width="265">&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td align="center">&nbsp;</td>
+                    <td align="center">
+                      <font style="font-size:8pt" face="Tahoma">A</font>
+                    </td>
+                    <td align="center">
+                      <div align="left">
+                        <font style="font-size:8pt" face="Tahoma">Excellent
+                          <em>(Xuất sắc)</em>
+                        </font>
+                      </div>
+                    </td>
+                    <td align="center">
+                      <font style="font-size:8pt" face="Tahoma">4</font>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td align="center">&nbsp;</td>
+                    <td align="center">
+                      <font style="font-size:8pt" face="Tahoma">B</font>
+                    </td>
+                    <td align="center">
+                      <div align="left">
+                        <font style="font-size:8pt" face="Tahoma">Good
+                          <em>(Giỏi)</em>
+                        </font>
+                      </div>
+                    </td>
+                    <td align="center">
+                      <font style="font-size:8pt" face="Tahoma">3</font>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td align="center">&nbsp;</td>
+                    <td align="center">
+                      <font style="font-size:8pt" face="Tahoma">C</font>
+                    </td>
+                    <td align="center">
+                      <div align="left">
+                        <font style="font-size:8pt" face="Tahoma">Fair
+                          <em>(Khá)</em>
+                        </font>
+                      </div>
+                    </td>
+                    <td align="center">
+                      <font style="font-size:8pt" face="Tahoma">2</font>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td align="center">&nbsp;</td>
+                    <td align="center">
+                      <font style="font-size:8pt" face="Tahoma">D</font>
+                    </td>
+                    <td align="center">
+                      <div align="left">
+                        <font style="font-size:8pt" face="Tahoma">Passing
+                          <em>(Đạt)</em>
+                        </font>
+                      </div>
+                    </td>
+                    <td align="center">
+                      <font style="font-size:8pt" face="Tahoma">1</font>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td align="center">&nbsp;</td>
+                    <td align="center">
+                      <font style="font-size:8pt" face="Tahoma">F</font>
+                    </td>
+                    <td align="center">
+                      <div align="left">
+                        <font style="font-size:8pt" face="Tahoma">Failing
+                          <em>(Không đạt)</em>
+                        </font>
+                      </div>
+                    </td>
+                    <td align="center">
+                      <font style="font-size:8pt" face="Tahoma">0</font>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td align="center">&nbsp;</td>
+                    <td align="center">
+                      <font face="Tahoma" style="font-size:8pt">F(A/P/C)</font>
+                    </td>
+                    <td align="center">
+                      <div align="left">Failing
+                        <em>(Vắng thi/Cấm thi/Gian lận)</em>
+                      </div>
+                    </td>
+                    <td align="center">0</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td align="center">&nbsp;</td>
+                    <td colspan="3" align="LEFT">The following grades are not calculated in GPA
+                      <em>(Điểm không được dùng để tính GPA)</em>: </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td align="center">&nbsp;</td>
+                    <td align="center">I</td>
+                    <td align="LEFT">Incomplete
+                      <em>(Chưa hoàn thành)</em>
+                    </td>
+                    <td align="center">&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td align="center">&nbsp;</td>
+                    <td align="center">T</td>
+                    <td align="LEFT">Transferred
+                      <em>(Chuyển điểm)</em>
+                    </td>
+                    <td align="center">&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </ng-container>
+
+      </div>
+    </div>
+  </div>

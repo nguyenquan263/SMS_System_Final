@@ -1,0 +1,22 @@
+#studentPro-loadingImg
+{
+    width:5%;
+    height:100%;
+}
+
+
+@media (max-width: 400px) {
+  #semester, #academicYear
+  {
+      width:40%;
+  }
+
+  table th{
+      font-size: 10px;
+  }
+
+  body
+  {
+      font-size:12px;
+  }
+}

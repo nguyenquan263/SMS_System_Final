@@ -1,0 +1,147 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header ">
+        <h4 class="card-title">
+          <b>Grade & Semester</b>
+        </h4>
+      </div>
+      <div class="card-body p-4">
+        <div *ngIf="upperPart">
+          <div class="row flexrow justify-content-center no-gutters">
+            <div class="col d-flex justify-content-end">Student Name:</div>
+            <div class="col justify-content-start ml-2" style="padding:-5px;">
+              <b>{{currStudent.lastName}} {{currStudent.firstName}}</b>
+            </div>
+          </div>
+          <div class="row flexrow justify-content-center no-gutters">
+            <div class="col d-flex justify-content-end">Student Id:</div>
+            <div class="col justify-content-start ml-2" style="padding:-5px;">
+              <b>{{currStudent.studentID}}</b>
+            </div>
+          </div>
+          <div class="row flexrow justify-content-center no-gutters">
+            <div class="col d-flex justify-content-end">Semester/Year:</div>
+            <div class="col justify-content-start ml-2" style="padding:-5px;">
+              <select size="1" name="semester" id="semester" (change)="updateGradeData()" [(ngModel)]="semesterInfo.semester">
+                <option id="spring" value="4">SPRING</option>
+                <option id="summer" value="1">SUMMER</option>
+                <option id="fall" value="3">FALL</option>
+              </select>
+              /
+              <select size="1" id="academicYear" name="academicyear" class="ml-2" (change)="updateGradeData()" [(ngModel)]="semesterInfo.acaYear">
+                <option *ngFor="let item of academicYearInfo[0]">{{item.acaYear}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <ng-container *ngIf="lowerPart && lowerPart2">
+          <p class="mainPartTitle">I. Grade</p>
+          <div class="row flexrow justify-content-center no-gutters">
+            <div id="gradeAnSemester-mainTable" class="col d-flex justify-content-center">
+              <table width="100%" border="1" cellspacing="1" class="table-hover">
+                <tr id="header">
+                  <th width="5%" rowspan="2">
+                    <span class="text_white_bold">No.</span>
+                  </th>
+                  <th width="15%" rowspan="2">
+                    <span class="text_white_bold">Course ID</span>
+                  </th>
+                  <th width="30%" rowspan="2">
+                    <span class="text_white_bold">Course Name</span>
+                  </th>
+                  <th width="50%" colspan="6">
+                    <span class="text_white_bold">Grade</span>
+                  </th>
+                </tr>
+                <tr id="header">
+                  <th colspan="2">Midterm (%)</th>
+                  <th colspan="2">Final (%)</th>
+                  <th>Average</th>
+                  <th>Policy #2</th>
+                </tr>
+
+                <tbody>
+                  <!-- <ng-container *ngFor="let mainItem of gradeData, let i = index"> -->
+                  <ng-container *ngFor="let item of gradeData; let i = index">
+                    <tr *ngIf="!item.isGEGradeTitle; else else_clause">
+                      <td width="5%">{{item.no}}</td>
+                      <td width="15%" style="text-align:left;padding-left:5.5px;">{{item.id}}</td>
+                      <td width="30%" style="text-align:left;padding-left:5.5px;">{{item.name}}</td>
+                      <td width="8%">{{item.midMark}}</td>
+                      <td width="8%">{{item.midPercent}}</td>
+                      <td width="8%">{{item.finalMark}}</td>
+                      <td width="8%">{{item.finalPercent}}</td>
+                      <td width="8%">{{item.averageMark}}</td>
+                      <td width="8%">{{item.policy2}}</td>
+                    </tr>
+                    <tr *ngIf="item.assignment != ''" id="assignmentRow">
+                      <td colspan="9">
+                        <table>
+                          <tr colspan="9">
+                            <ng-container *ngFor="let assignment of item.assignment">
+                              <td id="assignmentCol">Assignment {{assignment.col}} ({{assignment.percent}}%)
+                                <br/> {{assignment.grade}}</td>
+                            </ng-container>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr *ngIf="item.isGEGradeTitle">
+                      <td>
+                        <b>{{item.no+1}}</b>
+                      </td>
+                      <td style="text-align:left;padding-left:5.5px;">
+                        <b>{{item.id}}</b>
+                      </td>
+                      <td style="text-align:left;padding-left:5.5px;">
+                        <b>{{item.name}}</b>
+                      </td>
+                      <td colspan="4"></td>
+                      <td>
+                        <b>{{item.averageMark}}</b>
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr *ngIf="item.isGEGradeTitle">
+                      <td colspan="9" style="text-align:left;padding-left:5.5px;">
+                        <b>Grade in detail</b>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p class="mainPartTitle mt-3">II. Comment</p>
+          <div class="row flexrow justify-content-center no-gutters">
+            <div class="col d-flex justify-content-center">
+              <table width="100%" border="1" cellspacing="1" class="table-hover">
+                <tr id="header">
+                  <th width="5%">No.</th>
+                  <th width="10%">Class Code</th>
+                  <th width="15%">Class Name</th>
+                  <th width="15%">Instructor</th>
+                  <th width="26%">Midterm Comment</th>
+                  <th width="26%">Final Comment</th>
+                </tr>
+                <tr *ngFor="let comments of teacherComments; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{comments.id}}</td>
+                    <td>{{comments.name}}</td>
+                    <td>{{comments.teacherName}}</td>
+                    <td>{{comments.midterComment}}</td>
+                    <td>{{comments.finalComment}}</td>
+                  </tr>
+              </table>
+              
+            </div>
+          </div>
+        </ng-container>
+        <div class="row flexrow justify-content-center no-gutters" *ngIf="!lowerPart || !lowerPart2">
+          <img id="gradeAnSemester-loadingImg" src="assets/img/loading.gif" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

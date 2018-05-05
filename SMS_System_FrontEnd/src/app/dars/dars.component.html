@@ -1,0 +1,384 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header ">
+        <h4 class="card-title">
+          <b>Dars Report</b>
+        </h4>
+      </div>
+      <div class="card-body p-3">
+        <div class="row flexrow justify-content-center no-gutters">
+          <img id="loadingImg" src="assets/img/loading.gif" *ngIf="!showContentAAS || !showContentESL || !showContentEnrich || !showContentOther || !showDegreeGranted"
+          />
+        </div>
+        <ng-container *ngIf="showContentAAS && showContentESL && showContentEnrich && showContentOther && showDegreeGranted">
+          <div class="row justify-content-center" id="firstHeading">
+            SAIGON INSTITUTE TECHNOLOGY
+          </div>
+          <div class="row justify-content-center" id="secondHeading">
+            DARS REPORT
+          </div>
+          <div class="row justify-content-center" id="thirdHeading">
+            BÁO CÁO TIẾN ĐỘ HỌC TẬP
+          </div>
+          <div class="row">
+            <div class="col-sm-3 text-center" width="100%">
+              <img id="stuImage" class="rounded" [src]="'http://oms.saigontech.edu.vn/oms_app/Saigontech_College/student/image/'+currStudent.image"
+                width="140px" />
+            </div>
+            <div class="col-sm-9">
+
+              <div class="row">
+                <div class="col-5 col-sm-5 justify-content-start">
+                  Student Name
+                  <i>(Họ tên sinh viên)</i>
+                </div>
+                <div class="col-7 col-sm-7 justify-content-start" style="padding:-5px;">
+                  <b>: {{currStudent.lastName}} {{currStudent.firstName}}</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5 col-sm-5 justify-content-start">
+                  Student ID
+                  <i>(Mã số sinh viên)</i>
+                </div>
+                <div class="col-7 col-sm-7 justify-content-start" style="padding:-5px;">
+                  <b>: {{currStudent.studentID}}</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5 col-sm-5 justify-content-start">PID</div>
+                <div class="col-7 col-sm-7 justify-content-start" style="padding:-5px;">
+                  <b>: {{currStudent.hccsID}}</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5 col-sm-5 justify-content-start">EMPID</div>
+                <div class="col-7 col-sm-7 justify-content-start" style="padding:-5px;">
+                  <b>: {{currStudent.hccsPID}}</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5 col-sm-5 justify-content-start">
+                  Date of Birth
+                  <i>(Ngày sinh dd/mm/yyyy)</i>
+                </div>
+                <div class="col-7 col-sm-7 justify-content-start" style="padding:-5px;">
+                  <b>: {{currStudent.dob}}</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5 col-sm-5 justify-content-start">
+                  Institution
+                  <i>(Trường)</i>
+                </div>
+                <div class="col-7 col-sm-7 justify-content-start" style="padding:-5px;">
+                  <b>: SAIGON INSTITUTE OF TECHNOLOGY</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5 col-sm-5 justify-content-start">Degree
+                  <i>(Bằng cấp)</i>
+                </div>
+                <div class="col-7 col-sm-7 justify-content-start" style="padding:-5px;">
+                  <b>: ASSOCIATE IN APPLIED SCIENCE</b>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-5 col-sm-5 justify-content-start">
+                  Catalog of Choice
+                  <i>(Catalog)</i>
+                </div>
+                <div class="col-7 col-sm-7 justify-content-start" style="padding:-5px;">
+                  <b>: {{additionInfo[0].catalog}}</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5 col-sm-5 justify-content-start">
+                  Specialization
+                  <i>(Chuyên ngành)</i>
+                </div>
+                <div class="col-7 col-sm-7 justify-content-start" style="padding:-5px;">
+                  <b>: {{additionInfo[0].program}}</b>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-2 justify-content-start">
+            <div class="col">
+              <b>Student Info </b>
+              <i>(Thông tin sinh viên)</i>
+            </div>
+          </div>
+          <ng-container *ngFor="let item of stuInfoFinalResult">
+            <div class="row mt-2 justify-content-start" style="font-size:95%;">
+              <div class="col-9 col-md-5">
+                {{item.name_e}}
+                <i>{{item.name_v}}</i>
+              </div>
+              <div class="col-2 col-md-7">
+                {{item.value}}
+              </div>
+            </div>
+          </ng-container>
+          <div class="row mt-2 justify-content-center" style="font-size:1.2rem">
+            <b>STANDARDS OF WORK </b>
+            <i>(QUI CHẾ HỌC VỤ)</i>
+          </div>
+          <div class="row mt-2 justify-content-center">
+            <div class="col">
+              AAS Degree requires GPA of at least 2.0 on SaigonTech transcript and on transcript of Department of your specialization to
+              determine eligibility for graduation. Academic courses require at least a C grade to be completed. Workforce
+              courses require at least a D grade to be completed. The grades of all taken AAS courses are used to calculate
+              accumulated GPA. For repeated courses, the highest grade will be used in computing the GPA.
+              <br>
+              <i>Để được xét cấp bằng AAS và để được xác nhận hoàn tất chương trình AAS, điểm GPA tích lũy của SaigonTech và
+                điểm GPA tích lũy của các môn thuộc Khoa chuyên ngành phải đạt tối thiểu 2.0. Điểm đậu các môn học thuật
+                (academic) là C. Điểm đậu các môn kỹ năng (workforce) là D. Tất cả các môn đều được tính vào điểm trung bình.
+                Riêng các môn học lại, điểm cao nhất được dùng để tính GPA.</i>
+            </div>
+          </div>
+          <div class="row mt-2 justify-content-center" style="font-size:1.2rem">
+            <b>LEGEND</b>
+            <i>(HƯỚNG DẪN)</i>
+          </div>
+          <div class="row mt-2 justify-content-center">
+            <div class="col">
+              PG = Pre-registered in next semester (Đăng ký cho học kỳ sau)
+              <br/> RG = Registered in the current semester (Đăng ký trong học kỳ hiện tại)
+              <br/> F(A/P/C) = Absent or Prohibited or Cheating (Vắng thi, cấm thi, gian lận)
+              <br/> T = Transferred (Điểm liên thông từ trường khác)
+              <br/>
+            </div>
+          </div>
+          <div class="row mt-2 justify-content-center" style="font-size:1.2rem">
+            DATE ISSUE: {{dateAndTimeInfo.dateAndTime}}
+          </div>
+          <div class="row mt-2">
+            <div class="col">
+              <table width="100%" border="1" cellspacing="1" class="table-responsive" id="mainTable">
+                <thead>
+                  <th width="15%">
+                    Semester
+                    <br/>
+                    <i style="font-weight: normal">(Học kỳ)</i>
+                  </th>
+                  <th width="15%">
+                    Course
+                    <br/>
+                    <i style="font-weight: normal">(Mã số môn học)</i>
+                  </th>
+                  <th width="30%">
+                    Description
+                    <br/>
+                    <i style="font-weight: normal">(Tên môn học)</i>
+                  </th>
+                  <th width="5%">
+                    Grade
+                    <br/>
+                    <i style="font-weight: normal">(Điểm)</i>
+                  </th>
+                  <th width="5%">
+                    Credit Attempts
+                    <br/>
+                    <i style="font-weight: normal">(Tín chỉ dự định)</i>
+                  </th>
+                  <th width="5%">
+                    Credit Earned
+                    <br/>
+                    <i style="font-weight: normal">(Tín chỉ đạt được)</i>
+                  </th>
+                  <th width="5%">
+                    Term GPA
+                    <br/>
+                    <i style="font-weight: normal">(TB kỳ)</i>
+                  </th>
+                  <th width="20%">
+                    Cummulative GPA
+                    <br/>
+                    <i style="font-weight: normal">(TB tích lũy)</i>
+                  </th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="tableSubHeading" colspan="8">AAS Course(s)</td>
+                  </tr>
+                  <ng-container *ngFor="let item of finalResultAAS">
+                    <tr *ngFor="let course of item.courseData; let i = index">
+                      <td *ngIf="i == 0" [attr.rowspan]='item.courseData.length'>{{item.semester}}</td>
+                      <td style="text-align:left;padding-left:4px;">{{course.subjectId}}</td>
+                      <td style="text-align:left;padding-left:4px;">{{course.subjectName}}</td>
+                      <td>{{course.letter_mark}}</td>
+                      <td>{{course.credits}}</td>
+                      <td>{{course.credits_earned}}</td>
+                      <td *ngIf="i == 0" [attr.rowspan]='item.courseData.length+1' style="vertical-align: bottom;font-weight:bold;">
+                        {{item.termGPA}}
+                      </td>
+                      <td *ngIf="i == 0" [attr.rowspan]='item.courseData.length+1' style="vertical-align: bottom;font-weight:bold;">
+                        {{item.cumGPA}}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="6"></td>
+                    </tr>
+                  </ng-container>
+                  <tr>
+                    <td colspan="5" class="totalCreditEarned">Total Credits Earned - AAS Course(s):</td>
+                    <td>{{totalCreditEarnedAAS}}</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="tableSubHeading" colspan="8">ESL Course(s)</td>
+                  </tr>
+
+
+                  <ng-container *ngFor="let item of finalResultESLBefore">
+                    <tr *ngFor="let esl of item.esl ; let i = index">
+                      <td *ngIf="i == 0" [attr.rowspan]='item.esl.length+item.toefl.length+1'>
+                        {{item.semester_name}}/{{item.aca_year}}
+                      </td>
+                      <td *ngIf="i == 0" [attr.rowspan]='item.esl.length'>ESL</td>
+                      <td>{{esl.subjectName}}</td>
+                      <td>{{esl.letter_Mark}}</td>
+                      <td *ngIf="i == 0" [attr.rowspan]='item.esl.length'>{{item.credits}}</td>
+                      <td *ngIf="i == 0" [attr.rowspan]='item.esl.length'>{{item.credits_earn}}</td>
+                      <td *ngIf="i == 0" [attr.rowspan]='item.esl.length+item.toefl.length+1' style="vertical-align: bottom;font-weight:bold;">{{item.term_gpa_esl}}</td>
+                      <td *ngIf="i == 0" [attr.rowspan]='item.esl.length+item.toefl.length+1' style="vertical-align: bottom;font-weight:bold;">{{item.cum_gpa_esl}}</td>
+                    </tr>
+
+                    <tr *ngIf="item.toefl.length > 0">
+                      <td>TOEFL</td>
+                      <td colspan="4">{{item.toefl[0].averageMark}}</td>
+                    </tr>
+                    <tr>
+                      <td colspan="5"></td>
+                    </tr>
+                  </ng-container>
+                  <ng-container *ngFor="let item of finalResultESLAfter">
+                    <ng-container *ngIf="item.course.length == 0; else elseClause">
+                      <ng-container *ngFor="let ToeflandSat of item.toefl; let i = index">
+                        <tr>
+                          <td *ngIf="i == 0" [attr.rowspan]='item.course.length+item.toefl.length+1'>
+                            {{item.semester_name}}/{{item.aca_year}}
+                          </td>
+                          <td>{{item.toefl[0].subjectId}}</td>
+                          <td colspan="4">{{item.toefl[0].averageMark}}</td>
+
+                          <td *ngIf="i == 0" [attr.rowspan]='item.course.length+item.toefl.length+1' style="vertical-align: bottom;font-weight:bold;">
+                            {{item.term_gpa_esl}}
+                          </td>
+                          <td *ngIf="i == 0" [attr.rowspan]='item.course.length+item.toefl.length+1' style="vertical-align: bottom;font-weight:bold;">
+                            {{item.cum_gpa_esl}}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="5"></td>
+                        </tr>
+                      </ng-container>
+                    </ng-container>
+                    <ng-template #elseClause>
+                      <tr *ngFor="let course of item.course; let i = index">
+                        <td *ngIf="i == 0" [attr.rowspan]='item.course.length+item.toefl.length+1'>
+                          {{item.semester_name}}/{{item.aca_year}}
+                        </td>
+                        <td style="text-align:left;padding-left:4px;">{{course.subjectId}}</td>
+                        <td style="text-align:left;padding-left:4px;">{{course.subjectName}}</td>
+                        <td>{{course.letter_mark}}</td>
+                        <td>{{course.credits}}</td>
+                        <td>{{course.credit_earn}}</td>
+                        <td *ngIf="i == 0" [attr.rowspan]='item.course.length+item.toefl.length+1' style="vertical-align: bottom;font-weight:bold;">
+                          {{item.term_gpa_esl}}
+                        </td>
+                        <td *ngIf="i == 0" [attr.rowspan]='item.course.length+item.toefl.length+1' style="vertical-align: bottom;font-weight:bold;">
+                          {{item.cum_gpa_esl}}
+                        </td>
+                      </tr>
+                      <ng-container *ngIf="item.toefl.length > 0">
+                        <tr *ngFor="let ToeflandSat of item.toefl">
+                          <td>{{ToeflandSat.subjectId}}</td>
+                          <td colspan="4">{{ToeflandSat.averageMark}}</td>
+                        </tr>
+                      </ng-container>
+                      <tr>
+                        <td colspan="5"></td>
+                      </tr>
+                    </ng-template>
+                  </ng-container>
+                  <tr>
+                    <td colspan="5" class="totalCreditEarned">Total Credits Earned - ESL Course(s):</td>
+                    <td>{{totalCreditEarnedESL}}</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="tableSubHeading" colspan="8">Enrichment Course(s)</td>
+                  </tr>
+                  <ng-container *ngFor="let item of finalResultEnrichment">
+                    <tr *ngFor="let course of item.course; let i = index">
+                      <td *ngIf="i == 0" [attr.rowspan]='item.course.length+1'>{{item.semester_name}}/{{item.acaYear}}</td>
+                      <td style="text-align:left;padding-left:4px;">{{course.subjectId}}</td>
+                      <td style="text-align:left;padding-left:4px;">{{course.subjectName}}</td>
+                      <td>{{course.letter_mark}}</td>
+                      <td>{{course.credits}}</td>
+                      <td>{{course.credits_Earn}}</td>
+                      <td *ngIf="i == 0" [attr.rowspan]='item.course.length+1'></td>
+                      <td *ngIf="i == 0" [attr.rowspan]='item.course.length+1'></td>
+                    </tr>
+                    <tr>
+                      <td colspan="6"></td>
+                    </tr>
+                  </ng-container>
+                  <tr>
+                    <td colspan="5" class="totalCreditEarned">Total Enrichment Course(s) Passed:</td>
+                    <td>{{totalCoursePassEnrich}}</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="tableSubHeading" colspan="8">Other Course(s)</td>
+                  </tr>
+
+                  <ng-container *ngFor="let item of finalResultOther">
+                    <tr *ngFor="let course of item.course; let i = index">
+                      <td *ngIf="i == 0" [attr.rowspan]='item.course.length'>{{item.semester_name}}/{{item.acaYear}}</td>
+                      <td style="text-align:left;padding-left:4px;">{{course.subjectId}}</td>
+                      <td style="text-align:left;padding-left:4px;">{{course.subjectName}}</td>
+                      <td>{{course.letter_mark}}</td>
+                      <td>{{course.credits}}</td>
+                      <td>{{course.credits_Earn}}</td>
+                      <td *ngIf="i == 0" [attr.rowspan]='item.course.length+1'></td>
+                      <td *ngIf="i == 0" [attr.rowspan]='item.course.length+1'></td>
+                    </tr>
+                    <tr>
+                      <td colspan="6"></td>
+                    </tr>
+                  </ng-container>
+
+                  <tr>
+                    <td colspan="5" class="totalCreditEarned">Total Other Other Course(s) Passed:</td>
+                    <td>{{totalCoursePassOther}}</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div *ngIf = "degreeGranted.length > 0" class="row mt-4">
+            <div class="col" style="text-align:center">
+              <i>Degree granted on {{degreeGranted[0].semester}}</i>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col" style="text-align:center">
+              TP. Hồ Chí Minh, ngày {{dateAndTimeInfo.dateAndTime}} <br/>
+              Người lập bảng <br/><br/><br/><br/>
+              <b>Huỳnh Kim Thủy Tiên</b>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>

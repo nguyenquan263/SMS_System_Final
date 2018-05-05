@@ -1,0 +1,463 @@
+<div class="sidebar" data-color="green">
+  <!--
+Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+Tip 2: you can also add an image using data-image tag
+-->
+  <div class="sidebar-wrapper">
+      <div class="logo">
+          <a href="#">
+              <img src="assets/img/logo3.png" style="width:85%" />
+          </a>
+      </div>
+      <div class="user">
+        <div class="photo">
+            <img id = "smallPhoto">
+        </div>
+        <div class="info ">
+            <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                <span><b id = "stuFullName"></b>
+                    <b class="caret"></b>
+                </span>
+            </a>
+            <div class="collapse" id="collapseExample">
+                <ul class="nav">
+                    <li style="margin-top: 5px;">
+                        <a class="profile-dropdown" [routerLink]="['/']">
+                            <span class="sidebar-mini">MP</span>
+                            <span class="sidebar-normal">My Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="profile-dropdown" href="#pablo">
+                            <span class="sidebar-mini">EP</span>
+                            <span class="sidebar-normal">Edit Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="profile-dropdown" href="#pablo">
+                            <span class="sidebar-mini">S</span>
+                            <span class="sidebar-normal">Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+      <ul class="nav">
+          <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#componentsExamples">
+                  <i class="nc-icon nc-atom"></i>
+                  <p>
+                      Registration
+                      <b class="caret"></b>
+                  </p>
+              </a>
+              <div class="collapse " id="componentsExamples">
+                  <ul class="nav">
+                      <li class="nav-item ml-2">
+                          <a class="nav-link" [routerLink]="['/ClassStatus']">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-pin-3" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">Class status</span>
+                          </a>
+                      </li>
+                      <li class="nav-item ml-2">
+                          <a class="nav-link"  [routerLink]="['/AASRegistration']">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-spaceship" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">AAS Registration</span>
+                          </a>
+                      </li>
+                      <li class="nav-item ml-2">
+                          <a class="nav-link" [routerLink]="['/ESLRegistration']">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-send" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">ESL Registration</span>
+                          </a>
+                      </li>
+                      <li class="nav-item ml-2">
+                          <a class="nav-link" [routerLink]="['/EnrichmentRegistration']">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-air-baloon" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">Enrichment-course Registrations</span>
+                          </a>
+                      </li>
+                      <li class="nav-item ml-2">
+                          <a class="nav-link" [routerLink]="['/VNRegistration']">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-ruler-pencil" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">VN-course Registration</span>
+                          </a>
+                      </li>
+                      <li class="nav-item ml-2">
+                          <a class="nav-link" href="#">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-simple-remove" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">Add/Drop AAS Class Request</span>
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#formsExamples">
+                  <i class="nc-icon nc-notes"></i>
+                  <p>
+                      Class
+                      <b class="caret"></b>
+                  </p>
+              </a>
+              <div class="collapse " id="formsExamples">
+                  <ul class="nav">
+                      <li class="nav-item ml-2">
+                          <a class="nav-link"  [routerLink]="['/CourseEnrolled']">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-palette" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">Courses Enrolled</span>
+                          </a>
+                      </li>
+                      <li class="nav-item ml-2">
+                          <a class="nav-link"  [routerLink]="['/Timetable']">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-single-copy-04" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">Timetable</span>
+                          </a>
+                      </li>
+                      <li class="nav-item ml-2">
+                          <a class="nav-link"  [routerLink]="['/StudentAttendance']">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-tag-content" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">Attendance</span>
+                          </a>
+                      </li>
+                      <li class="nav-item ml-2">
+                          <a class="nav-link"  [routerLink]="['/TuitionFee']">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-grid-45" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">Tuition Fee</span>
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#tablesExamples">
+                  <i class="nc-icon nc-single-02"></i>
+                  <p>
+                      Personal Information
+                      <b class="caret"></b>
+                  </p>
+              </a>
+              <div class="collapse " id="tablesExamples">
+                  <ul class="nav">
+                      <li class="nav-item ml-2">
+                          <a class="nav-link" href="#" [routerLink]="['/Policy2']">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-support-17" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">Policy #2</span>
+                          </a>
+                      </li>
+                      <li class="nav-item ml-2">
+                          <a class="nav-link" href="#" [routerLink]="['/StudentProhibited']">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-tap-01" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">Student Prohibited</span>
+                          </a>
+                      </li>
+                      <li class="nav-item ml-2">
+                          <a class="nav-link" href="#" [routerLink]="['/GradeAndSemester']">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-check-2" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">Grade/Semester</span>
+                          </a>
+                      </li>
+                      <li class="nav-item ml-2">
+                          <a class="nav-link" href="#" [routerLink]="['/TranscriptHCC']">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-delivery-fast" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">HCC Workforce Transcript</span>
+                          </a>
+                      </li>
+                      <li class="nav-item ml-2">
+                          <a class="nav-link" href="#" [routerLink]="['/DegreePlan']">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-compass-05" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">Degree Plan</span>
+                          </a>
+                      </li>
+                      <li class="nav-item ml-2">
+                          <a class="nav-link" href="#" [routerLink]="['/AASTranscript']">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-badge" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">AAS Transcript</span>
+                          </a>
+                      </li>
+                      <li class="nav-item ml-2">
+                          <a class="nav-link" href="#" [routerLink]="['/ESLTranscript']">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-badge" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">ESL Transcript</span>
+                          </a>
+                      </li>
+                      <li class="nav-item ml-2">
+                          <a class="nav-link" href="#" [routerLink]="['/Dars']">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-align-left-2" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">Dars</span>
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#mapsExamples">
+                  <i class="nc-icon nc-app"></i>
+                  <p>
+                      Others
+                      <b class="caret"></b>
+                  </p>
+              </a>
+              <div class="collapse " id="mapsExamples">
+                  <ul class="nav">
+                      <li class="nav-item ml-2">
+                          <a class="nav-link" href="#">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-puzzle-10" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">AAS SEOI</span>
+                          </a>
+                      </li>
+                      <li class="nav-item ml-2">
+                          <a class="nav-link" href="#">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-puzzle-10" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">Enrichment SEOI</span>
+                          </a>
+                      </li>
+                      <li class="nav-item ml-2">
+                          <a class="nav-link" href="#">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-puzzle-10" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">ESL SEOI</span>
+                          </a>
+                      </li>
+                      <li class="nav-item ml-2">
+                          <a class="nav-link" href="#">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-puzzle-10" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">Other SEOI</span>
+                          </a>
+                      </li>
+                      <li class="nav-item ml-2">
+                          <a class="nav-link" href="#">
+                              <span class="sidebar-mini">
+                                  <i class="nc-icon nc-email-83" style="font-size:1.2rem"></i>
+                              </span>
+                              <span class="sidebar-normal">Request for AAS Degree</span>
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+          </li>
+      </ul>
+  </div>
+</div>
+<div class="main-panel">
+    <!-- Navbar -->
+
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+            <div class="navbar-wrapper">
+                <div class="navbar-minimize">
+                    <button id="minimizeSidebar" class="btn btn-success btn-fill btn-round btn-icon d-none d-lg-block">
+                        <i class="fa fa-ellipsis-v visible-on-sidebar-regular"></i>
+                        <i class="fa fa-navicon visible-on-sidebar-mini"></i>
+                    </button>
+                </div>
+                <p id="locationLink"></p>
+            </div>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-bar burger-lines"></span>
+                <span class="navbar-toggler-bar burger-lines"></span>
+                <span class="navbar-toggler-bar burger-lines"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end">
+
+                <ul class="navbar-nav">
+                    <!-- <li class="dropdown nav-item">
+                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                            <i class="nc-icon nc-planet"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Create New Post</a>
+                            <a class="dropdown-item" href="#">Manage Something</a>
+                            <a class="dropdown-item" href="#">Do Nothing</a>
+                            <a class="dropdown-item" href="#">Submit to live</a>
+                            <li class="divider"></li>
+                            <a class="dropdown-item" href="#">Another action</a>
+                        </ul>
+                    </li> -->
+                    <li class="dropdown nav-item">
+                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                            <i class="nc-icon nc-bell-55"></i>
+                            <span class="notification">5</span>
+                            <span class="d-lg-none">Notification</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Notification 1</a>
+                            <a class="dropdown-item" href="#">Notification 2</a>
+                            <a class="dropdown-item" href="#">Notification 3</a>
+                            <a class="dropdown-item" href="#">Notification 4</a>
+                            <a class="dropdown-item" href="#">Notification 5</a>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="javascript:if(confirm('http://example.com\n\nThis file was not retrieved because it was filtered out by your project settings.\n\nWould you like to open it from the server?'))window.location='http://example.com'"
+                            id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="nc-icon nc-bullet-list-67"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">
+                                <i class="nc-icon nc-email-85"></i> Messages
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="nc-icon nc-umbrella-13"></i> Help Center
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="nc-icon nc-settings-90"></i> Settings
+                            </a>
+                            <div class="divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <i class="nc-icon nc-lock-circle-open"></i> Lock Screen
+                            </a>
+                            <a style = "cursor: pointer" class="dropdown-item text-danger" (click) = "logOut()" [routerLink]="['/Login']">
+                                <i class="nc-icon nc-button-power"></i> Log out
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="content">
+        <div class="container-fluid">
+            <!-- <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header ">
+                            <h4 class="card-title">
+                                <b>Student Information</b>
+                            </h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <div class="col-12 col-md-9 justify-content-start">
+                                    <div class="row flexrow">
+                                        <div class="col-6 font-weight-bold stuInfor">
+                                            Student ID:
+                                            <br/> HCCS PID:
+                                            <br/> HCCS ID:
+                                            <br/> HCCS Library Barcode:
+                                            <br/> TOEFL:
+                                            <br/> Last Name:
+                                            <br/> First Name:
+                                            <br/> Birthday:
+                                            <br/> Gender:
+                                            <br/> Course:
+                                            <br/> Phone:
+                                            <br/> Email:
+                                            <br/> Permanent Address:
+                                            <br/> Mailing Address:
+                                            <br/>
+                                        </div>
+                                        <div class="col-6 stuInfor">
+                                            01-14-0-00016
+                                            <br/> 208932652
+                                            <br/> P10276509
+                                            <br/> 27522309102749
+                                            <br/> N/A
+                                            <br/> Im
+                                            <br/> Yoona
+                                            <br/> 25/4/1991
+                                            <br/> Female
+                                            <br/> AAS40
+                                            <br/> 09875543296
+                                            <br/> yoona@snsd.com
+                                            <br/> Seoul, Korea
+                                            <br/> Seoul, Korea
+                                            <br/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3 justify-content-between">
+                                    <img src="../assets/img/yoona.jpg" width="95%;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+            </div> -->
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <footer class="footer">
+            <div class="container">
+                <nav>
+                    <ul class="footer-menu">
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Company
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Blog
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-center">
+                        ©
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script>
+                        <a href="http://www.saigontech.edu.vn">Saigontech</a>
+                    </p>
+                </nav>
+            </div>
+        </footer>
+</div>

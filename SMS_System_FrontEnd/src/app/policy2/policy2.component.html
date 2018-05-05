@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header ">
+        <h4 class="card-title">
+          <b>Policy 2</b>
+        </h4>
+      </div>
+      <div class="card-body p-4">
+        <div *ngIf="doneLoading">
+          <div class="row flexrow justify-content-center no-gutters">
+            <div class="col d-flex justify-content-end">Student Name:</div>
+            <div class="col justify-content-start ml-2" style="padding:-5px;">
+              <b>{{currStudent.lastName}} {{currStudent.firstName}}</b>
+            </div>
+          </div>
+
+          <div class="row flexrow justify-content-center no-gutters">
+            <div class="col d-flex justify-content-end">Student Id:</div>
+            <div class="col justify-content-start ml-2" style="padding:-5px;">
+              <b>{{currStudent.studentID}}</b>
+            </div>
+          </div>
+          <div class="row flexrow justify-content-center no-gutters">
+            <div class="col d-flex justify-content-end">Grade/Semester:</div>
+            <div class="col justify-content-start ml-2" style="padding:-5px;">
+              <select size="1" name="semester" id="semester" (change)="updatePolicy2Data()" [(ngModel)]="semesterInfo.semester">
+                <option id="summer" value="1">SUMMER</option>
+                <option id="fall" value="3">FALL</option>
+                <option id="spring" value="4">SPRING</option>
+              </select>
+              /
+              <select size="1" id="academicYear" name="academicyear" class="ml-2" (change)="updatePolicy2Data()" [(ngModel)]="semesterInfo.acaYear">
+                <option *ngFor="let item of academicYearInfo[0]">{{item.acaYear}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row flexrow justify-content-center no-gutters">
+            <div class="col d-flex justify-content-end">Num of Violate:</div>
+            <div class="col justify-content-start ml-2" style="padding:-5px;">
+              <b *ngIf = "policy2Data.length > 0">{{policy2Data[0].numOfViolate}}</b>
+            </div>
+          </div>
+
+          <div class="row flexrow justify-content-center no-gutters">
+            <div class="col d-flex justify-content-end">Substract:</div>
+            <div class="col justify-content-start ml-2" style="padding:-5px;">
+              <b *ngIf = "policy2Data.length > 0">{{policy2Data[0].minusGrade*policy2Data[0].numOfViolate}}</b> &nbsp; <i>(point)</i>
+            </div>
+          </div>
+
+          <div class="row flexrow justify-content-center no-gutters">
+            <div class="col d-flex justify-content-end">Note:</div>
+            <div class="col justify-content-start ml-2" style="padding:-5px;">
+              <b *ngIf = "policy2Data.length > 0">{{policy2Data[0].note}}</b>
+            </div>
+          </div>
+
+        </div>
+        <div class="row flexrow justify-content-center no-gutters" *ngIf="!doneLoading">
+          <img id="loadingImg" src="assets/img/loading.gif" />
+        </div>   
+      </div>
+    </div>
+  </div>
+</div>

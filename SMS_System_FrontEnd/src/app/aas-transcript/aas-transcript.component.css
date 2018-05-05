@@ -1,0 +1,98 @@
+#mainTable
+{
+    border-collapse: collapse;
+    font-size: 1rem;
+}
+
+#mainTable, #mainTable th, #mainTable td {
+    border: 1px solid rgb(119, 119, 119);
+ }
+
+ #mainTable thead
+{
+    background:rgb(187, 223, 253);
+}
+#mainTable th
+{
+    text-align: center;  
+    height:2.5rem; 
+}
+
+#mainTable tr
+{
+    height:2rem
+}
+
+#mainTable td
+{
+    text-align: center;
+}
+
+#loadingImg
+{
+    width:5%;
+    height:100%;
+}
+
+#sgtImage
+{
+    width:55%;
+    margin-left:22%;
+}
+
+#firstHeading
+{
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size:0.8rem;
+}
+
+#secondHeading
+{
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size:2rem;
+}
+
+#thirdHeading
+{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size:1.3rem;
+    font-style: italic;
+    margin-bottom: 6px;
+    margin-top:-2px;
+}
+
+@media (max-width: 576px) {
+    .row
+    {
+        font-size:90%;
+    }
+
+    #thirdHeading
+    {
+        font-size:90%;
+    }
+
+    #secondHeading
+    {
+        font-size:1.8rem;
+    }
+
+    #firstHeading
+    {
+        font-size:90%;
+    }
+
+    #sgtImage
+    {
+        width:40%;
+        margin-left:30%;
+    }
+
+    #mainTable
+    {
+        font-size:0.8rem;
+    }
+}
+

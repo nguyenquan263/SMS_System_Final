@@ -1,0 +1,74 @@
+#tableTitle
+{
+    color:white;
+    padding:7px;
+    font-weight:bold;
+    font-size:1rem;
+    border-radius: 10px;
+}
+
+#classRegistered,#classOffered,#classPass
+{
+    border-collapse: collapse;
+    border: 1px solid rgba(23, 26, 207, 0.473);
+}
+
+#classRegistered thead
+{
+    background: rgb(35,204,239);
+}
+
+#classRegistered th {
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    font-size: 1rem;
+}
+
+#classOffered th {
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    font-size: 1rem;
+}
+
+#classPass th {
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    font-size: 1rem;
+}
+
+#classOffered thead
+{
+    background: rgb(251,64,75);
+}
+
+#classPass thead
+{
+    background: rgb(121,182,50);
+}
+
+
+
+#classRegistered,#classOffered,#classPass tbody tr td
+{
+    text-align: center;
+}
+
+#classRegistered,#classOffered,#classPass tr
+{
+    height:25px;
+    vertical-align: center;
+}
+
+a
+{
+    color:#1441e4 !important;
+}
+.card .table tbody td:last-child, .card .table thead th:last-child {
+    display: table-cell;
+}
+.timetable{
+    cursor: alias;
+}

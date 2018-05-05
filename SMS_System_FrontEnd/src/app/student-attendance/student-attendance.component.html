@@ -1,0 +1,191 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card" style="border-radius: 0.3rem">
+      <div class="card-header">
+        <h4 class="card-title">
+          <b>Student's Attendance</b>
+        </h4>
+      </div>
+      <div class="card-body p-3" style="padding:8rem;">
+        <div class="row">
+          <div class="col-12 justify-content-start">
+            <div class="row flexrow justify-content-center">
+              <b style="color: rgb(51, 170, 200)">Semester/Year:</b>
+              <select size="1" name="semester" class="ml-2" id="semester" ng-model="selectedSemester" (change)="update()">
+                <option value="1">SUMMER</option>
+                <option value="3">FALL</option>
+                <option selected="" value="4">SPRING</option>
+              </select>
+              <select size="1" name="academicyear" id="academicyear" ng-model="selectedYear" class="ml-2" (change)="update()">
+                  <option *ngFor="let year of years" [value]="year" >{{year}}</option>
+              </select>
+            </div>
+
+          </div>
+          <div class="col-12"><strong style="font-size:1.5rem;margin-left:1rem;color: dodgerblue" >AAS Classes</strong></div>
+          <div class="col-12" *ngIf="checkAAS">
+            <div class="row flexrow justify-content-center p-3">
+              <table class="table table-bordered table-responsive" id="datatable" width="100%" style="border-radius: 0.3rem">
+                <thead align="center" style="background: rgba(247, 64, 18, 0.699) ">
+                  <th width="10%">
+                    <b>
+                      No
+                    </b>
+                  </th>
+                  <th width="10%">
+                    <b>
+                      Class Code
+                    </b>
+                  </th>
+                  <th width="35%">
+                    <b>
+                      Course Name
+                    </b>
+                  </th>
+                  <th width="15%">
+                    <b>
+                      Date
+                    </b>
+                  </th>
+                  <th width="20%">
+                    <b>
+                      Reason
+                    </b>
+                  </th>
+      
+                </thead>
+                <tbody *ngFor="let aas of attendanceAAS; let i=index">
+                  <tr *ngFor="let array of aas.detail; let j=index">
+                    <td  [attr.rowspan]=aas.detail.length *ngIf="j==0"style="font-size: 1.3rem" >
+                      {{i+1}}
+                    </td>
+                    <td  [attr.rowspan]=aas.detail.length *ngIf="j==0">
+                      {{array.classID}}
+                    </td>
+                    <td  [attr.rowspan]=aas.detail.length *ngIf="j==0">
+                      {{array.name}}
+                    </td>
+                    <td>
+                      {{array.dateIn}}
+                    </td>
+                    <td>
+                      {{array.reason}}
+                    </td>
+               
+                  </tr>
+                  <tr>
+                    <td colspan="4" align="right">
+                      Total absent hours:
+                    </td>
+                    <td align="center" width="13%">
+                      <b>{{aas.hoursAbsent}}</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="4" align="right">
+                      Total hours must learn:
+                    </td>
+                    <td align="center" width="13%">
+                      <b>{{aas.hoursStudy}}</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="4" align="right">
+                      Percentage absent hours :
+                    </td>
+                    <td align="center" width="13%">
+                      <b>{{aas.percentAbsent}}</b>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+          <div class="col-12"><strong style="font-size:1.5rem;margin-left:1rem;color: dodgerblue" >General english classes</strong></div>
+          <div class="col-12" *ngIf="checkGE">
+              <div class="row flexrow justify-content-center p-3">
+                <table class="table table-bordered table-responsive" id="datatable" width="100%" style="border-radius: 0.3rem">
+                  <thead align="center" style="background: rgb(75, 253, 40)">
+                    <th width="10%">
+                      <b>
+                        No
+                      </b>
+                    </th>
+                    <th width="10%">
+                      <b>
+                        Class Code
+                      </b>
+                    </th>
+                    <th width="35%">
+                      <b>
+                        Course Name
+                      </b>
+                    </th>
+                    <th width="15%">
+                      <b>
+                        Date
+                      </b>
+                    </th>
+                    <th width="20%">
+                      <b>
+                        Reason
+                      </b>
+                    </th>
+            
+                  </thead>
+                  <tbody *ngFor="let ge of attendanceGE; let i=index">
+                    <tr *ngFor="let array of ge.detail;let j=index">
+                      <td [attr.rowspan]=ge.detail.length *ngIf="j==0">
+                        {{i+1}}
+                      </td>
+                      <td [attr.rowspan]=ge.detail.length *ngIf="j==0">
+                        {{ge.classID}}
+                      </td>
+                      <td [attr.rowspan]=ge.detail.length *ngIf="j==0">
+                        {{ge.name}}
+                      </td>
+                      <td>
+                        {{array.dateIn}}
+                      </td>
+                      <td>
+                        {{array.reason}}
+                      </td>
+               
+                    </tr>
+                    <tr>
+                      <td colspan="4" align="right">
+                        Total absent hours:
+                      </td>
+                      <td align="center" width="13%">
+                        <b>{{ge.absentHours}}</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="4" align="right">
+                        Total hours must learn:
+                      </td>
+                      <td align="center" width="13%">
+                        <b>{{ge.studyHours}}</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="4" align="right">
+                        Percentage absent hours :
+                      </td>
+                      <td align="center" width="13%">
+                        <b>{{ge.percentAbsent}}</b>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

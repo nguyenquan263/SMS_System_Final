@@ -1,0 +1,60 @@
+<div id="currStudentID">
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header ">
+                <h4 class="card-title">
+                    <b>Student Information</b>
+                </h4>
+            </div>
+            <div class="card-body p-4">
+                <div class="row">
+                    <div class="col-12 col-md-9 justify-content-start">
+                        <div class="row flexrow">
+                            <div class="col-6 font-weight-bold stuInfor">
+                                Student ID:
+                                <br/> HCCS PID:
+                                <br/> HCCS ID:
+                                <br/> HCCS Library Barcode:
+                                <br/> TOEFL:
+                                <br/> Last Name:
+                                <br/> First Name:
+                                <br/> Birthday:
+                                <br/> Gender:
+                                <br/> Course:
+                                <br/> Phone:
+                                <br/> Email:
+                                <br/> Permanent Address:
+                                <br/> Mailing Address:
+                                <br/>
+                            </div>
+                            <div class="col-6 stuInfor" *ngIf="currStudent != null">
+                                {{currStudent.studentID}}
+                                <br/> {{currStudent.hccsPID}}
+                                <br/> {{currStudent.hccsID}}
+                                <br/> {{currStudent.hccsLIB}}
+                                <br/> {{currStudent.toefl}}
+                                <br/> {{currStudent.lastName}}
+                                <br/> {{currStudent.firstName}}
+                                <br/> {{currStudent.dob}}
+                                <br/> {{currStudent.gender}}
+                                <br/> {{currStudent.course}}
+                                <br/> {{currStudent.phoneNumber}}
+                                <br/> {{currStudent.email}}
+                                <br/> {{currStudent.permanentAD}}
+                                <br/> {{currStudent.mailAD}}
+                                <br/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3 justify-content-between" *ngIf="currStudent != null">
+                        <img [src]="'http://oms.saigontech.edu.vn/oms_app/Saigontech_College/student/image/'+currStudent.image" width="95%" />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

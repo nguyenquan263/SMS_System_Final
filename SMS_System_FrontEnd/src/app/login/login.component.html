@@ -1,0 +1,49 @@
+<div class="wrapper">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="outer-overlay">
+        <div class="overlay ">
+          <h1 class="header">
+            <img id="backgroundImg" src="assets/img/logo3.png" />
+          </h1>
+
+            <h4 class="form-signin-heading">Sign in</h4>
+
+            <div class="input-group margin-bottom-sm">
+              <span class="input-group-addon">
+                <i class="fa fa-user fa-fw"></i>
+              </span>
+              <input class="form-control" type="text" [(ngModel)] = "inputUsername" placeholder="Username" required autofocus >
+            </div>
+            <div class="input-group mt-2">
+              <span class="input-group-addon">
+                <i class="fa fa-unlock-alt fa-fw"></i>
+              </span>
+              <input id = "passwordField" class="form-control" type="password" [(ngModel)] = "inputPassword" placeholder="Password" required> 
+            </div>
+
+            <div class="d-flex justify-content-end" style="margin-top:10px;">
+              <p id = "warningMes" style="color:red;font-weight:bold;">
+                
+              </p>
+            </div>
+            <button id = "loginBtn"  class="btn btn-lg btn-primary btn-block" type="submit" (click)="validAccount()">Log in</button>
+          <div class="footer">
+              <div class="row">
+                  <div class="col">
+                        <div class="media">
+                            <img class="mr-3" src= "assets/img/sgtlogo.png" alt="Saigontech Logo" style="width:20%;">
+                            <div class="media-body">
+                              	<b>Tel:</b> +84 8 7155033 - <b>Fax:</b> +84 8 7155035<br/>
+                                <b>Email:</b> info@saigontech.edu.vn<br/>
+                                Copyright © 2018 <a href="www.saigontech.edu.vn" style="font-weight: bold;">www.saigontech.edu.vn</a>
+                            </div>
+                          </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
