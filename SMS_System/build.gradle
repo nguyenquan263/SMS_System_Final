@@ -31,7 +31,7 @@ dependencies {
 
 	compile('org.springframework.boot:spring-boot-starter-jdbc')
 	compile('org.springframework.boot:spring-boot-starter-web')
-	compile files('lib/ojdbc7.jar') 
+	compile files('lib/ojdbc6.jar') 
 	compile files('lib/saigontech_college.jar') 
 	runtime('org.apache.derby:derby')
 	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')

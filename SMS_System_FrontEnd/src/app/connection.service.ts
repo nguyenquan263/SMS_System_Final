@@ -7,7 +7,7 @@ export class ConnectionService {
 
   getConnection():string{
 
-    return 'http://10.19.1.83:8080/SMS_System-2.0-Beta-1/';
+    return 'http://localhost:8080';
   }
 
 }

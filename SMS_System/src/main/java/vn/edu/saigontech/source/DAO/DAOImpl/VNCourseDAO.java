@@ -64,6 +64,7 @@ public class VNCourseDAO implements vn.edu.saigontech.source.DAO.VNCourseDAO {
 			
 			return courseArr;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		} finally{
 			conn.close();
@@ -114,6 +115,7 @@ public class VNCourseDAO implements vn.edu.saigontech.source.DAO.VNCourseDAO {
 			
 			return courseArr;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		} finally{
 			conn.close();
@@ -145,6 +147,7 @@ public class VNCourseDAO implements vn.edu.saigontech.source.DAO.VNCourseDAO {
 			conn.setAutoCommit(true);
 			return msg;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return "Something wrong!";
 		} finally {
 			conn.close();
@@ -229,6 +232,7 @@ public class VNCourseDAO implements vn.edu.saigontech.source.DAO.VNCourseDAO {
 			return msg;
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			return "Something wrong!!";
 		} finally {
 			conn.close();
@@ -274,7 +278,7 @@ public class VNCourseDAO implements vn.edu.saigontech.source.DAO.VNCourseDAO {
 			prs.close();
 
 		} catch (SQLException ex) {
-
+			
 		}
 		return result;
 	}
