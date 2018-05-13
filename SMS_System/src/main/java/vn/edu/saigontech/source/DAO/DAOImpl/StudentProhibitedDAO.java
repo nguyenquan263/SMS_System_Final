@@ -20,7 +20,7 @@ public class StudentProhibitedDAO implements vn.edu.saigontech.source.DAO.Studen
 	private Connection conn;
 
 	public StudentProhibitedDAO() throws ClassNotFoundException, SQLException {
-		conn = oConnection.getOracleConnection();
+		
 	}
 	
 	/** Get student prohibited data
@@ -35,6 +35,7 @@ public class StudentProhibitedDAO implements vn.edu.saigontech.source.DAO.Studen
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql = " select classcode id_seq,classid, classid name, hours_absent tong, percent_prohibited percent " +
 					" from v_prohibited_examination " + 
 					" where semester =?"+

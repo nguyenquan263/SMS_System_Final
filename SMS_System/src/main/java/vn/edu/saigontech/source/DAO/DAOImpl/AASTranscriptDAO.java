@@ -23,7 +23,7 @@ public class AASTranscriptDAO implements vn.edu.saigontech.source.DAO.AASTranscr
 	private Connection conn;
 
 	public AASTranscriptDAO() throws ClassNotFoundException, SQLException {
-		conn = oConnection.getOracleConnection();
+//		conn = oConnection.getOracleConnection();
 	}
 	
 	/** Get semesters in AAS. (Ex: SPRING 2018, SUMMER 2017,etc)
@@ -37,7 +37,7 @@ public class AASTranscriptDAO implements vn.edu.saigontech.source.DAO.AASTranscr
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
-			
+			conn = oConnection.getOracleConnection();
 			//If semesterId == 4, it means it's SPRING semester, we have to change it into 1 because numYears variable bellow 
 			//which is the concatenation between academic year and semester Id (Ex: 20184, 20173,...) cannot be
 			//like 20181, 20171, 20151, etc. it has to be like 20184, 20174, 20154, etc. 
@@ -92,6 +92,7 @@ public class AASTranscriptDAO implements vn.edu.saigontech.source.DAO.AASTranscr
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql ="select aca_year,subjectid,subjectname,credits,credits_earn,letter_mark"+ 
 					" from v_course"+ 
 					" where id_student= ?"+ 

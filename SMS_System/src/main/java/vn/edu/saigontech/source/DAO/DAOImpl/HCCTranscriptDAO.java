@@ -23,7 +23,7 @@ public class HCCTranscriptDAO implements vn.edu.saigontech.source.DAO.HCCTranscr
 	private Connection conn;
 
 	public HCCTranscriptDAO() throws ClassNotFoundException, SQLException {
-		conn = oConnection.getOracleConnection();
+		
 	}
 	
 	/** Get student's general information
@@ -35,7 +35,7 @@ public class HCCTranscriptDAO implements vn.edu.saigontech.source.DAO.HCCTranscr
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
-			
+			conn = oConnection.getOracleConnection();
 			String sql = "SELECT (lastname || ' ' || firstname) as name,"+
     				  " id, (dob || '/' || mob || '/' || yob) as bday,"+
     				  " id_hccs, pid_hccs, (SELECT catalog_year FROM catalog WHERE id_seq = catalog_code)AS catalog,"+ 
@@ -80,6 +80,7 @@ public class HCCTranscriptDAO implements vn.edu.saigontech.source.DAO.HCCTranscr
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql = "SELECT v.semester_name,subjectid, v.aca_year, v.grade, v.letter_mark, v.subjectname, v.credits, v.credits_earn ,average_mark,num_semester_year"+ 
 					 " FROM v_course_workforce v"+
 					 " WHERE v.id_student = ?"+ 
@@ -125,6 +126,7 @@ public class HCCTranscriptDAO implements vn.edu.saigontech.source.DAO.HCCTranscr
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql = "select fun_cumgpa_hcc(?,?,?) gpa_hcc from dual";
 			statement = conn.prepareStatement(sql);
 			statement.setString(1, stuId);

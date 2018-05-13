@@ -23,7 +23,7 @@ public class ESLTranscriptDAO implements vn.edu.saigontech.source.DAO.ESLTranscr
 	private Connection conn;
 
 	public ESLTranscriptDAO() throws ClassNotFoundException, SQLException {
-		conn = oConnection.getOracleConnection();
+		
 	}
 	
 	/** Get semesters in which student studied ESL courses
@@ -35,7 +35,7 @@ public class ESLTranscriptDAO implements vn.edu.saigontech.source.DAO.ESLTranscr
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
-			
+			conn = oConnection.getOracleConnection();
 			String sql = "select id_student,semester_name,semestervn,credits,credits_earn,"
 					+ " aca_year,semester,num_semester_year,term_gpa_esl,cum_gpa_esl from v_gpa_esl_before"
 					+ " where id_student= ? order by num_semester_year";
@@ -81,6 +81,7 @@ public class ESLTranscriptDAO implements vn.edu.saigontech.source.DAO.ESLTranscr
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql = "select sb.name subjectname, sb.id subjectid, st.average_mark mark,"
 					+ " (case when st.final_mark = -60 or st.final_mark = -70 or st.final_mark = -80 then 'F(A/P/C)'"
 					+ " when st.mid_mark = -60 or st.mid_mark = -70 or st.mid_mark = -80  then 'F(A/P/C)'"
@@ -129,6 +130,7 @@ public class ESLTranscriptDAO implements vn.edu.saigontech.source.DAO.ESLTranscr
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql = "select subjectid,subjectname,average_mark,toefl_pass" + " from v_esl_advance"
 					+ " where id_student= ? and aca_year= ? and semester= ?";
 			statement = conn.prepareStatement(sql);
@@ -179,6 +181,7 @@ public class ESLTranscriptDAO implements vn.edu.saigontech.source.DAO.ESLTranscr
 			semester = "1";
 		}
 		try {
+			conn = oConnection.getOracleConnection();
 			String numYear = acaYear + semester;
 			String sql =
 					"select id_student,semester_name,"+ 
@@ -232,6 +235,7 @@ public class ESLTranscriptDAO implements vn.edu.saigontech.source.DAO.ESLTranscr
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql =
 					"select aca_year,subjectid,subjectname,credits,credits_earn,letter_mark,average_mark"+ 
 					" from v_course"+ 

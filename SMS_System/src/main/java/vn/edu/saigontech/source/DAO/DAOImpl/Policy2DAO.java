@@ -21,7 +21,7 @@ public class Policy2DAO implements vn.edu.saigontech.source.DAO.Policy2DAO {
 	private Connection conn;
 
 	public Policy2DAO() throws ClassNotFoundException, SQLException {
-		conn = oConnection.getOracleConnection();
+		
 	}
 	
 	/** Get Policy2 data
@@ -35,6 +35,7 @@ public class Policy2DAO implements vn.edu.saigontech.source.DAO.Policy2DAO {
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql = "select id_seq,  numofviolate, minusgrade,note, coursetype"+
 					" from student_policy2"+
 					" where studentcode = ?"+

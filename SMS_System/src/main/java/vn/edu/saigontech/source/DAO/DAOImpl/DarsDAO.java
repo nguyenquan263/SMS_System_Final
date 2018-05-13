@@ -26,7 +26,7 @@ public class DarsDAO implements vn.edu.saigontech.source.DAO.DarsDAO {
 	
 	private Connection conn;
 	public DarsDAO() throws ClassNotFoundException, SQLException {
-		conn = oConnection.getOracleConnection();
+//		conn = oConnection.getOracleConnection();
 	}
 	
 	/** Get student's general information 
@@ -38,6 +38,7 @@ public class DarsDAO implements vn.edu.saigontech.source.DAO.DarsDAO {
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql = "select id_seq, name_e,ncr2unicodestring(name_v), status, note, typebox, sequencenum from studentinfo" 
 					+" where status <> 0 and id_seq not in (161,162)" 
 					+" order by sequencenum";
@@ -79,6 +80,7 @@ public class DarsDAO implements vn.edu.saigontech.source.DAO.DarsDAO {
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql =  "select (case when status in(2,3) then  nvl(note,' ') else"+ 
 				" (case when itp is not null  then 'ITP '||  itp|| ' ('|| to_char(itp_date,'mm/dd/yyyy')||')<br>'  end ) ||"+ 
 				" (case when pbt is not null  then 'PBT '||  pbt|| ' ('|| to_char(pbt_date,'mm/dd/yyyy')||')<br>'  end ) ||"+ 
@@ -125,6 +127,7 @@ public class DarsDAO implements vn.edu.saigontech.source.DAO.DarsDAO {
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql =  "select sss.id_seq, sss.description, sss.contents,"+ 
 					" si.typebox"+ 
 					" from student_studentinfo sss, studentinfo si"+
@@ -171,6 +174,7 @@ public class DarsDAO implements vn.edu.saigontech.source.DAO.DarsDAO {
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql = 
 					"select distinct semester_name,aca_year,semester,num_semester_year"+ 
 					" from v_course"+ 
@@ -217,6 +221,7 @@ public class DarsDAO implements vn.edu.saigontech.source.DAO.DarsDAO {
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql = 
 					 "select aca_year,subjectid,subjectname,credits,credits_earn,letter_mark"+
 					 " from v_course"+
@@ -265,6 +270,7 @@ public class DarsDAO implements vn.edu.saigontech.source.DAO.DarsDAO {
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql = 
 					"select distinct semester_name,aca_year,semester,num_semester_year"+ 
 					" from v_course"+ 
@@ -311,6 +317,7 @@ public class DarsDAO implements vn.edu.saigontech.source.DAO.DarsDAO {
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql = 
 					 "select aca_year,subjectid,subjectname,credits,credits_earn,letter_mark"+
 					 " from v_course"+
@@ -358,6 +365,7 @@ public class DarsDAO implements vn.edu.saigontech.source.DAO.DarsDAO {
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql = 
 					" select  (sem.name ||'/' ||sfp.aca_year ) semseter"+ 
 					" from studentfinishprogram sfp, semester sem"+ 

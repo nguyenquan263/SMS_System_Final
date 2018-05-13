@@ -26,7 +26,7 @@ public class GradeDAO implements vn.edu.saigontech.source.DAO.GradeDAO{
 	private Connection conn;
 
 	public GradeDAO() throws ClassNotFoundException, SQLException {
-		conn = oConnection.getOracleConnection();
+		
 	}
 	
 	/** Get all grade data in AAS courses
@@ -40,6 +40,7 @@ public class GradeDAO implements vn.edu.saigontech.source.DAO.GradeDAO{
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql = "select ( sb.id||' ' || sb.num_code) id, sb.name,"+ 
 				    "max(decode(cgs.type,1,to_absent(st.mid_mark))) mid_mark,"+ 
 				    "max(decode(cgs.type,0,to_absent(st.final_mark))) final_mark,"+ 
@@ -71,7 +72,6 @@ public class GradeDAO implements vn.edu.saigontech.source.DAO.GradeDAO{
 			}
 			rs.close();
 			statement.close();
-			conn.close();
 			return arr;
 		} catch (SQLException e) {
 			return null;
@@ -103,6 +103,7 @@ public class GradeDAO implements vn.edu.saigontech.source.DAO.GradeDAO{
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql = "select po.numofviolate, po.minusgrade, po.coursetype" + 
 					" from student_policy2 po, study" + 
 					" where po.studentcode = id_student" + 
@@ -125,7 +126,6 @@ public class GradeDAO implements vn.edu.saigontech.source.DAO.GradeDAO{
 			}
 			rs.close();
 			statement.close();
-			conn.close();
 			return arr;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -156,6 +156,7 @@ public class GradeDAO implements vn.edu.saigontech.source.DAO.GradeDAO{
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql = "SELECT ap.col, ap.percentage,"+  
 					" (CASE WHEN ag.grade=-60 OR ag.grade=-70 OR ag.grade=-80 THEN 'F(A/P/C)'"+ 
 					" WHEN ag.grade=-90 THEN 'I'" +
@@ -176,7 +177,6 @@ public class GradeDAO implements vn.edu.saigontech.source.DAO.GradeDAO{
 			}
 			rs.close();
 			statement.close();
-			conn.close();
 			return arr;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -208,7 +208,7 @@ public class GradeDAO implements vn.edu.saigontech.source.DAO.GradeDAO{
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
-			
+			conn = oConnection.getOracleConnection();
 			String sql = "select v.subjectcode,v.ge_id, v.ge_name,"  
 	 				+" max(case when cgs.type in(0) then to_absent(sd.average_mark) end ) average_mark"
 	 				+" from  v_ge_registered v, study sd, class_grade_status_semester cgs" 
@@ -233,7 +233,6 @@ public class GradeDAO implements vn.edu.saigontech.source.DAO.GradeDAO{
 			}
 			rs.close();
 			statement.close();
-			conn.close();
 			return arr;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -265,6 +264,7 @@ public class GradeDAO implements vn.edu.saigontech.source.DAO.GradeDAO{
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql ="select sb.id, sb.name, "+ 
 				    "max(decode(cgs.type,1,to_absent(st.mid_mark))) mid_mark,"+
 				    "max(decode(cgs.type,0,to_absent(st.final_mark))) final_mark,"+ 
@@ -279,15 +279,15 @@ public class GradeDAO implements vn.edu.saigontech.source.DAO.GradeDAO{
 					" and asg.id_student = st.id_student"+ 
 					" and cl.id_seq = cgs.classcode(+)"+ 
 					" and cl.sub_subjectcode is not null"+ 
-					" and st.id_student = "+studentId+
-					" and st.aca_year = "+acaYear+ 
-					" and st.semester = "+semester+
+					" and st.id_student = ?"+
+					" and st.aca_year = ?"+ 
+					" and st.semester = ?"+
 				 "group by sb.id, sb.name,st.average_mark,cl.id_seq , st.id_seq , cl.mid_percent, cl.final_percent,cl.subjectcode "+	
 				 "order by id";
 			statement = conn.prepareStatement(sql);
-//			statement.setString(1, studentId);
-//			statement.setString(2, acaYear);
-//			statement.setString(3, semester);
+			statement.setString(1, studentId);
+			statement.setString(2, acaYear);
+			statement.setString(3, semester);
 			rs = statement.executeQuery();
 			while (rs.next()) {				
 				arr.add(new GradeGEDetail(rs.getString("id"), rs.getString("name"), rs.getString("mid_mark"), rs.getString("final_mark")
@@ -295,7 +295,6 @@ public class GradeDAO implements vn.edu.saigontech.source.DAO.GradeDAO{
 			}
 			rs.close();
 			statement.close();
-			conn.close();
 			return arr;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -326,6 +325,8 @@ public class GradeDAO implements vn.edu.saigontech.source.DAO.GradeDAO{
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
+
 			String sql = "select ap.col, ap.percentage,"+ 
 					 " (case when ag.grade=-60 or ag.grade=-70 or ag.grade=-80 then 'F(A/P/C)'"+ 
 					  " when ag.grade=-90 then 'I'"+ 
@@ -334,19 +335,18 @@ public class GradeDAO implements vn.edu.saigontech.source.DAO.GradeDAO{
 					  " else ' ' end) grade"+ 
 					 " from assignment_percentage ap  , assignment_grade_esl ag"+ 
 					 " where ag.col = ap.col"+ 
-					 " and classcode = "+classCode+  			
-				     " and ag.studysubcode = "+studyCode+ 
+					 " and classcode = ?"+  			
+				     " and ag.studysubcode = ?"+ 
 					" order by ap.col";
 			statement = conn.prepareStatement(sql);
-//			statement.setString(1, classCode);
-//			statement.setString(2, studyCode);
+			statement.setString(1, classCode);
+			statement.setString(2, studyCode);
 			rs = statement.executeQuery();
 			while (rs.next()) {				
 				arr.add(new AssignmentGradeGE(rs.getString("col"), rs.getString("percentage"), rs.getString("grade")));
 			}
 			rs.close();
 			statement.close();
-			conn.close();
 			return arr;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -379,6 +379,7 @@ public class GradeDAO implements vn.edu.saigontech.source.DAO.GradeDAO{
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql =  "with tc"+ 
 					 " as(" +
 						"select classcode, string_agg(distinct tc.lastname || ' '|| tc.firstname) teachername "+ 
@@ -433,7 +434,7 @@ public class GradeDAO implements vn.edu.saigontech.source.DAO.GradeDAO{
 			statement.setString(9, semester);
 			statement.setString(10, acaYear);
 			statement.setString(11, stuId);
-			
+		
 			rs = statement.executeQuery();
 			while (rs.next()) {				
 				arr.add(new TeacherComment(rs.getString("id_seq"), rs.getString("id"), rs.getString("name")

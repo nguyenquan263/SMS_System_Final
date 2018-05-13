@@ -17,7 +17,7 @@ public class DegreePlanDAO implements vn.edu.saigontech.source.DAO.DegreePlanDAO
 	private Connection conn;
 
 	public DegreePlanDAO() throws ClassNotFoundException, SQLException {
-		conn = oConnection.getOracleConnection();
+		
 	}
 	
 	/** Get the link of degree plan pdf file
@@ -29,6 +29,7 @@ public class DegreePlanDAO implements vn.edu.saigontech.source.DAO.DegreePlanDAO
 		Statement statement = null;
 		ResultSet rs = null;
 		try {
+			conn = oConnection.getOracleConnection();
 			statement = conn.createStatement();
 			String sql = "select attachment"+ 
 					 " from student st , degree_plan_upload dp"+ 

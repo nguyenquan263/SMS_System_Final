@@ -26,7 +26,7 @@ public class SystemTimeDAO implements vn.edu.saigontech.source.DAO.SystemTimeDAO
 	
 	private Connection conn;
 	public SystemTimeDAO() throws ClassNotFoundException, SQLException {
-		conn = oConnection.getOracleConnection();
+		
 	}
 	
 	/** Get current semester Id and and academic year
@@ -35,6 +35,7 @@ public class SystemTimeDAO implements vn.edu.saigontech.source.DAO.SystemTimeDAO
 	public SystemTime getSystemTime() {
 		PreparedStatement statement;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql = "select ACA_YEAR,SEMESTER "
 					+"from SYSTEM";
 			statement = conn.prepareStatement(sql);
@@ -61,6 +62,7 @@ public class SystemTimeDAO implements vn.edu.saigontech.source.DAO.SystemTimeDAO
 		List<AcademicYear> arr = new ArrayList<>();
 		PreparedStatement statement;
 		try {
+			conn = oConnection.getOracleConnection();
 			String sql = "SELECT ACA_YEAR"
 					+ " FROM ACADEMICYEAR";
 			statement = conn.prepareStatement(sql);
@@ -78,7 +80,7 @@ public class SystemTimeDAO implements vn.edu.saigontech.source.DAO.SystemTimeDAO
 	}
 	
 	/** Get system current data and time
-	 * @param format Data timr format
+	 * @param format Data time format
 	 */
 	@Override
 	public SystemDateAndTime getSystemDateAndTime(String format) {
