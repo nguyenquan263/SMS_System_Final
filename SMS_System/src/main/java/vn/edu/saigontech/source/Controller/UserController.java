@@ -21,6 +21,17 @@ public class UserController {
 			userService = new UserService();
 			return userService.getUserIDbyUsernameandPassword(username, password);
 		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+	@RequestMapping(value = "/getUserIDbyCodeandPassword/{code}&{password}", method = RequestMethod.GET, produces = "application/json")
+	public Integer getUserIDbyCodeandPassword(@PathVariable("code") String code
+	,@PathVariable("password") String password) {
+		try {
+			userService = new UserService();
+			return userService.getUserIDbyCodeandPassword(code, password);
+		} catch (Exception e) {
 			return -1;
 		}
 	}

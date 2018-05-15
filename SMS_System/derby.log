@@ -1,13 +1,13 @@
 ----------------------------------------------------------------
-Sun May 13 21:04:14 ICT 2018:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-0163-59d0-ec57-0000053fecd0 
-on database directory memory:D:\SMS_System_Final\SMS_System\testdb with class loader sun.misc.Launcher$AppClassLoader@2a139a55 
-Loaded from file:/C:/Users/Bao%20Long/.gradle/caches/modules-2/files-2.1/org.apache.derby/derby/10.13.1.1/29c42babe5c5463c6eea45487d3cfbfe8348ccd1/derby-10.13.1.1.jar
+Tue May 15 13:59:41 ICT 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-0163-6298-f43d-0000092c9ae0 
+on database directory memory:C:\Users\Phong\Desktop\LastSMS\SMS_System_Final\SMS_System\testdb with class loader sun.misc.Launcher$AppClassLoader@764c12b6 
+Loaded from file:/C:/Users/Phong/.gradle/caches/modules-2/files-2.1/org.apache.derby/derby/10.13.1.1/29c42babe5c5463c6eea45487d3cfbfe8348ccd1/derby-10.13.1.1.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_101-b13
-user.dir=D:\SMS_System_Final\SMS_System
-os.name=Windows 7
+java.runtime.version=1.8.0_151-b12
+user.dir=C:\Users\Phong\Desktop\LastSMS\SMS_System_Final\SMS_System
+os.name=Windows 10
 os.arch=amd64
-os.version=6.1
+os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''

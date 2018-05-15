@@ -28,6 +28,25 @@ public class UserDAO implements vn.edu.saigontech.source.DAO.UserDAO {
 			rs.next();
 			return rs.getInt(1);
 		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e);
+			return -1;
+		}
+	}
+	@Override
+	public Integer getUserIDbyCodeandPassword(String code, String password) {
+		try{
+			Statement statement = conn.createStatement();
+			String sql = "select code from USERS "
+						+"where code ='"+code+"' "
+						+"and password like '"+password+"' "
+						+"and domain like 'STUDENT'";
+			System.out.println(sql);
+			ResultSet rs = statement.executeQuery(sql);
+	
+			rs.next();
+			return rs.getInt(1);
+		} catch (Exception e) {
 			System.out.println(e);
 			return -1;
 		}
