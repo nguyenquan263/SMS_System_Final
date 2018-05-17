@@ -1,3 +1,4 @@
+
 <div class="sidebar" data-color="green">
   <!--
 Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
@@ -307,19 +308,6 @@ Tip 2: you can also add an image using data-image tag
             <div class="collapse navbar-collapse justify-content-end">
 
                 <ul class="navbar-nav">
-                    <!-- <li class="dropdown nav-item">
-                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                            <i class="nc-icon nc-planet"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Create New Post</a>
-                            <a class="dropdown-item" href="#">Manage Something</a>
-                            <a class="dropdown-item" href="#">Do Nothing</a>
-                            <a class="dropdown-item" href="#">Submit to live</a>
-                            <li class="divider"></li>
-                            <a class="dropdown-item" href="#">Another action</a>
-                        </ul>
-                    </li> -->
                     <li class="dropdown nav-item">
                         <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                             <i class="nc-icon nc-bell-55"></i>
@@ -344,15 +332,16 @@ Tip 2: you can also add an image using data-image tag
                                 <i class="nc-icon nc-email-85"></i> Messages
                             </a>
                             <a class="dropdown-item" href="#">
-                                <i class="nc-icon nc-umbrella-13"></i> Help Center
+                                <i class="nc-icon nc-umbrella-13"></i> Help center
                             </a>
                             <a class="dropdown-item" href="#">
                                 <i class="nc-icon nc-settings-90"></i> Settings
                             </a>
                             <div class="divider"></div>
-                            <a class="dropdown-item" href="#">
-                                <i class="nc-icon nc-lock-circle-open"></i> Lock Screen
+                            <a class="dropdown-item" style = "cursor: pointer" data-toggle="modal" data-target="#changePasswordModal" data-backdrop="false" >
+                                <div style="color: rgba(5, 5, 226, 0.918)"> Change password</div>
                             </a>
+                            <div class="divider"></div>
                             <a style = "cursor: pointer" class="dropdown-item text-danger" (click) = "logOut()" [routerLink]="['/Login']">
                                 <i class="nc-icon nc-button-power"></i> Log out
                             </a>
@@ -365,63 +354,6 @@ Tip 2: you can also add an image using data-image tag
     <!-- End Navbar -->
     <div class="content">
         <div class="container-fluid">
-            <!-- <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header ">
-                            <h4 class="card-title">
-                                <b>Student Information</b>
-                            </h4>
-                        </div>
-                        <div class="card-body p-4">
-                            <div class="row">
-                                <div class="col-12 col-md-9 justify-content-start">
-                                    <div class="row flexrow">
-                                        <div class="col-6 font-weight-bold stuInfor">
-                                            Student ID:
-                                            <br/> HCCS PID:
-                                            <br/> HCCS ID:
-                                            <br/> HCCS Library Barcode:
-                                            <br/> TOEFL:
-                                            <br/> Last Name:
-                                            <br/> First Name:
-                                            <br/> Birthday:
-                                            <br/> Gender:
-                                            <br/> Course:
-                                            <br/> Phone:
-                                            <br/> Email:
-                                            <br/> Permanent Address:
-                                            <br/> Mailing Address:
-                                            <br/>
-                                        </div>
-                                        <div class="col-6 stuInfor">
-                                            01-14-0-00016
-                                            <br/> 208932652
-                                            <br/> P10276509
-                                            <br/> 27522309102749
-                                            <br/> N/A
-                                            <br/> Im
-                                            <br/> Yoona
-                                            <br/> 25/4/1991
-                                            <br/> Female
-                                            <br/> AAS40
-                                            <br/> 09875543296
-                                            <br/> yoona@snsd.com
-                                            <br/> Seoul, Korea
-                                            <br/> Seoul, Korea
-                                            <br/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-3 justify-content-between">
-                                    <img src="../assets/img/yoona.jpg" width="95%;" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-            </div>
-            </div> -->
             <router-outlet></router-outlet>
         </div>
     </div>
@@ -461,3 +393,34 @@ Tip 2: you can also add an image using data-image tag
             </div>
         </footer>
 </div>
+
+<div class="modal " id="changePasswordModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Change password</h4>
+        </div>
+      
+        <!-- Modal body -->
+        <div class="modal-body">
+            <div class="form-group">     
+                <input type="password" class="form-control"  [(ngModel)] = "oldPassword" placeholder="Old password"> </div>
+              <div class="form-group">
+                <input type="password" class="form-control"  [(ngModel)] = "newPassword" placeholder="New password"> </div>
+              <div class="form-group">
+                <input type="password" class="form-control" [(ngModel)] = "reNewPassword" placeholder="Re-enter new password"> </div>
+                <div class="divider"></div>
+                <p id = "warningMes"  style="color: red; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"></p>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer" style="float: right;">
+            <button type="button" class="btn btn-secondary ml-auto m-2" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-info" (click)="changePassword()" >Change</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>

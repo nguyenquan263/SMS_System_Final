@@ -2,3 +2,8 @@
 {
     background-image: url('/assets/img/test.jpg');
 }
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: blue;
+    opacity: 0.6; /* Firefox */
+}

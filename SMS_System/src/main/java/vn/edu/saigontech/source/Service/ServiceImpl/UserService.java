@@ -16,5 +16,10 @@ public class UserService implements vn.edu.saigontech.source.Service.UserService
 	public Integer getUserIDbyUsernameandPassword(String username, String password) {
 		return userDAO.getUserIDbyUsernameandPassword(username, password);
 	}
+	@Override
+	public Integer getUserIDbyCodeandPassword(String code, String password) {
+		// TODO Auto-generated method stub
+		return userDAO.getUserIDbyCodeandPassword(code, password);
+	}
 
 }
