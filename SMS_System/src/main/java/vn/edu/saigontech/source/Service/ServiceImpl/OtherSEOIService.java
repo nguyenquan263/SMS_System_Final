@@ -22,5 +22,10 @@ public class OtherSEOIService implements vn.edu.saigontech.source.Service.OtherS
 	public boolean isStatus(String stuId, String classId, String teacherId) {
 		return otherSEOIDAO.isStatus(stuId, classId, teacherId);
 	}
+
+	@Override
+	public boolean isCheckTime(String classId) {
+		return otherSEOIDAO.isCheckTime(classId);
+	}
 	
 }	

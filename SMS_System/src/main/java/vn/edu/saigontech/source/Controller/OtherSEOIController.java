@@ -55,4 +55,20 @@ public class OtherSEOIController {
 			return false;
 		}
 	}
+	
+	/** To check if it is in the evaluation time
+	 * @param stuId Student Id
+	 * @param classId Class Id
+	 * @param teacherId Teacher Id
+	 */
+	@RequestMapping(value = "/isCheckTime/classId}", method = RequestMethod.GET, produces = "application/json")
+	public boolean isCheckTime(@PathVariable("classId") String classId) {
+		try {
+			otherSEOIService = new OtherSEOIService();
+			return otherSEOIService.isCheckTime(classId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }
