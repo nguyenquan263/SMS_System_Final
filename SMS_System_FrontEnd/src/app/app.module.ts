@@ -28,6 +28,8 @@ import { CourseEnrolledComponent} from './course-enrolled/course-enrolled.compon
 import { TimetableComponent } from './timetable/timetable.component';
 import { StudentAttendanceComponent } from './student-attendance/student-attendance.component';
 import { TuitionFeeComponent } from './tuition-fee/tuition-fee.component';
+import { EslSeoiListingComponent } from './esl-seoi-listing/esl-seoi-listing.component';
+import { EslSeoiValuationComponent } from './esl-seoi-valuation/esl-seoi-valuation.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { TuitionFeeComponent } from './tuition-fee/tuition-fee.component';
 	  CourseEnrolledComponent,
     TimetableComponent,
     StudentAttendanceComponent,
-    TuitionFeeComponent
+    TuitionFeeComponent,
+    EslSeoiListingComponent,
+    EslSeoiValuationComponent
   ],
   imports: [
     BrowserModule,
@@ -147,6 +151,14 @@ import { TuitionFeeComponent } from './tuition-fee/tuition-fee.component';
             path:'ESLRegistration',
             component:EslRegistrationComponent
           },
+          {
+            path:'ESLSEOI',
+            component:EslSeoiListingComponent
+          },
+          {
+            path:'ESLSEOIQuestion',
+            component:EslSeoiValuationComponent
+          }
 
         ]
       },

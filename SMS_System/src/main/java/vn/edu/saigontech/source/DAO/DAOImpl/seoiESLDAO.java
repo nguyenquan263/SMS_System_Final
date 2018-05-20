@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.edu.saigontech.source.Model.ESLClassInformationForSEOI;
+import vn.edu.saigontech.source.Model.ESLSEOIQuestion;
 import vn.edu.saigontech.source.Model.systemTimeForSEOI;
 import vn.edu.saigontech.source.dbConnection.oConnection;
 
@@ -149,7 +150,6 @@ public class seoiESLDAO implements vn.edu.saigontech.source.DAO.seoiESLDAO {
 	}
 
 	private String teacherComment(Connection conn, String classcode) throws SQLException {
-		conn = oConnection.getOracleConnection();
 		String result = "-1";
 		try {
 			String sql = "" + " select lastname,firstname " + " from teacher_comment_class tcc, teacher tc "
@@ -171,7 +171,6 @@ public class seoiESLDAO implements vn.edu.saigontech.source.DAO.seoiESLDAO {
 	}
 
 	private int teacherCommentID(Connection conn, String classcode) throws SQLException {
-		conn = oConnection.getOracleConnection();
 		int result = -1;
 		try {
 			String sql = " select tc.id_seq " + " from teacher_comment_class tcc, teacher tc "
@@ -226,6 +225,49 @@ public class seoiESLDAO implements vn.edu.saigontech.source.DAO.seoiESLDAO {
 		else validDate = false;
 		
 		return validDate;
+	}
+
+	@Override
+	public List<ESLSEOIQuestion> getAllQuestionSEOI(Integer Semester, Integer acaYear, Integer type)
+			throws ClassNotFoundException, SQLException {
+		conn = oConnection.getOracleConnection();
+		ArrayList<ESLSEOIQuestion> questionArr = new ArrayList<>();
+		try {
+			String sql = "select evaluationquestion.id_seq, " +
+					"evaluationquestion.left_content_en " +
+					"from evaluationquestion, evaluationform " + 
+					"where evaluationquestion.evaluation_id = " +
+					"evaluationform.id_seq and " + 
+					"evaluationform.semester = ? " + 
+					"and evaluationform.aca_year = ?" +
+					"and evaluationform.type = ? ";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			
+			pst.setInt(1, Semester);
+			pst.setInt(2, acaYear);
+			pst.setInt(3, type);
+			
+
+			ResultSet rs = pst.executeQuery();
+			
+			ESLSEOIQuestion currQuestion;
+			
+			while (rs.next()) {
+				currQuestion = new ESLSEOIQuestion();
+				
+				currQuestion.setQuestionID(rs.getInt("ID_SEQ"));
+				currQuestion.setQuestionLeftContent(rs.getString("LEFT_CONTENT_EN"));
+				
+				questionArr.add(currQuestion);
+			}
+			return questionArr;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			conn.close();
+		}
 	}
 
 }
