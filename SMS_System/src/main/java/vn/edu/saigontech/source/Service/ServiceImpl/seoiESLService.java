@@ -8,6 +8,7 @@ import vn.edu.saigontech.source.DAO.DAOImpl.seoiESLDAO;
 import vn.edu.saigontech.source.Model.ESLClassInformationForSEOI;
 import vn.edu.saigontech.source.Model.ESLSEOIQuestion;
 import vn.edu.saigontech.source.Model.systemTimeForSEOI;
+import vn.edu.saigontech.source.Model.teacherInformationForESLSEOI;
 
 public class seoiESLService implements vn.edu.saigontech.source.Service.seoiESLService {
 	private seoiESLDAO sed;
@@ -31,6 +32,13 @@ public class seoiESLService implements vn.edu.saigontech.source.Service.seoiESLS
 	public List<ESLSEOIQuestion> getAllQuestionSEOI(Integer Semester, Integer acaYear, Integer type)
 			throws ClassNotFoundException, SQLException {
 		return sed.getAllQuestionSEOI(Semester, acaYear, type);
+	}
+
+	@Override
+	public teacherInformationForESLSEOI getTeacherInformationByClassID(Integer classID, Integer teacherID)
+			throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return sed.getTeacherInformationByClassID(classID, teacherID);
 	}
 
 }

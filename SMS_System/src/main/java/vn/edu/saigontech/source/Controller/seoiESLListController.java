@@ -12,6 +12,7 @@ import vn.edu.saigontech.source.Model.ESLClassInformationForSEOI;
 import vn.edu.saigontech.source.Model.ESLSEOIQuestion;
 import vn.edu.saigontech.source.Model.VNCourseAvailable;
 import vn.edu.saigontech.source.Model.systemTimeForSEOI;
+import vn.edu.saigontech.source.Model.teacherInformationForESLSEOI;
 import vn.edu.saigontech.source.Service.ServiceImpl.VNCourseService;
 import vn.edu.saigontech.source.Service.ServiceImpl.seoiESLService;
 
@@ -49,6 +50,17 @@ public class seoiESLListController {
 		try {
 			sel = new seoiESLService();
 			return sel.getAllQuestionSEOI(Semester, acaYear, type);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@RequestMapping(value = "/getESLSEOITeacherInfoREST/{classid}&{teacherid}", method = RequestMethod.GET, produces = "application/json")
+	public teacherInformationForESLSEOI getESLSEOITeacher(@PathVariable("classid") Integer classID, @PathVariable("teacherid") Integer teacherID) {
+		try {
+			sel = new seoiESLService();
+			return sel.getTeacherInformationByClassID(classID, teacherID);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

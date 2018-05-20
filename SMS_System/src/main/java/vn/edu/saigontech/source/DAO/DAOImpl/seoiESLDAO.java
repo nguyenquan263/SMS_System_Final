@@ -10,6 +10,7 @@ import java.util.List;
 import vn.edu.saigontech.source.Model.ESLClassInformationForSEOI;
 import vn.edu.saigontech.source.Model.ESLSEOIQuestion;
 import vn.edu.saigontech.source.Model.systemTimeForSEOI;
+import vn.edu.saigontech.source.Model.teacherInformationForESLSEOI;
 import vn.edu.saigontech.source.dbConnection.oConnection;
 
 public class seoiESLDAO implements vn.edu.saigontech.source.DAO.seoiESLDAO {
@@ -261,6 +262,42 @@ public class seoiESLDAO implements vn.edu.saigontech.source.DAO.seoiESLDAO {
 				questionArr.add(currQuestion);
 			}
 			return questionArr;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			conn.close();
+		}
+	}
+
+	@Override
+	public teacherInformationForESLSEOI getTeacherInformationByClassID(Integer classID, Integer teacherID)
+			throws ClassNotFoundException, SQLException {
+		conn = oConnection.getOracleConnection();
+		teacherInformationForESLSEOI targetTeacher = new teacherInformationForESLSEOI();
+		try {
+			String sql = "select ncr2unicodestring(lastname) LASTNAME, ncr2unicodestring(firstname) FIRSTNAME, name from "+
+					"teacher, classes where teacher.id_seq = ? "+
+					"and classes.id_seq = ? ";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			
+			pst.setInt(1, teacherID);
+			pst.setInt(2, classID);
+			
+			ResultSet rs = pst.executeQuery();
+			
+			
+			if (rs.next()) {
+				targetTeacher.setLastName(rs.getString("LASTNAME"));
+				targetTeacher.setFirstName(rs.getString("FIRSTNAME"));
+				targetTeacher.setClassName(rs.getString("NAME"));
+				
+				return targetTeacher;
+			} else {
+				return null;
+			}
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
