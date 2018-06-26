@@ -18,4 +18,11 @@ public interface seoiESLDAO {
 	public List<ESLSEOIQuestion> getAllQuestionSEOI(Integer Semester, Integer acaYear, Integer type) throws ClassNotFoundException, SQLException;
 
 	public teacherInformationForESLSEOI getTeacherInformationByClassID(Integer classID, Integer teacherID) throws ClassNotFoundException, SQLException;
+	
+	public String addPoints(String studentID, String Semester, String acaYear, String classID, String instructorID, String questionID, String pointList) throws ClassNotFoundException, SQLException;
+	
+	public String addComment(String studentID, String Semester, String acaYear, String classID, String instructorID, String comment) throws ClassNotFoundException, SQLException;
+
+	
 }
+

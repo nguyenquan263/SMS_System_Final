@@ -12,14 +12,14 @@ import vn.edu.saigontech.source.Model.ESLCourseAvailable;
 import vn.edu.saigontech.source.Model.ESLCourseRegistered;
 import vn.edu.saigontech.source.Model.StudentESLInfo;
 import vn.edu.saigontech.source.dbConnection.oConnection;
-import FunctionESL.checkClassesFull;
-import FunctionESL.checkClassesTimetable;
-import FunctionESL.checkESLSkillBalance;
-import FunctionESL.checkLimitESLCourseRegistration;
-import FunctionESL.checkLimitOfCredit;
-import FunctionESL.checkManyClassesSameCourse;
-import FunctionESL.deleteCourseRegistration;
-import FunctionESL.insertCourseRegistration;
+import vn.edu.saigontech.source.functions.ESL.checkClassesFull;
+import vn.edu.saigontech.source.functions.ESL.checkClassesTimetable;
+import vn.edu.saigontech.source.functions.ESL.checkESLSkillBalance;
+import vn.edu.saigontech.source.functions.ESL.checkLimitESLCourseRegistration;
+import vn.edu.saigontech.source.functions.ESL.checkLimitOfCredit;
+import vn.edu.saigontech.source.functions.ESL.checkManyClassesSameCourse;
+import vn.edu.saigontech.source.functions.ESL.deleteCourseRegistration;
+import vn.edu.saigontech.source.functions.ESL.insertCourseRegistration;
 
 public class ESLCourseDAO implements vn.edu.saigontech.source.DAO.ESLCourseDAO {
 	private Connection conn;

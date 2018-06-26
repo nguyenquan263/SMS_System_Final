@@ -20,7 +20,7 @@ public class JwtFilter extends GenericFilterBean {
 
 	public void doFilter(final ServletRequest req, final ServletResponse res, final FilterChain chain)
 			throws IOException, ServletException {
-
+		System.out.println("MEHERE");
 		final HttpServletRequest request = (HttpServletRequest) req;
 		final HttpServletResponse response = (HttpServletResponse) res;
 		final String authHeader = request.getHeader("authorization");

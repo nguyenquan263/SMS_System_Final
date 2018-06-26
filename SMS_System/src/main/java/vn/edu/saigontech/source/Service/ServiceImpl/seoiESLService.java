@@ -41,4 +41,16 @@ public class seoiESLService implements vn.edu.saigontech.source.Service.seoiESLS
 		return sed.getTeacherInformationByClassID(classID, teacherID);
 	}
 
+	@Override
+	public String addPoints(String studentID, String Semester, String acaYear, String classID, String instructorID,
+			String questionID, String pointList) throws ClassNotFoundException, SQLException {
+		return sed.addPoints(studentID, Semester, acaYear, classID, instructorID, questionID, pointList);
+	}
+
+	@Override
+	public String addComment(String studentID, String Semester, String acaYear, String classID, String instructorID,
+			String comment) throws ClassNotFoundException, SQLException {
+		return sed.addComment(studentID, Semester, acaYear, classID, instructorID, comment);
+	}
+
 }

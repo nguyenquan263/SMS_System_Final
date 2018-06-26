@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import FunctionVN.studyFunctionsVN;
 import vn.edu.saigontech.source.Model.VNCourseAvailable;
 import vn.edu.saigontech.source.Model.VNCourseRegistered;
 import vn.edu.saigontech.source.dbConnection.oConnection;
 //Made by Nguyen Ngoc Minh Quan
 //DAO class allow user access to db and get info, delete, insert classes.
+import vn.edu.saigontech.source.functions.VN.studyFunctionsVN;
 
 public class VNCourseDAO implements vn.edu.saigontech.source.DAO.VNCourseDAO {
 	private Connection conn;

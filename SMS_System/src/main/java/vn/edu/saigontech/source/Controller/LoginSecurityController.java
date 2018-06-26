@@ -25,6 +25,7 @@ public class LoginSecurityController {
 	private UserService userService;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@CrossOrigin
 	public String login(@RequestBody User login) throws ServletException, ClassNotFoundException, SQLException{
 		userService = new UserService();
 		String jwtToken = "";

@@ -12,6 +12,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import vn.edu.saigontech.source.Model.AcademicYear;
 import vn.edu.saigontech.source.Model.SystemDateAndTime;
 import vn.edu.saigontech.source.Model.SystemTime;
@@ -22,8 +24,8 @@ import vn.edu.saigontech.source.dbConnection.oConnection;
  * @author Nguyen Bao Hoang Long
  * Written on 24/3/2018
  */
+
 public class SystemTimeDAO implements vn.edu.saigontech.source.DAO.SystemTimeDAO {
-	
 	private Connection conn;
 	public SystemTimeDAO() throws ClassNotFoundException, SQLException {
 		

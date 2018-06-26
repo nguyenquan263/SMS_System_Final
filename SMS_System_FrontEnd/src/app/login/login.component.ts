@@ -72,9 +72,17 @@ export class LoginComponent implements OnInit {
     this.http.post(this.serverLink+'/login', user).subscribe(
       res => {
          let result = res.text().split(" ");
-         cookie.set('loginID', result[1]);
-         cookie.set('token', result[0]);
-         router.navigate(['/']);
+        if (result[1] == "-1")
+        {
+          $("#warningMes").html('Invalid username or password. Please check them again');
+        }
+        else
+        {
+          cookie.set('loginID', result[1]);
+          cookie.set('token', result[0]);
+          router.navigate(['/']);
+        }
+         
       },
       err => {
         $("#warningMes").html('Invalid username or password. Please check them again');

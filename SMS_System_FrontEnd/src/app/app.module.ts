@@ -28,6 +28,7 @@ import { CourseEnrolledComponent} from './course-enrolled/course-enrolled.compon
 import { TimetableComponent } from './timetable/timetable.component';
 import { StudentAttendanceComponent } from './student-attendance/student-attendance.component';
 import { TuitionFeeComponent } from './tuition-fee/tuition-fee.component';
+import { OtherSeoiComponent } from './other-seoi/other-seoi.component';
 import { EslSeoiListingComponent } from './esl-seoi-listing/esl-seoi-listing.component';
 import { EslSeoiValuationComponent } from './esl-seoi-valuation/esl-seoi-valuation.component';
 
@@ -54,8 +55,9 @@ import { EslSeoiValuationComponent } from './esl-seoi-valuation/esl-seoi-valuati
     TimetableComponent,
     StudentAttendanceComponent,
     TuitionFeeComponent,
+    OtherSeoiComponent,
     EslSeoiListingComponent,
-    EslSeoiValuationComponent
+    EslSeoiValuationComponent,
   ],
   imports: [
     BrowserModule,
@@ -152,13 +154,18 @@ import { EslSeoiValuationComponent } from './esl-seoi-valuation/esl-seoi-valuati
             component:EslRegistrationComponent
           },
           {
+            path:'OtherSEOI',
+            component:OtherSeoiComponent
+          },
+          {
             path:'ESLSEOI',
             component:EslSeoiListingComponent
           },
           {
-            path:'ESLSEOIQuestion',
+            path:'ESLSEOIEvaluation',
             component:EslSeoiValuationComponent
-          }
+          },
+          
 
         ]
       },

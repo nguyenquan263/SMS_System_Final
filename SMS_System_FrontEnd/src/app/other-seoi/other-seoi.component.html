@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header ">
+        <h4 class="card-title">
+          <b>Other SEOI</b>
+        </h4>
+      </div>
+      <div class="card-body p-4">
+        <div *ngIf="doneLoading">
+          <div class="row flexrow justify-content-center no-gutters">
+            <div class="col d-flex justify-content-center">
+              <span style="font-size:1.5rem">THE LIST OF CLASSES WHICH STUDENTS EVALUATE INSTRUCTORS</span>
+            </div>
+          </div>
+          <div class="row flexrow justify-content-center no-gutters">
+            <div class="col d-flex justify-content-center">
+              <b>Semester/Year: &nbsp;</b>{{convertToSemester(semesterInfo.semester)}}/{{semesterInfo.acaYear}}</div>
+          </div>
+
+          <div class="row flexrow justify-content-center no-gutters mt-2">
+              <div class="col d-flex justify-content-center">
+                <table width="100%" border="1" cellspacing="1" class="table-hover">
+                  <tr id="header">
+                    <th width="5%">No.</th>
+                    <th width="25%">Class Name</th>
+                    <th width="25%">Instructor's Name</th>
+                    <th width="10%">Status</th>
+                  </tr>
+                  <tr *ngFor="let item of fullOtherSEOICourseInfo; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{item.className}}</td>
+                    <td>{{item.lastName}} {{item.firstname}}</td>
+                    <ng-container *ngIf="item.evaluationStatus">
+                      <td>Finished</td>
+                    </ng-container>
+                    <ng-container *ngIf="!item.evaluationStatus">
+                      <td>Not Finished</td>
+                    </ng-container>
+                  </tr>
+                </table>
+              </div>
+            </div>
+        </div>
+        <div class="row flexrow justify-content-center no-gutters" *ngIf="!doneLoading">
+          <img id="loadingImg" src="assets/img/loading.gif" />
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

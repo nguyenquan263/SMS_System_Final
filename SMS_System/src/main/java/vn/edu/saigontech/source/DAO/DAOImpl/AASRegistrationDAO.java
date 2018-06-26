@@ -8,12 +8,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
-import FunctionAAS.Validation;
-
 import vn.edu.saigontech.source.Model.AASRegistrationResult;
 import vn.edu.saigontech.source.Model.BeforeAASRegistration;
 import vn.edu.saigontech.source.dbConnection.oConnection;
+import vn.edu.saigontech.source.functions.AAS.Validation;
 
 public class AASRegistrationDAO implements vn.edu.saigontech.source.DAO.AASRegistrationDAO {
 	

@@ -30,7 +30,7 @@ public class OtherSEOIDAO implements vn.edu.saigontech.source.DAO.OtherSEOIDAO{
 		try {
 			conn = oConnection.getOracleConnection();
 			String sql = 
-					"select distinct tc.id_seq teacher_id, tc.lastname, tc.firstname,cl.id_seq class_id, cl.name "+ 
+					"select distinct tc.id_seq teacher_id, ncr2unicodestring(tc.lastname), ncr2unicodestring(tc.firstname),cl.id_seq class_id, cl.name "+ 
 					"from study st,classes cl, assigntoclass ass, teacher tc, timetable tt, detail_timetable dt, subject subj "+ 
 					"where st.semester = ? "+
 					"and st.aca_year = ? "+
@@ -58,8 +58,8 @@ public class OtherSEOIDAO implements vn.edu.saigontech.source.DAO.OtherSEOIDAO{
 			statement.setString(9, "2");
 			rs = statement.executeQuery();
 			while (rs.next()) {				
-				arr.add(new OtherSEOIOtherCoursesInfo(rs.getString("teacher_id"),rs.getString("lastname"),
-						rs.getString("firstname"), rs.getString("class_id"), rs.getString("name")));
+				arr.add(new OtherSEOIOtherCoursesInfo(rs.getString("teacher_id"),rs.getString("ncr2unicodestring(tc.lastname)"),
+						rs.getString("ncr2unicodestring(tc.firstname)"), rs.getString("class_id"), rs.getString("name")));
 			}
 			rs.close();
 			statement.close();

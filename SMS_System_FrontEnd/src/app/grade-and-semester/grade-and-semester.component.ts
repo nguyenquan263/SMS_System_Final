@@ -46,11 +46,9 @@ export class GradeAndSemesterComponent implements OnInit {
     this.headers.append('Content-Type', 'application/json');
     this.headers.append('Authorization', 'Bearer ' + this.cookie.get('token'));
     this.options = new RequestOptions({ headers: this.headers });
-    console.log(this.options);
   }
 
   ngOnInit() {
-    console.log(this.options);
     //Set navigation bar 
     $("#locationLink").html('<a href="/" class="text-infor">Home </a>/' +
       '<a href="/GradeAndSemester" class="text-infor"> Grade & Semester</a>')

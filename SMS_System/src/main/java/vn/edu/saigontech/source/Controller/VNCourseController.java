@@ -1,4 +1,5 @@
 package vn.edu.saigontech.source.Controller;
+
 //Written by Nguyen Ngoc Minh Quan.
 //controller that allow user get information of VN classes and inserting or deleting them.
 import java.util.List;
@@ -21,7 +22,8 @@ import vn.edu.saigontech.source.Service.ServiceImpl.VNCourseService;
 @RestController
 public class VNCourseController {
 	private VNCourseService vcs;
-	//class VN classes thich are available.
+
+	// class VN classes thich are available.
 	@RequestMapping(value = "/getVNclassAvailableREST/{studentID}&{acaYear}&{Semester}", method = RequestMethod.GET, produces = "application/json")
 	public List<VNCourseAvailable> getVNclassAvailable(@PathVariable("studentID") Integer studentID,
 			@PathVariable("acaYear") Integer acaYear, @PathVariable("Semester") Integer Semester) {
@@ -32,7 +34,8 @@ public class VNCourseController {
 			return null;
 		}
 	}
-	//class VN classes thich are registered.
+
+	// class VN classes thich are registered.
 	@RequestMapping(value = "/getVNclassRegisteredREST/{studentID}&{acaYear}&{Semester}", method = RequestMethod.GET, produces = "application/json")
 	public List<VNCourseRegistered> getVNclassRegistered(@PathVariable("studentID") Integer studentID,
 			@PathVariable("acaYear") Integer acaYear, @PathVariable("Semester") Integer Semester) {
@@ -43,16 +46,16 @@ public class VNCourseController {
 			return null;
 		}
 	}
-	//delete VN class for student.
+
+	// delete VN class for student.
 	@RequestMapping(value = "/deleteVncourseREST", method = RequestMethod.POST, produces = org.springframework.http.MediaType.TEXT_PLAIN_VALUE, consumes = {
 			"application/x-www-form-urlencoded", "multipart/form-data" })
 	public String deleteVncourse(@RequestParam(value = "studentCode", required = true) Integer studentCode,
 			@RequestParam(value = "acaYear", required = true) Integer acaYear,
 			@RequestParam(value = "Semester", required = true) Integer Semester,
-//			@RequestParam(value = "ipAddress", required = true) String ipAddress,
+			// @RequestParam(value = "ipAddress", required = true) String ipAddress,
 			@RequestParam(value = "classCodes", required = true) String classCodes,
-			@RequestParam(value = "studyCodes", required = true) String studyCodes,
-			HttpServletRequest request) {
+			@RequestParam(value = "studyCodes", required = true) String studyCodes, HttpServletRequest request) {
 
 		try {
 			String ipAddress = request.getRemoteAddr();
@@ -63,13 +66,13 @@ public class VNCourseController {
 		}
 
 	}
-	//insert classes for Student.
+
+	// insert classes for Student.
 	@RequestMapping(value = "/insertVncourseREST", method = RequestMethod.POST, produces = org.springframework.http.MediaType.APPLICATION_JSON_VALUE, consumes = {
-			"application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
+			"application/x-www-form-urlencoded", "multipart/form-data" })
 	public String insertVncourse(@RequestParam(value = "studentCode", required = true) String studentCode,
 			@RequestParam(value = "acaYear", required = true) String acaYear,
 			@RequestParam(value = "Semester", required = true) String Semester,
-//			@RequestParam(value = "ipAddress", required = true) String ipAddress,
 			@RequestParam(value = "classCodeOpen", required = true) String classCodesChecked,
 			HttpServletRequest request) {
 
@@ -83,6 +86,5 @@ public class VNCourseController {
 		}
 
 	}
-	
-	
+
 }

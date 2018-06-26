@@ -1,2 +1,64 @@
-<p align="center"><font size="6" face="Tahoma">ESL Student Evaluation of Instruction</font></p><br>
-<p align="left"><font face="Tahoma" size="2" *ngIf="currSemester != null">&nbsp;Semester/Year: {{currSemester.semesterName}}/{{currSemester.acaYear}}</font></p>
+<p align="center">
+  <b>
+    <font face="Tahoma" size="3" *ngIf="currSemester != null">&nbsp;Semester/Year: {{currSemester.semesterName}}/{{currSemester.acaYear}}</font>
+  </b>
+</p>
+<p align="center" *ngIf="currInformation != null">
+  <font size="3" face="Tahoma">Student Evaluation</font>
+  <br> &nbsp;Class:
+  <b>{{currInformation.className}}</b>
+  <br> &nbsp;Instructor:
+  <b>{{currInformation.lastName}} {{currInformation.firstName}}</b>
+</p>
+
+<p align="justify">
+  <font face="Tahoma" size="1">This questionnaire is designed to identify strengths and weaknesses of your instructor and your perceptions of the effectiveness
+    of the class instruction. Please click the appropriate number for each statement, depending on how positive or negative
+    each statement is.</font>
+</p>
+
+<table border="1">
+  <tr *ngFor="let question of questions; let j = index">
+    <td>{{j+1}}</td>
+    <td>{{question.questionLeftContent}}</td>
+    <td *ngFor="let i of [0,1,2,3,4,5,6,7,8,9,10]">
+      <input type="radio" [value]="i" [name]="question.questionID">.{{i}}
+
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td height="30">
+      <b>
+        <font face="Tahoma" size="3">&nbsp;OTHERS</font>
+      </b>
+    </td>
+  </tr>
+  <tr>
+    <td height="25">
+      <b>
+        <font face="Tahoma" size="2">&nbsp;&nbsp;&nbsp;1. What the qualities of the instructor you feel most effective?</font>
+      </b>
+    </td>
+  </tr>
+  <tr>
+    <td height="25">
+      <b>
+        <font face="Tahoma" size="2">&nbsp;&nbsp;&nbsp;2. How would you advise the instructor to improve his/her teaching?</font>
+      </b>
+    </td>
+  </tr>
+  <tr>
+    <td height="25">
+      <b>
+        <font face="Tahoma" size="2">&nbsp;&nbsp;&nbsp;
+          <textarea rows="5" id="commentTA" cols="60"></textarea>
+        </font>
+      </b>
+    </td>
+  </tr>
+</table>
+
+<p align="center"><font face="Tahoma"><input type="submit" value="Submit" name="B1" (click)="submitSEOI();"></font></p>

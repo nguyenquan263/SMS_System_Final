@@ -61,7 +61,7 @@ public class OtherSEOIController {
 	 * @param classId Class Id
 	 * @param teacherId Teacher Id
 	 */
-	@RequestMapping(value = "/isCheckTime/classId}", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/isEvaluationTime/{classId}", method = RequestMethod.GET, produces = "application/json")
 	public boolean isCheckTime(@PathVariable("classId") String classId) {
 		try {
 			otherSEOIService = new OtherSEOIService();

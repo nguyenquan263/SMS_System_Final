@@ -39,7 +39,6 @@ export class Policy2Component implements OnInit {
 
 
   ngOnInit() {
-
     //Set navigation bar 
     $("#locationLink").html('<a href="/" class="text-infor">Home </a>/' +
       '<a href="/Policy2" class="text-infor"> Policy 2</a>')
