@@ -53,10 +53,11 @@ export class EslSeoiService {
       acaYear: acaYear,
       Semester: semester,
       classID: classID,
-      teacherID: teacherID,
+      instructorID: teacherID,
       questionID: questionList,
       pointList: pointList
     }
+
 
     $.ajax({
       type: "POST",
@@ -66,17 +67,17 @@ export class EslSeoiService {
       headers: {
         'Authorization': 'Bearer ' + this.cookie.get('token')
       },
+      cache: false,
       success: function (response) {
         var notification0 = new PNotify({
           title: 'Notification: ',
           text: response
         });
-
       },
       error: function (data) {
         console.log(data);
       }
-    });
+    })
     console.log(newPointsSEOI);
   }
 
@@ -86,29 +87,33 @@ export class EslSeoiService {
       acaYear: acaYear,
       Semester: semester,
       classID: classID,
-      teacherID: teacherID,
-      Comment: comment
+      instructorID: teacherID,
+      comment: comment
     }
+
+
 
     $.ajax({
       type: "POST",
       url: this.connectionLink.getConnection() + "/insertESLSEOICommentREST",
       data: newCommentSEOI,
-   
+      dataType: "text",
       headers: {
         'Authorization': 'Bearer ' + this.cookie.get('token')
       },
+      cache: false,
       success: function (response) {
         var notification0 = new PNotify({
           title: 'Notification: ',
           text: response
         });
-
       },
       error: function (data) {
         console.log(data);
       }
-    });
+    })
+
+
   }
 
 }

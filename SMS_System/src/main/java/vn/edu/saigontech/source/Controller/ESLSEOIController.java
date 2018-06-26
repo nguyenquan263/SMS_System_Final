@@ -19,9 +19,9 @@ import vn.edu.saigontech.source.Model.teacherInformationForESLSEOI;
 import vn.edu.saigontech.source.Service.ServiceImpl.VNCourseService;
 import vn.edu.saigontech.source.Service.ServiceImpl.seoiESLService;
 
-@RestController
-@CrossOrigin
 
+@CrossOrigin
+@RestController
 public class ESLSEOIController {
 	private seoiESLService sel;
 

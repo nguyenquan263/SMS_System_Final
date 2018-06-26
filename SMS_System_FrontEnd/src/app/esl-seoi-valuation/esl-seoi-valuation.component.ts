@@ -21,7 +21,7 @@ export class EslSeoiValuationComponent implements OnInit {
 
   currInformation: any;
   questions: any;
-  constructor(private studentInfoservice: StudentInfoforRegistrationService, private cookie: CookieService, private connectionLink: ConnectionService, private eslSEOIService: EslSeoiService) { }
+  constructor(private studentInfoservice: StudentInfoforRegistrationService, private cookie: CookieService, private connectionLink: ConnectionService, private eslSEOIService: EslSeoiService, private router: Router) { }
 
   ngOnInit() {
 
@@ -75,6 +75,8 @@ export class EslSeoiValuationComponent implements OnInit {
     console.log(comment);
 
     this.eslSEOIService.addComment(this.cookie.get('loginID'), this.currSemester.semester, this.currSemester.acaYear, this.cookie.get('ESLteacherID'), this.cookie.get('ESLclassID'), comment);
+  
+    this.router.navigateByUrl('/ESLSEOI');
   }
 
 }
