@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import vn.edu.saigontech.source.Model.OtherSEOIOtherCoursesInfo;
+import vn.edu.saigontech.source.Model.OtherSEOIQuestion;
 import vn.edu.saigontech.source.Service.ServiceImpl.AASTranscriptService;
 import vn.edu.saigontech.source.Service.ServiceImpl.OtherSEOIService;
 
@@ -71,4 +72,47 @@ public class OtherSEOIController {
 			return false;
 		}
 	}
+	
+	/** To insert student's comment into Other_student_eval_comment table
+	 */
+	@RequestMapping(value = "/insertOtherStudentEvaluationComment/{stuId}&{class_id}&{id_teacher}&{comment}",
+			method = RequestMethod.GET, produces = "application/json")
+	public void insertOtherStudentEvaluationComment(@PathVariable("stuId") String stuId,@PathVariable("class_id") String class_id,
+			@PathVariable("id_teacher") String id_teacher, @PathVariable("comment") String comment) {
+		try {
+			otherSEOIService = new OtherSEOIService();
+			otherSEOIService.insertOtherStudentEvaluationComment(stuId, class_id, id_teacher, comment);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/** To insert student's comment into other_student_evaluation table
+	 */
+	@RequestMapping(value = "/insertOtherStudentEvaluation/{stuId}&{class_id}&{question_id}&{value}&{id_teacher}",
+			method = RequestMethod.GET, produces = "application/json")
+	public void insertOtherStudentEvaluation(@PathVariable("stuId") String stuId,@PathVariable("class_id") String class_id,
+			@PathVariable("question_id") String question_id, @PathVariable("value") String value,@PathVariable("id_teacher") String id_teacher) {
+		try {
+			otherSEOIService = new OtherSEOIService();
+			otherSEOIService.insertOtherStudentEvaluation(stuId, class_id, question_id, value, id_teacher);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/** To get list of Other SEOI questions
+	 */
+	@RequestMapping(value = "/getOtherSEOIQuestions", method = RequestMethod.GET, produces = "application/json")
+	public List<OtherSEOIQuestion> getOtherSEOIQuestions(){
+		try {
+			otherSEOIService = new OtherSEOIService();
+			return otherSEOIService.getOtherSEOIQuestions();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	
 }

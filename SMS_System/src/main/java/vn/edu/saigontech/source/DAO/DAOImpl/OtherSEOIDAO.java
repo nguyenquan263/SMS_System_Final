@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.edu.saigontech.source.Model.OtherSEOIOtherCoursesInfo;
+import vn.edu.saigontech.source.Model.OtherSEOIQuestion;
 import vn.edu.saigontech.source.dbConnection.oConnection;
 
 /** This class is used to get Other SEOI data
@@ -156,6 +157,135 @@ public class OtherSEOIDAO implements vn.edu.saigontech.source.DAO.OtherSEOIDAO{
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
+		}
+		finally
+		{
+			try {
+				if (rs != null)
+					rs.close();
+				if (statement != null)
+					statement.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	/** To insert student's comment into Other_student_eval_comment table
+	 */
+	@Override
+	public void insertOtherStudentEvaluationComment(String stuId, String class_id, String id_teacher, String comment) {
+		PreparedStatement statement = null;
+		ResultSet rs = null;
+		try {
+			conn = oConnection.getOracleConnection();
+			String sql = 
+					" merge INTO Other_student_eval_comment osec " +
+							 " USING (SELECT ? AS id_student, ? AS class_id, ? AS id_teacher, ? AS comments FROM dual) tb " +
+							 " ON (osec.id_student = tb.id_student " +
+						     " AND osec.class_id = tb.class_id " +
+						     " AND osec.id_teacher = tb.id_teacher) " +
+							 " WHEN matched THEN " +
+							 " UPDATE SET " +
+							 " osec.comments = tb.comments " +
+							 " WHEN NOT matched THEN " +
+							 " INSERT VALUES(tb.id_student, tb.class_id, tb.id_teacher, tb.comments, DEFAULT)";
+			statement = conn.prepareStatement(sql);
+			statement.setString(1, stuId);
+			statement.setString(2, class_id);				
+			statement.setString(3, id_teacher);
+			statement.setString(4, comment);	
+			rs = statement.executeQuery();
+			
+			rs.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally
+		{
+			try {
+				if (rs != null)
+					rs.close();
+				if (statement != null)
+					statement.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	/** To insert student's evaluation into Other_student_evaluation table
+	 */
+	@Override
+	public void insertOtherStudentEvaluation(String stuId, String class_id, String question_id, String value,
+			String id_teacher) {
+		PreparedStatement statement = null;
+		ResultSet rs = null;
+		try {
+			conn = oConnection.getOracleConnection();
+			String sql = 
+					"insert into other_student_evaluation (id_student, class_id, id_question, id_teacher, value) values(?, ?, ?, ?, ?)";
+			statement = conn.prepareStatement(sql);
+			statement.setString(1, stuId);
+			statement.setString(2, class_id);
+			statement.setString(3, question_id);				
+			statement.setString(4, id_teacher);
+			statement.setString(5, value);
+			rs = statement.executeQuery();
+			
+			rs.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally
+		{
+			try {
+				if (rs != null)
+					rs.close();
+				if (statement != null)
+					statement.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	
+	/** To get list of Other SEOI questions
+	 */
+	@Override
+	public List<OtherSEOIQuestion> getOtherSEOIQuestions() {
+		List<OtherSEOIQuestion> arr = new ArrayList<>();
+		PreparedStatement statement = null;
+		ResultSet rs = null;
+		try {
+			conn = oConnection.getOracleConnection();
+			String sql = 
+					"SELECT id_seq, content_en, content_vn, type FROM other_evaluation_question where status = ? " +
+							 "and (type = ? or type = ?) ORDER BY TYPE, order_id";
+			statement = conn.prepareStatement(sql);
+			statement.setString(1, "1");
+			statement.setString(2, "0");
+			statement.setString(3,"1");
+			rs = statement.executeQuery();
+			while (rs.next()) {				
+				arr.add(new OtherSEOIQuestion(rs.getString("id_seq"),rs.getString("content_en"),rs.getString("content_vn"),rs.getString("type")));
+			}
+			rs.close();
+			statement.close();
+			return arr;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
 		}
 		finally
 		{
