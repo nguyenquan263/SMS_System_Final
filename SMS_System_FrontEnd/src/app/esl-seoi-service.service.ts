@@ -69,10 +69,10 @@ export class EslSeoiService {
       },
       cache: false,
       success: function (response) {
-        var notification0 = new PNotify({
-          title: 'Notification: ',
-          text: response
-        });
+        // var notification0 = new PNotify({
+        //   title: 'Notification: ',
+        //   text: response
+        // });
       },
       error: function (data) {
         console.log(data);
@@ -103,10 +103,10 @@ export class EslSeoiService {
       },
       cache: false,
       success: function (response) {
-        var notification0 = new PNotify({
-          title: 'Notification: ',
-          text: response
-        });
+        // var notification0 = new PNotify({
+        //   title: 'Notification: ',
+        //   text: response
+        // });
       },
       error: function (data) {
         console.log(data);

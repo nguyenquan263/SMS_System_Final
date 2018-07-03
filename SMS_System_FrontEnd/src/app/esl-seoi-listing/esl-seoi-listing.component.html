@@ -47,7 +47,7 @@
       <td>{{i+1}}</td>
       <td>{{seoi.instructorName}}</td>
       <td>{{seoi.className}}</td>
-      <td><a (click)="navigateToEvaluation(seoi.status, seoi.classID, seoi.teacherID)">{{seoi.status}}</a></td>
+      <td><a [ngStyle]="{'color':textColor(seoi.status), 'cursor': 'pointer'}" (click)="navigateToEvaluation(seoi.status, seoi.classID, seoi.teacherID)"><b>{{seoi.status}}</b></a></td>
     </tr>
   </tbody>
 </table>

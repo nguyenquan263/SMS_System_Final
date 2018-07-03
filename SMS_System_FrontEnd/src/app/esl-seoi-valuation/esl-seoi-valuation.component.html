@@ -1,3 +1,4 @@
+
 <p align="center">
   <b>
     <font face="Tahoma" size="3" *ngIf="currSemester != null">&nbsp;Semester/Year: {{currSemester.semesterName}}/{{currSemester.acaYear}}</font>
@@ -17,36 +18,52 @@
     each statement is.</font>
 </p>
 
+<p align="justify"><font face="Tahoma" size="1"><i>( B&#7843;ng câu h&#7887;i này &#273;&#432;&#7907;c thi&#7871;t k&#7871; nh&#7857;m phát hi&#7879;n ra 
+  &#273;i&#7875;m m&#7841;nh và &#273;i&#7875;m y&#7871;u c&#7911;a gi&#7843;ng viên và s&#7921; nh&#7853;n th&#7913;c c&#7911;a b&#7841;n v&#7873; hi&#7879;u qu&#7843; gi&#7843;ng 
+  d&#7841;y. Xin vui lòng ch&#7885;n con s&#7889; thích &#7913;ng v&#7899;i m&#7895;i câu d&#432;&#7899;i &#273;ây trên c&#417; s&#7903; 
+  tích c&#7921;c và tiêu c&#7921;c.&nbsp; )</i></font></p>
+
 <table border="1">
+  <thead style="background-color: aqua">
+    <th></th>
+    <th>
+      Criteria(s)
+    </th>
+    <th colspan="11">
+      Score(s)
+    </th>
+  </thead>
+  <tbody>
   <tr *ngFor="let question of questions; let j = index">
     <td>{{j+1}}</td>
-    <td>{{question.questionLeftContent}}</td>
+    <td>{{question.questionLeftContent}} <br /> <i>( {{question.questionLeftContentVN}} )</i></td>
     <td *ngFor="let i of [0,1,2,3,4,5,6,7,8,9,10]">
       <input type="radio" [value]="i" [name]="question.questionID">.{{i}}
 
     </td>
   </tr>
+  </tbody>
 </table>
 
 <table>
   <tr>
     <td height="30">
       <b>
-        <font face="Tahoma" size="3">&nbsp;OTHERS</font>
+        <font face="Tahoma" size="3">&nbsp;OTHERS <i>( NH&#7852;N X&Eacute;T KH&Aacute;C )</i></font>
       </b>
     </td>
   </tr>
   <tr>
     <td height="25">
       <b>
-        <font face="Tahoma" size="2">&nbsp;&nbsp;&nbsp;1. What the qualities of the instructor you feel most effective?</font>
+        <font face="Tahoma" size="2">&nbsp;&nbsp;&nbsp;1. What the qualities of the instructor you feel most effective? ( B&#7841;n th&iacute;ch &#273;i&#7873;u g&igrave; &#7903; th&#7847;y/c&ocirc; nh&#7845;t? )</font>
       </b>
     </td>
   </tr>
   <tr>
     <td height="25">
       <b>
-        <font face="Tahoma" size="2">&nbsp;&nbsp;&nbsp;2. How would you advise the instructor to improve his/her teaching?</font>
+        <font face="Tahoma" size="2">&nbsp;&nbsp;&nbsp;2. How would you advise the instructor to improve his/her teaching? (B&#7841;n mu&#7889;n g&oacute;p &yacute; th&#7871; n&agrave;o v&#7873; ph&#432;&#417;ng ph&aacute;p gi&#7843;ng d&#7841;y c&#7911;a th&#7847;y/c&ocirc;? )</font>
       </b>
     </td>
   </tr>
@@ -54,7 +71,7 @@
     <td height="25">
       <b>
         <font face="Tahoma" size="2">&nbsp;&nbsp;&nbsp;
-          <textarea rows="5" id="commentTA" cols="60"></textarea>
+          <textarea  rows="5" cols="40" id="commentTA"></textarea>
         </font>
       </b>
     </td>
