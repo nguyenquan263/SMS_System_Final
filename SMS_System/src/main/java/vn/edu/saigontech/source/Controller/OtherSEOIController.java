@@ -77,13 +77,15 @@ public class OtherSEOIController {
 	 */
 	@RequestMapping(value = "/insertOtherStudentEvaluationComment/{stuId}&{class_id}&{id_teacher}&{comment}",
 			method = RequestMethod.GET, produces = "application/json")
-	public void insertOtherStudentEvaluationComment(@PathVariable("stuId") String stuId,@PathVariable("class_id") String class_id,
+	public boolean insertOtherStudentEvaluationComment(@PathVariable("stuId") String stuId,@PathVariable("class_id") String class_id,
 			@PathVariable("id_teacher") String id_teacher, @PathVariable("comment") String comment) {
 		try {
 			otherSEOIService = new OtherSEOIService();
 			otherSEOIService.insertOtherStudentEvaluationComment(stuId, class_id, id_teacher, comment);
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 	
@@ -91,13 +93,15 @@ public class OtherSEOIController {
 	 */
 	@RequestMapping(value = "/insertOtherStudentEvaluation/{stuId}&{class_id}&{question_id}&{value}&{id_teacher}",
 			method = RequestMethod.GET, produces = "application/json")
-	public void insertOtherStudentEvaluation(@PathVariable("stuId") String stuId,@PathVariable("class_id") String class_id,
+	public boolean insertOtherStudentEvaluation(@PathVariable("stuId") String stuId,@PathVariable("class_id") String class_id,
 			@PathVariable("question_id") String question_id, @PathVariable("value") String value,@PathVariable("id_teacher") String id_teacher) {
 		try {
 			otherSEOIService = new OtherSEOIService();
 			otherSEOIService.insertOtherStudentEvaluation(stuId, class_id, question_id, value, id_teacher);
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 	

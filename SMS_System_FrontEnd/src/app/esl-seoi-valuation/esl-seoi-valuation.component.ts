@@ -71,7 +71,7 @@ export class EslSeoiValuationComponent implements OnInit {
 
     this.eslSEOIService.addPoints(this.cookie.get('loginID'), this.currSemester.semester, this.currSemester.acaYear, this.cookie.get('ESLteacherID'), this.cookie.get('ESLclassID'), questionIDString, pointsString);
 
-    let comment = $('#commentTA').val();
+    let comment = $('#commentArea').val();
     console.log(comment);
 
     this.eslSEOIService.addComment(this.cookie.get('loginID'), this.currSemester.semester, this.currSemester.acaYear, this.cookie.get('ESLteacherID'), this.cookie.get('ESLclassID'), comment);

@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Sun Jul 01 22:21:27 ICT 2018:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-0164-566f-3bda-00000879b5b8 
+Tue Jul 03 22:09:03 ICT 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-0164-60b0-9a23-0000087a2868 
 on database directory memory:C:\Users\Bao Long\Desktop\SMS_System_Final\SMS_System\testdb with class loader sun.misc.Launcher$AppClassLoader@764c12b6 
 Loaded from file:/C:/Users/Bao%20Long/.gradle/caches/modules-2/files-2.1/org.apache.derby/derby/10.13.1.1/29c42babe5c5463c6eea45487d3cfbfe8348ccd1/derby-10.13.1.1.jar
 java.vendor=Oracle Corporation

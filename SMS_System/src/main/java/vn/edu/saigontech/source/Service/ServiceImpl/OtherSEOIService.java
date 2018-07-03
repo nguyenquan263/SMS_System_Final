@@ -30,14 +30,14 @@ public class OtherSEOIService implements vn.edu.saigontech.source.Service.OtherS
 	}
 
 	@Override
-	public void insertOtherStudentEvaluationComment(String stuId, String class_id, String id_teacher, String comment) {
-		otherSEOIDAO.insertOtherStudentEvaluationComment(stuId, class_id, id_teacher, comment);
+	public String insertOtherStudentEvaluationComment(String stuId, String class_id, String id_teacher, String comment) {
+		return otherSEOIDAO.insertOtherStudentEvaluationComment(stuId, class_id, id_teacher, comment);
 	}
 
 	@Override
-	public void insertOtherStudentEvaluation(String stuId, String class_id, String question_id, String value,
+	public String insertOtherStudentEvaluation(String stuId, String class_id, String question_id, String value,
 			String id_teacher) {
-		otherSEOIDAO.insertOtherStudentEvaluation(stuId, class_id, question_id, value, id_teacher);
+		return otherSEOIDAO.insertOtherStudentEvaluation(stuId, class_id, question_id, value, id_teacher);
 	}
 
 	@Override

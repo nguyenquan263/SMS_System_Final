@@ -9,43 +9,250 @@
       <div class="card-body p-4">
         <div *ngIf="doneLoading">
           <div class="row flexrow justify-content-center no-gutters">
-            <div class="col d-flex justify-content-center">
+            <div class="col d-flex justify-content-center" *ngIf="showCourseList">
               <span style="font-size:1.5rem">THE LIST OF CLASSES WHICH STUDENTS EVALUATE INSTRUCTORS</span>
+            </div>
+            <div class="col d-flex justify-content-center" *ngIf="showEvaluationForm">
+              <span style="font-size:1.5rem">STUDENT EVALUATION</span>
             </div>
           </div>
           <div class="row flexrow justify-content-center no-gutters">
             <div class="col d-flex justify-content-center">
-              <b>Semester/Year: &nbsp;</b>{{convertToSemester(semesterInfo.semester)}}/{{semesterInfo.acaYear}}</div>
+              <b>Semester/Year: &nbsp;</b>{{convertToSemester(semesterInfo.semester)}}/{{semesterInfo.acaYear}}
+            </div>
           </div>
 
+          <div class="row flexrow justify-content-center no-gutters" *ngIf="showEvaluationForm">
+            <div class="col d-flex justify-content-center">
+              <b>Class: &nbsp;</b>{{currentClassName}}
+            </div>
+          </div>
+
+          <div class="row flexrow justify-content-center no-gutters" *ngIf="showEvaluationForm">
+            <div class="col d-flex justify-content-center">
+              <b>Instructor: &nbsp;</b>{{currentInstructorName}}
+            </div>
+          </div>
+
+          <div class="row flexrow no-gutters mt-2" *ngIf="showEvaluationForm" style="font-size:78%">
+            <div class="col d-flex justify-content-left">
+              <b>
+                <span style="color:red">A</span>: Strongly Agree</b>
+            </div>
+
+            <div class="col d-flex justify-content-left">
+              <b>
+                <span style="color:red">B</span>: Agree</b>
+            </div>
+
+            <div class="col d-flex justify-content-left">
+              <b>
+                <span style="color:red">C</span>: Neutral</b>
+            </div>
+
+            <div class="col d-flex justify-content-left">
+              <b>
+                <span style="color:red">D</span>: Disagree</b>
+            </div>
+
+            <div class="col d-flex justify-content-left">
+              <b>
+                <span style="color:red">E</span>: Strongly Disagree</b>
+            </div>
+
+            <div class="col d-flex justify-content-left">
+              <b>
+                <span style="color:red">F</span>: No Basic for Judgement</b>
+            </div>
+          </div>
+
+          <div class="row flexrow no-gutters" *ngIf="showEvaluationForm" style="font-size:78%">
+            <div class="col d-flex justify-content-left">
+              <b>
+                <span style="color:red">A</span>: Hoàn toàn đồng ý</b>
+            </div>
+
+            <div class="col d-flex justify-content-left">
+              <b>
+                <span style="color:red">B</span>: Đồng ý</b>
+            </div>
+
+            <div class="col d-flex justify-content-left">
+              <b>
+                <span style="color:red">C</span>: Trung lập</b>
+            </div>
+
+            <div class="col d-flex justify-content-left">
+              <b>
+                <span style="color:red">D</span>: Không đồng ý</b>
+            </div>
+
+            <div class="col d-flex justify-content-left">
+              <b>
+                <span style="color:red">E</span>: Hòan toàn không đồng ý</b>
+            </div>
+
+            <div class="col d-flex justify-content-left">
+              <b>
+                <span style="color:red">F</span>: Không có cơ sở đánh giá</b>
+            </div>
+          </div>
+
+
           <div class="row flexrow justify-content-center no-gutters mt-2">
-              <div class="col d-flex justify-content-center">
-                <table width="100%" border="1" cellspacing="1" class="table-hover">
-                  <tr id="header">
-                    <th width="5%">No.</th>
-                    <th width="25%">Class Name</th>
-                    <th width="25%">Instructor's Name</th>
-                    <th width="10%">Status</th>
-                  </tr>
-                  <tr *ngFor="let item of fullOtherSEOICourseInfo; let i = index">
-                    <td>{{i+1}}</td>
-                    <td>{{item.className}}</td>
-                    <td>{{item.lastName}} {{item.firstname}}</td>
-                    <ng-container *ngIf="item.evaluationStatus">
-                      <td>Finished</td>
+            <div class="col d-flex justify-content-center">
+              <table width="100%" border="1" cellspacing="1" class="table-hover" *ngIf="showCourseList">
+                <tr id="header">
+                  <th width="5%">No.</th>
+                  <th width="25%">Class Name</th>
+                  <th width="25%">Instructor's Name</th>
+                  <th width="10%">Status</th>
+                </tr>
+                <tr *ngFor="let item of fullOtherSEOICourseInfo; let i = index">
+                  <td>{{i+1}}</td>
+                  <td>{{item.className}}</td>
+                  <td>{{item.lastName}} {{item.firstname}}</td>
+                  <ng-container *ngIf="item.evaluationStatus">
+                    <td>Finished</td>
+                  </ng-container>
+                  <ng-container *ngIf="!item.evaluationStatus">
+                    <ng-container *ngIf="item.evaluationTimeStatus">
+                      <td>
+                        <button (click)="showEvaluationFormAction(item.lastName, item.firstname, item.className, item.classId, item.teacherId)">Not Finish</button>
+                      </td>
                     </ng-container>
-                    <ng-container *ngIf="!item.evaluationStatus">
-                      <td>Not Finished</td>
+                    <ng-container *ngIf="!item.evaluationTimeStatus">
+                      <td>Not Finish</td>
                     </ng-container>
+                  </ng-container>
+                </tr>
+              </table>
+
+              <table width="100%" border="1" cellspacing="1" class="table-hover" *ngIf="showEvaluationForm" id = "evaluationTable">
+                <tr id="header">
+                  <th width="5%">No.</th>
+                  <th width="65%">Question</th>
+                  <th width="5%">A</th>
+                  <th width="5%">B</th>
+                  <th width="5%">C</th>
+                  <th width="5%">D</th>
+                  <th width="5%">E</th>
+                  <th width="5%">F</th>
+                </tr>
+                <ng-container *ngFor="let item of otherSEOIQuestions; let i = index">
+                  <tr>
+                    <td rowspan="2">{{i+1}}</td>
+                    <td style="text-align: left;">{{item.content_en}}</td>
+                    <td rowspan="2">
+                      <input type="radio" name="{{item.id_seq}}" value="1">
+                    </td>
+                    <td rowspan="2">
+                      <input type="radio" name="{{item.id_seq}}" value="2">
+                    </td>
+                    <td rowspan="2">
+                      <input type="radio" name="{{item.id_seq}}" value="3">
+                    </td>
+                    <td rowspan="2">
+                      <input type="radio" name="{{item.id_seq}}" value="4">
+                    </td>
+                    <td rowspan="2">
+                      <input type="radio" name="{{item.id_seq}}" value="5">
+                    </td>
+                    <td rowspan="2">
+                      <input type="radio" name="{{item.id_seq}}" value="6">
+                    </td>
+
                   </tr>
-                </table>
+                  <tr>
+                    <td style="text-align: left;">{{item.content_vn}}</td>
+                  </tr>
+                </ng-container>
+              </table>
+
+
+            </div>
+          </div>
+          <div class="row flexrow no-gutters mt-2" *ngIf="showEvaluationForm" style="font-size:78%">
+              <div class="col d-flex justify-content-left">
+                <b>
+                  <span style="color:red">A</span>: Strongly Agree</b>
+              </div>
+  
+              <div class="col d-flex justify-content-left">
+                <b>
+                  <span style="color:red">B</span>: Agree</b>
+              </div>
+  
+              <div class="col d-flex justify-content-left">
+                <b>
+                  <span style="color:red">C</span>: Neutral</b>
+              </div>
+  
+              <div class="col d-flex justify-content-left">
+                <b>
+                  <span style="color:red">D</span>: Disagree</b>
+              </div>
+  
+              <div class="col d-flex justify-content-left">
+                <b>
+                  <span style="color:red">E</span>: Strongly Disagree</b>
+              </div>
+  
+              <div class="col d-flex justify-content-left">
+                <b>
+                  <span style="color:red">F</span>: No Basic for Judgement</b>
               </div>
             </div>
+          <div class="row flexrow no-gutters" *ngIf="showEvaluationForm" style="font-size:78%">
+            <div class="col d-flex justify-content-left">
+              <b>
+                <span style="color:red">A</span>: Hoàn toàn đồng ý</b>
+            </div>
+
+            <div class="col d-flex justify-content-left">
+              <b>
+                <span style="color:red">B</span>: Đồng ý</b>
+            </div>
+
+            <div class="col d-flex justify-content-left">
+              <b>
+                <span style="color:red">C</span>: Trung lập</b>
+            </div>
+
+            <div class="col d-flex justify-content-left">
+              <b>
+                <span style="color:red">D</span>: Không đồng ý</b>
+            </div>
+
+            <div class="col d-flex justify-content-left">
+              <b>
+                <span style="color:red">E</span>: Hòan toàn không đồng ý</b>
+            </div>
+
+            <div class="col d-flex justify-content-left">
+              <b>
+                <span style="color:red">F</span>: Không có cơ sở đánh giá</b>
+            </div>
+          </div>
+          
+          <div class="row flexrow no-gutters mt-2" *ngIf="showEvaluationForm">
+              <b>Other Comment: (Nhận xét khác)</b><br/>
+          </div>
+          <div class="row flexrow no-gutters mt-2" *ngIf="showEvaluationForm">
+            <div class="col d-flex justify-content-center">
+                <textarea rows="4" cols="100%" id = "commentArea"></textarea>
+            </div>
+          </div>     
+          <div class="row flexrow no-gutters mt-2" *ngIf="showEvaluationForm">
+              <div class="col d-flex justify-content-center">
+              <button (click) = "submitEvaluationForm()">Submit</button>
+              </div>
+            </div>        
         </div>
         <div class="row flexrow justify-content-center no-gutters" *ngIf="!doneLoading">
           <img id="loadingImg" src="assets/img/loading.gif" />
         </div>
-        
+
       </div>
     </div>
   </div>

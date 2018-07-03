@@ -176,7 +176,7 @@ public class OtherSEOIDAO implements vn.edu.saigontech.source.DAO.OtherSEOIDAO{
 	/** To insert student's comment into Other_student_eval_comment table
 	 */
 	@Override
-	public void insertOtherStudentEvaluationComment(String stuId, String class_id, String id_teacher, String comment) {
+	public String insertOtherStudentEvaluationComment(String stuId, String class_id, String id_teacher, String comment) {
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		try {
@@ -201,8 +201,10 @@ public class OtherSEOIDAO implements vn.edu.saigontech.source.DAO.OtherSEOIDAO{
 			
 			rs.close();
 			statement.close();
+			return "Completed";
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return "Failed";
 		}
 		finally
 		{
@@ -222,7 +224,7 @@ public class OtherSEOIDAO implements vn.edu.saigontech.source.DAO.OtherSEOIDAO{
 	/** To insert student's evaluation into Other_student_evaluation table
 	 */
 	@Override
-	public void insertOtherStudentEvaluation(String stuId, String class_id, String question_id, String value,
+	public String insertOtherStudentEvaluation(String stuId, String class_id, String question_id, String value,
 			String id_teacher) {
 		PreparedStatement statement = null;
 		ResultSet rs = null;
@@ -240,8 +242,10 @@ public class OtherSEOIDAO implements vn.edu.saigontech.source.DAO.OtherSEOIDAO{
 			
 			rs.close();
 			statement.close();
+			return "Completed";
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return "Failed";
 		}
 		finally
 		{
@@ -270,7 +274,7 @@ public class OtherSEOIDAO implements vn.edu.saigontech.source.DAO.OtherSEOIDAO{
 		try {
 			conn = oConnection.getOracleConnection();
 			String sql = 
-					"SELECT id_seq, content_en, content_vn, type FROM other_evaluation_question where status = ? " +
+					"SELECT id_seq, content_en, ncr2unicodestring(content_vn), type FROM other_evaluation_question where status = ? " +
 							 "and (type = ? or type = ?) ORDER BY TYPE, order_id";
 			statement = conn.prepareStatement(sql);
 			statement.setString(1, "1");
@@ -278,7 +282,7 @@ public class OtherSEOIDAO implements vn.edu.saigontech.source.DAO.OtherSEOIDAO{
 			statement.setString(3,"1");
 			rs = statement.executeQuery();
 			while (rs.next()) {				
-				arr.add(new OtherSEOIQuestion(rs.getString("id_seq"),rs.getString("content_en"),rs.getString("content_vn"),rs.getString("type")));
+				arr.add(new OtherSEOIQuestion(rs.getString("id_seq"),rs.getString("content_en"),rs.getString("ncr2unicodestring(content_vn)"),rs.getString("type")));
 			}
 			rs.close();
 			statement.close();

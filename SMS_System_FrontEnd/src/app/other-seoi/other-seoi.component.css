@@ -32,3 +32,9 @@ td
 {
     text-align: center;
 }
+
+@media (max-width: 576px) {
+    #evaluationTable{
+        font-size: 85%;
+    }
+}
