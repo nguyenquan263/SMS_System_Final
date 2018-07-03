@@ -30,6 +30,7 @@ export class EslSeoiListingComponent implements OnInit {
         this.currSemester = data;
         this.studentInfoservice.getStudentinfoforRegistration1(this.currSemester.acaYear, this.currSemester.semester, this.cookie.get('loginID'))
           .then(data => {
+            //get information of current student.
             this.currStudent = data;
             console.log(this.currStudent);
             $("#stuFullName").text(this.currStudent.studentName);
@@ -37,10 +38,12 @@ export class EslSeoiListingComponent implements OnInit {
           });
         this.studentInfoservice.getStudentAvaImage(this.cookie.get('loginID'))
           .then(data => {
+            //push the arvatar to navbar.
             $("#smallPhoto").attr("src", "http://oms.saigontech.edu.vn/oms_app/Saigontech_College/student/image/" + data);
           });
 
         console.log(data);
+        //get list of class that have SEOI. with status.
         this.eslSEOIService.getESLSEOIList(this.currStudentID, data.acaYear, data.semester)
           .then(data1 => {
             console.log(data1);
@@ -50,15 +53,26 @@ export class EslSeoiListingComponent implements OnInit {
 
   }
 
+  //access the evaluation page.
   navigateToEvaluation(status: string, classID: string, teacherID: string){
     if (status == 'Incomplete'){
-      // console.log(classID+" "+teacherID);
+      // console.log(classID+" "+teacherID);]
+      //push teacherid to cookie.
       this.cookie.set('ESLteacherID', teacherID);
+      //push classid to cookie.
       this.cookie.set('ESLclassID', classID);
       this.router.navigateByUrl('/ESLSEOIEvaluation');
 
     }
       
+  }
+  //check status and add color to style of those statuses.
+  textColor(status: string): string{
+    if (status == 'Incomplete'){
+      return 'blue'
+    } else if (status == 'Completed') {
+      return 'green'
+    } return 'red';
   }
 
 }

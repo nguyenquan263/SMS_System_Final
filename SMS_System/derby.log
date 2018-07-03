@@ -1,11 +1,18 @@
 ----------------------------------------------------------------
+<<<<<<< HEAD
 Tue Jul 03 22:09:03 ICT 2018:
 Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-0164-60b0-9a23-0000087a2868 
 on database directory memory:C:\Users\Bao Long\Desktop\SMS_System_Final\SMS_System\testdb with class loader sun.misc.Launcher$AppClassLoader@764c12b6 
 Loaded from file:/C:/Users/Bao%20Long/.gradle/caches/modules-2/files-2.1/org.apache.derby/derby/10.13.1.1/29c42babe5c5463c6eea45487d3cfbfe8348ccd1/derby-10.13.1.1.jar
+=======
+Tue Jul 03 13:57:17 ICT 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-0164-5eee-5db1-0000084f5e90 
+on database directory memory:D:\do an oms\SMS_System_Final\SMS_System\testdb with class loader sun.misc.Launcher$AppClassLoader@2a139a55 
+Loaded from file:/C:/Users/triet_cute/.gradle/caches/modules-2/files-2.1/org.apache.derby/derby/10.13.1.1/29c42babe5c5463c6eea45487d3cfbfe8348ccd1/derby-10.13.1.1.jar
+>>>>>>> 1e7ab558ac31c93776e010053a7d300698a59cac
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_101-b13
-user.dir=C:\Users\Bao Long\Desktop\SMS_System_Final\SMS_System
+java.runtime.version=1.8.0_151-b12
+user.dir=D:\do an oms\SMS_System_Final\SMS_System
 os.name=Windows 7
 os.arch=amd64
 os.version=6.1

@@ -14,11 +14,12 @@ public class SmsSystemApplication {
 		SpringApplication.run(SmsSystemApplication.class, args);
 	}
 	
-//	@Bean
-//	public FilterRegistrationBean jwtFilter() {
-//		final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-//		registrationBean.setFilter(new JwtFilter());
-//		registrationBean.addUrlPatterns("/*");
-//		return registrationBean;
-//	}
+	
+	@Bean
+	public FilterRegistrationBean jwtFilter() {
+		final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+		registrationBean.setFilter(new JwtFilter());
+		registrationBean.addUrlPatterns("/*");
+		return registrationBean;
+	}
 }

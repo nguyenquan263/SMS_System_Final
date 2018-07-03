@@ -1,5 +1,6 @@
 package vn.edu.saigontech.source.DAO.DAOImpl;
-
+//written by Nguyen Ngoc Minh Quan
+//Data Access Object for some actions about ESL SEOI.
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,12 +14,12 @@ import vn.edu.saigontech.source.Model.systemTimeForSEOI;
 import vn.edu.saigontech.source.Model.teacherInformationForESLSEOI;
 import vn.edu.saigontech.source.dbConnection.oConnection;
 
-public class seoiESLDAO implements vn.edu.saigontech.source.DAO.seoiESLDAO {
+public class SEOIESLDAO implements vn.edu.saigontech.source.DAO.seoiESLDAO {
 	private Connection conn;
 
-	public seoiESLDAO() {
+	public SEOIESLDAO() {
 	}
-
+	//get current semester and current academic year for ESL SEOI
 	@Override
 	public systemTimeForSEOI getSystemTime() throws ClassNotFoundException, SQLException {
 		conn = oConnection.getOracleConnection();
@@ -43,7 +44,7 @@ public class seoiESLDAO implements vn.edu.saigontech.source.DAO.seoiESLDAO {
 			conn.close();
 		}
 	}
-
+	//get the list of SEOIs which is availabled in current semester.
 	@Override
 	public List<ESLClassInformationForSEOI> getAllESLClassForSEOI(Integer Semester, Integer acaYear, Integer studentID)
 			throws ClassNotFoundException, SQLException {
@@ -147,7 +148,7 @@ public class seoiESLDAO implements vn.edu.saigontech.source.DAO.seoiESLDAO {
 			conn.close();
 		}
 	}
-
+	//this function will get comment of teacher
 	private String teacherComment(Connection conn, String classcode) throws SQLException {
 		String result = "-1";
 		try {
@@ -168,7 +169,7 @@ public class seoiESLDAO implements vn.edu.saigontech.source.DAO.seoiESLDAO {
 		}
 		return result;
 	}
-
+	//get id of teacher comment.
 	private int teacherCommentID(Connection conn, String classcode) throws SQLException {
 		int result = -1;
 		try {
@@ -189,7 +190,8 @@ public class seoiESLDAO implements vn.edu.saigontech.source.DAO.seoiESLDAO {
 		}
 		return result;
 	}
-
+	
+	//the function that check this seoi is expired or not.
 	public boolean isValidate(Integer semester, Integer acaYear) throws SQLException {
 		conn = oConnection.getOracleConnection();
 		String sql = " select count(id_seq) from evaluationform " + " where semester = ? " + " and aca_year = ? "
@@ -224,14 +226,14 @@ public class seoiESLDAO implements vn.edu.saigontech.source.DAO.seoiESLDAO {
 
 		return validDate;
 	}
-
+	//the function that get question in this ESL SEOI.
 	@Override
 	public List<ESLSEOIQuestion> getAllQuestionSEOI(Integer Semester, Integer acaYear, Integer type)
 			throws ClassNotFoundException, SQLException {
 		conn = oConnection.getOracleConnection();
 		ArrayList<ESLSEOIQuestion> questionArr = new ArrayList<>();
 		try {
-			String sql = "select evaluationquestion.id_seq, " + "evaluationquestion.left_content_en "
+			String sql = "select evaluationquestion.id_seq, " + "evaluationquestion.left_content_en, ncr2unicodestring(evaluationquestion.left_content_vn) left_content_vn "
 					+ "from evaluationquestion, evaluationform " + "where evaluationquestion.evaluation_id = "
 					+ "evaluationform.id_seq and " + "evaluationform.semester = ? " + "and evaluationform.aca_year = ?"
 					+ "and evaluationform.type = ? ";
@@ -250,7 +252,7 @@ public class seoiESLDAO implements vn.edu.saigontech.source.DAO.seoiESLDAO {
 
 				currQuestion.setQuestionID(rs.getInt("ID_SEQ"));
 				currQuestion.setQuestionLeftContent(rs.getString("LEFT_CONTENT_EN"));
-
+				currQuestion.setQuestionLeftContentVN(rs.getString("LEFT_CONTENT_VN"));
 				questionArr.add(currQuestion);
 			}
 			return questionArr;
@@ -262,7 +264,7 @@ public class seoiESLDAO implements vn.edu.saigontech.source.DAO.seoiESLDAO {
 			conn.close();
 		}
 	}
-
+	//this function will get teacher information by teacher id and class id.
 	@Override
 	public teacherInformationForESLSEOI getTeacherInformationByClassID(Integer classID, Integer teacherID)
 			throws ClassNotFoundException, SQLException {
@@ -295,7 +297,9 @@ public class seoiESLDAO implements vn.edu.saigontech.source.DAO.seoiESLDAO {
 			conn.close();
 		}
 	}
-
+	
+	//this function will get the string of points, which is got from front end, separated by a space.
+	//and add them to the database.
 	@Override
 	public String addPoints(String studentID, String Semester, String acaYear, String classID, String instructorID,
 			String questionIDList, String pointList) throws ClassNotFoundException, SQLException {
@@ -328,6 +332,8 @@ public class seoiESLDAO implements vn.edu.saigontech.source.DAO.seoiESLDAO {
 			conn.close();
 		}
 	}
+	
+	//this function will split the input string, which is splited by a space, to the array of string.
 
 	public String[] getArray(String pointsString) {
 		String temp = pointsString.substring(0, pointsString.length() - 1);
@@ -335,7 +341,7 @@ public class seoiESLDAO implements vn.edu.saigontech.source.DAO.seoiESLDAO {
 
 		return res;
 	}
-
+	//this function will get the comment of student from front end to the database.
 	@Override
 	public String addComment(String studentID, String Semester, String acaYear, String classID, String instructorID,
 			String comment) throws ClassNotFoundException, SQLException {

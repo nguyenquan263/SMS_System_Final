@@ -4,16 +4,16 @@ package vn.edu.saigontech.source.Service.ServiceImpl;
 import java.sql.SQLException;
 import java.util.List;
 
-import vn.edu.saigontech.source.DAO.DAOImpl.seoiESLDAO;
+import vn.edu.saigontech.source.DAO.DAOImpl.SEOIESLDAO;
 import vn.edu.saigontech.source.Model.ESLClassInformationForSEOI;
 import vn.edu.saigontech.source.Model.ESLSEOIQuestion;
 import vn.edu.saigontech.source.Model.systemTimeForSEOI;
 import vn.edu.saigontech.source.Model.teacherInformationForESLSEOI;
 
 public class seoiESLService implements vn.edu.saigontech.source.Service.seoiESLService {
-	private seoiESLDAO sed;
+	private SEOIESLDAO sed;
 	public seoiESLService() {
-		sed = new seoiESLDAO();
+		sed = new SEOIESLDAO();
 	}
 
 	@Override
