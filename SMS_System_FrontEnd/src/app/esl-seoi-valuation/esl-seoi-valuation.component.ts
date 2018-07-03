@@ -79,12 +79,8 @@ export class EslSeoiValuationComponent implements OnInit {
     console.log(questionIDString);
     console.log(pointsString);
 
-<<<<<<< HEAD
     let comment = $('#commentArea').val();
     console.log(comment);
-=======
-    let comment = $('#commentTA').val();
->>>>>>> 1e7ab558ac31c93776e010053a7d300698a59cac
 
     if ((pointsString.indexOf('undefined') == -1) && (comment != "")){
       //add those point to backend.
