@@ -112,7 +112,7 @@ export class OtherSeoiComponent implements OnInit {
                 evaluationTimeStatus: tempEvaluationTimeStatusArray[i]
               })
             }
-            // console.log(this.fullOtherSEOICourseInfo)
+            console.log(this.fullOtherSEOICourseInfo)
             this.showCourseList = true;
             this.doneLoading = true;
           });

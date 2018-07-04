@@ -79,10 +79,10 @@ export class EslSeoiValuationComponent implements OnInit {
     console.log(questionIDString);
     console.log(pointsString);
 
-    let comment = $('#commentArea').val();
+    let comment = $('#commentTA').val()+"";
     console.log(comment);
 
-    if ((pointsString.indexOf('undefined') == -1) && (comment != "")){
+    if ((pointsString.indexOf('undefined') == -1) && (comment != "") ){
       //add those point to backend.
       this.eslSEOIService.addPoints(this.cookie.get('loginID'), this.currSemester.semester, this.currSemester.acaYear, this.cookie.get('ESLteacherID'), this.cookie.get('ESLclassID'), questionIDString, pointsString);
 
@@ -102,7 +102,7 @@ export class EslSeoiValuationComponent implements OnInit {
         text: "Please fill in all neccessary information(s)."
       });
     }
-    
+
   }
 
 }
