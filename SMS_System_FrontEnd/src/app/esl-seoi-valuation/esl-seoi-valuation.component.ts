@@ -66,33 +66,36 @@ export class EslSeoiValuationComponent implements OnInit {
   submitSEOI(){
     let questionIDString = '';
     let pointsString = '';
+    let ok: boolean = true;
 
     for (var i = 0 ; i < this.questions.length; i ++){
+
       // console.log(this.questions[i].questionID+" "+$('input[name='+this.questions[i].questionID+']:checked').val());
       //get string of question id.
       questionIDString+= this.questions[i].questionID+" ";
       //get points that are chosen by users.
       pointsString += $('input[name='+this.questions[i].questionID+']:checked').val()+" ";
-
+      
     }
-
+    alert(ok);
     console.log(questionIDString);
     console.log(pointsString);
 
     let comment = $('#commentTA').val()+"";
     console.log(comment);
 
-    if ((pointsString.indexOf('undefined') == -1) && (comment != "") ){
+    if (pointsString.indexOf('undefined') == -1){
       //add those point to backend.
       this.eslSEOIService.addPoints(this.cookie.get('loginID'), this.currSemester.semester, this.currSemester.acaYear, this.cookie.get('ESLteacherID'), this.cookie.get('ESLclassID'), questionIDString, pointsString);
 
       
-      //add those comment to backend.
-      this.eslSEOIService.addComment(this.cookie.get('loginID'), this.currSemester.semester, this.currSemester.acaYear, this.cookie.get('ESLteacherID'), this.cookie.get('ESLclassID'), comment);
+      //add those comment to backend if not null.
+      if (comment != "")
+        this.eslSEOIService.addComment(this.cookie.get('loginID'), this.currSemester.semester, this.currSemester.acaYear, this.cookie.get('ESLteacherID'), this.cookie.get('ESLclassID'), comment);
 
       var notification0 = new PNotify({
         title: 'Notification: ',
-        text: "Thanks for your evaluation(s)."
+        text: "Thanks for your evaluation on Class "+ this.currInformation.className+" by Mr/Ms "+ this.currInformation.lastName+" "+this.currInformation.firstName
       });
 
       this.router.navigateByUrl('/ESLSEOI');

@@ -1,53 +1,62 @@
-<p align="center">
-  <font size="4" face="Tahoma">ESL Student Evaluation of Instruction</font>
-</p>
-<p align="center">
-  <font size="2" face="Tahoma">
-    <b>&nbsp;&nbsp;&nbsp; </b>
-  </font>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col">
+      <p align="center">
+        <font size="4" face="Tahoma">ESL Student Evaluation of Instruction</font>
+      </p>
+      <p align="center">
+        <font size="2" face="Tahoma">
+          <b>&nbsp;&nbsp;&nbsp; </b>
+        </font>
+      </p>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col text-center">
+      <b *ngIf="currSemester != null">Semester/Year: {{currSemester.semesterName}}/{{currSemester.acaYear}}</b>
+    </div>
+    <div class="col"></div>
+  </div>
 
-<table width="100%" id="table1" style="border-collapse: collapse">
-  <tr align=center>
-    <td width="100%">
-      <font face="Tahoma" size="2">
-        <b *ngIf="currSemester != null">Semester/Year: {{currSemester.semesterName}}/{{currSemester.acaYear}}</b>
-      </font>
-    </td>
-  </tr>
-</table>
-
-<table border="1" width="100%" id="table1" bordercolorlight="#000000" bordercolordark="#000000" style="border-collapse: collapse">
-  <thead>
-    <tr style="background-color: aqua">
-      <th width="46">
-        <font face="Tahoma" size="2">
-          <b>No.</b>
-        </font>
-      </th>
-      <th width="376">
-        <font face="Tahoma" size="2">
-          <b>Instructor</b>
-        </font>
-      </th>
-      <th width="153">
-        <font face="Tahoma" size="2">
-          <b>Class</b>
-        </font>
-      </th>
-      <th>
-        <font face="Tahoma" size="2">
-          <b>Status</b>
-        </font>
-      </th>
-    </tr>
-  </thead>
-  <tbody >
-    <tr *ngFor="let seoi of listOfClassSEOI; let i = index">
-      <td>{{i+1}}</td>
-      <td>{{seoi.instructorName}}</td>
-      <td>{{seoi.className}}</td>
-      <td><a [ngStyle]="{'color':textColor(seoi.status), 'cursor': 'pointer'}" (click)="navigateToEvaluation(seoi.status, seoi.classID, seoi.teacherID)"><b>{{seoi.status}}</b></a></td>
-    </tr>
-  </tbody>
-</table>
+  <table border="1" width="100%" id="table1" bordercolorlight="#000000" bordercolordark="#000000" style="border-collapse: collapse">
+    <thead>
+      <tr style="background-color: aqua">
+        <th width="46">
+          <font face="Tahoma" size="2">
+            <b>No.</b>
+          </font>
+        </th>
+        <th width="376">
+          <font face="Tahoma" size="2">
+            <b>Instructor</b>
+          </font>
+        </th>
+        <th width="153">
+          <font face="Tahoma" size="2">
+            <b>Class</b>
+          </font>
+        </th>
+        <th>
+          <font face="Tahoma" size="2">
+            <b>Status</b>
+          </font>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let seoi of listOfClassSEOI; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{seoi.instructorName}}</td>
+        <td>{{seoi.className}}</td>
+        <td>
+          <a [ngStyle]="{'color':textColor(seoi.status), 'cursor': 'pointer'}" (click)="navigateToEvaluation(seoi.status, seoi.classID, seoi.teacherID)">
+            <b>{{seoi.status}}</b>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
