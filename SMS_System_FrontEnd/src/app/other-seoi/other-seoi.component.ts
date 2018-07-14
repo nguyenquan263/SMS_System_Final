@@ -88,51 +88,41 @@ export class OtherSeoiComponent implements OnInit {
     this.http.get(this.serverLink + '/getOtherSEOICoursesInfo/' + stuId + "&" + acaYear + "&" + semester, this.options).map((res: Response) => res.json())
       .subscribe(data => {
         this.otherSEOICourseInfo = data;
-        var tempEvaluationStatusArray = new Array(); //Array that contains the evaluation status for each class
-        var tempEvaluationTimeStatusArray = new Array(); //Array that contains the evaluation time status for each class
-
-        //Load the evaluation status (already or not yet)
-        for (let i = 0; i < this.otherSEOICourseInfo.length; i++) {
-          tempEvaluationStatusArray.push(this.http.get(this.serverLink + '/isStatus/' + stuId + "&" + this.otherSEOICourseInfo[i].classId + "&" + this.otherSEOICourseInfo[i].teacherId, this.options).map((res: Response) => res.json()));
-          tempEvaluationTimeStatusArray.push(this.http.get(this.serverLink + '/isEvaluationTime/' + this.otherSEOICourseInfo[i].classId, this.options).map((res: Response) => res.json()))
-        }
-
-        forkJoin(tempEvaluationStatusArray).subscribe(data => {
-          tempEvaluationStatusArray = data;
-          forkJoin(tempEvaluationTimeStatusArray).subscribe(data => {
-            tempEvaluationTimeStatusArray = data;
-            for (let i = 0; i < this.otherSEOICourseInfo.length; i++) {
-              this.fullOtherSEOICourseInfo.push({
-                classId: this.otherSEOICourseInfo[i].classId,
-                className: this.otherSEOICourseInfo[i].className,
-                firstname: this.otherSEOICourseInfo[i].firstname,
-                lastName: this.otherSEOICourseInfo[i].lastName,
-                teacherId: this.otherSEOICourseInfo[i].teacherId,
-                evaluationStatus: tempEvaluationStatusArray[i],
-                evaluationTimeStatus: tempEvaluationTimeStatusArray[i]
-              })
-            }
-            console.log(this.fullOtherSEOICourseInfo)
-            this.showCourseList = true;
+        if (this.otherSEOICourseInfo.length == 0)
+        {
+          this.showCourseList = true;
             this.doneLoading = true;
+        }
+        else{
+          var tempEvaluationStatusArray = new Array(); //Array that contains the evaluation status for each class
+          var tempEvaluationTimeStatusArray = new Array(); //Array that contains the evaluation time status for each class
+  
+          //Load the evaluation status (already or not yet)
+          for (let i = 0; i < this.otherSEOICourseInfo.length; i++) {
+            tempEvaluationStatusArray.push(this.http.get(this.serverLink + '/isStatus/' + stuId + "&" + this.otherSEOICourseInfo[i].classId + "&" + this.otherSEOICourseInfo[i].teacherId, this.options).map((res: Response) => res.json()));
+            tempEvaluationTimeStatusArray.push(this.http.get(this.serverLink + '/isEvaluationTime/' + this.otherSEOICourseInfo[i].classId, this.options).map((res: Response) => res.json()))
+          }
+  
+          forkJoin(tempEvaluationStatusArray).subscribe(data => {
+            tempEvaluationStatusArray = data;
+            forkJoin(tempEvaluationTimeStatusArray).subscribe(data => {
+              tempEvaluationTimeStatusArray = data;
+              for (let i = 0; i < this.otherSEOICourseInfo.length; i++) {
+                this.fullOtherSEOICourseInfo.push({
+                  classId: this.otherSEOICourseInfo[i].classId,
+                  className: this.otherSEOICourseInfo[i].className,
+                  firstname: this.otherSEOICourseInfo[i].firstname,
+                  lastName: this.otherSEOICourseInfo[i].lastName,
+                  teacherId: this.otherSEOICourseInfo[i].teacherId,
+                  evaluationStatus: tempEvaluationStatusArray[i],
+                  evaluationTimeStatus: tempEvaluationTimeStatusArray[i]
+                })
+              }
+              this.showCourseList = true;
+              this.doneLoading = true;
+            });
           });
-
-        });
-
-
-        // this.http.get(this.serverLink + '/isStatus/' + stuId + "&" + this.otherSEOICourseInfo.classId + "&" + this.otherSEOICourseInfo.teacherId, this.options).map((res: Response) => res.json())
-        //   .subscribe(data => {
-        //     this.isStatus = data;
-
-        //     //Load the evalution time status (it is the evaluation time or not)
-        //     this.http.get(this.serverLink + '/isCheckTime/'+ this.otherSEOICourseInfo.classId, this.options).map((res: Response) => res.json())
-        //       .subscribe(data => {
-        //         this.isEvaluationTime = data;
-        //         console.log(this.isEvaluationTime)
-
-        //       });
-        //   });
-
+        }
       }, err => {
         this.cookie.delete('loginID');
         this.cookie.delete('token');
@@ -185,7 +175,7 @@ export class OtherSeoiComponent implements OnInit {
       else {
         tempEvaluationResult.push(
           this.http.get(this.serverLink + '/insertOtherStudentEvaluation/' + this.currStudent.id
-            + "&" + this.currentClassId + "&" + this.otherSEOIQuestions[i].id_seq + "&" + $('input[name=' + this.otherSEOIQuestions[i].id_seq + ']:checked').val() + "&" + this.currentInstructorId).map((res: Response) => res.json()));
+            + "&" + this.currentClassId + "&" + this.otherSEOIQuestions[i].id_seq + "&" + $('input[name=' + this.otherSEOIQuestions[i].id_seq + ']:checked').val() + "&" + this.currentInstructorId,this.options).map((res: Response) => res.json()));
 
       }
     }
