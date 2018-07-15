@@ -16,7 +16,7 @@ public class SmsSystemApplication {
 	
 	
 //	@Bean
-//	public FilterRegistrationBean jwtFilter() {
+//	public FilterRegistrationBean OAuth2Filter() {
 //		final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
 //		registrationBean.setFilter(new JwtFilter());
 //		registrationBean.addUrlPatterns("/*");

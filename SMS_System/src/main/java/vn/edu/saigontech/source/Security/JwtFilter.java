@@ -20,7 +20,6 @@ public class JwtFilter extends GenericFilterBean {
 
 	public void doFilter(final ServletRequest req, final ServletResponse res, final FilterChain chain)
 			throws IOException, ServletException {
-		System.out.println("MEHERE");
 		final HttpServletRequest request = (HttpServletRequest) req;
 		final HttpServletResponse response = (HttpServletResponse) res;
 		final String authHeader = request.getHeader("authorization");
@@ -30,8 +29,7 @@ public class JwtFilter extends GenericFilterBean {
 		
         boolean allowedPath = SecurityConstant.ALLOWED_PATHS.contains(path);
         
-        System.out.println(" allowedPath = "+allowedPath);
-        //If accessed path is SecurityConstant.ALLOWED_PATHS
+        System.out.println(" allowedPath = "+allowedPath);   
         if (allowedPath)
         {
         	chain.doFilter(req, res);
@@ -48,7 +46,7 @@ public class JwtFilter extends GenericFilterBean {
 			final String token = authHeader.substring(7);
 			
 			try {
-				//Parse token
+				
 				final Claims claims = Jwts.parser().setSigningKey(SecurityConstant.SECRET_KEY).parseClaimsJws(token).getBody();
 				request.setAttribute("claims", claims);
 				
@@ -58,7 +56,6 @@ public class JwtFilter extends GenericFilterBean {
 				//If expireCheck > 0, it means current time > token's expired time or the token has expired already
 				if (expireCheck > 0)
 				{
-//					throw new JwtException("Token expired");
 					res.setContentType("application/json");
 					res.getWriter().print("{\"message\":\"Token expired\"}");
 					return ;

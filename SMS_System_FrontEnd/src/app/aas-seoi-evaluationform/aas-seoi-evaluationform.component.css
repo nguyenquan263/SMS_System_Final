@@ -1,0 +1,4 @@
+
+ .card .table tbody td:last-child, .card .table thead th:last-child {
+    display: table-cell;
+}

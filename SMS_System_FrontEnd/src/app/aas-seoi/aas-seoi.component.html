@@ -1,0 +1,46 @@
+
+  <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-header bg-dark text-white">
+             <p>List of classes </p>
+            </div>
+            <div class="card-body" >
+              <table  class="table table-responsive-md table-bordered table-striped " >
+                <thead>
+                  <tr>
+                    <th style="color: black;"><strong>No.</strong></th>
+                    <th style="color: black;"><strong>Class Name</strong></th>
+                    <th style="color: black;"><strong>Instructor Name</strong></th>
+                    <th style="color: black;"><strong>Status</strong></th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let class of listClasses ; let i = index">
+                        <td>{{i+1}}</td>
+                       <td>{{class.className}}</td>
+                       <td>{{class.instructorName}}</td>
+                       <td>
+                          <!-- <div *ngIf="class.finishEvaluation == 'false' && class.checkEvalutionTime == 'true' ">
+                              <p padding text-center class="text-notification" (click)="takeSurvey(class.classId,class.className,class.instructorId,class.instructorName)">Take the survey</p>
+                          </div>
+                          <div *ngIf="class.finishEvaluation == 'false' && class.checkEvaluationTime == 'false' ">
+                              <p padding text-center class="text-notification">Not Finish</p>
+                          </div>
+                          <div *ngIf="class.finishEvaluation == true">
+                              <p padding text-center class="text-notification" style="color: forestgreenrv">Finished</p>
+                          </div> -->
+                          <!-- <div *ngIf="class.finishEvaluation == false" > -->
+                              <p padding text-center class="text-notification" style="cursor: pointer;color: mediumslateblue" (click)="takeSurvey(class.classId,class.className,class.instructorId,class.instructorName)">Take the survey</p>
+                          <!-- </div> -->
+                       </td>
+                    </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>

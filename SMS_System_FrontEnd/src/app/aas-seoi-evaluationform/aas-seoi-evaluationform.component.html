@@ -1,0 +1,225 @@
+<form method="post" accept-charset="utf-8" id="formdata" method="POST" class="formdata">
+    
+  <div class="container">
+    <h3>Student Evaluation of Instruction (SEOI)</h3>
+    <div class="row">
+      <input type="hidden" name=classId [value]="classId">
+      <input type="hidden" name=instructorId [value]="instructorId">
+      <input type="hidden" name=studentId [value]="13723">
+      <div class="col-md-2">
+        Class: {{className}}
+      </div>
+      <div class="col-md-3">
+        Instructor: {{instructorName}}
+      </div>
+      <div class="col-md-3">
+        Spring Semester 2018
+      </div>
+    </div>
+  </div>
+
+  <div class="container p-5">
+    <div *ngIf="listQuestion.firstGroupQuestions.length > 0">
+      <table class="table table-responsive-md table-condensed ">
+        <tr>
+          <td>
+            <span class="suggestion">A</span>: Yes</td>
+          <td>
+            <span class="suggestion">B</span>: Neutral</td>
+          <td>
+            <span class="suggestion">C</span>: No</td>
+          <td>
+            <span class="suggestion">D</span>: No Basis for Judgment</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="suggestion">A</span>: Hoàn toàn đồng ý</td>
+          <td>
+            <span class="suggestion">B</span>: trung lập</td>
+          <td>
+            <span class="suggestion">C</span>: Không hoàn toàn đồng ý</td>
+          <td>
+            <span class="suggestion">D</span>: Không có cơ sở để đánh giá</td>
+        </tr>
+      </table>
+
+      <div class="row">
+        <div class="card">
+          <div class="card-header bg-dark text-white">
+            <p>Questions </p>
+          </div>
+          <div class="card-body">
+            <table class="table table-responsive-md table-bordered table-striped ">
+              <thead>
+                <tr>
+                  <th style="color: black;font-size: 1.03em">
+                    <strong>No.</strong>
+                  </th>
+                  <th style="color: black; font-size:1.03em">Question/Câu hỏi</th>
+                 
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                  <div id="errorbox"></div>
+                <tr *ngFor="let question of listQuestion.firstGroupQuestions ; let i = index">
+                  <td>{{i+1}}</td>
+                  <input  type="hidden" [name]="'firstGroupQSeq'+(i+1)" [value]="question.idSeq">
+                  <td class="w-75">{{question.engContent}}<br>
+                  {{question.vnContent}}</td>
+                  <td >
+                    <div *ngIf="question.label == null">
+                      <input  type="radio" [name]="'firstGroup'+(i+1)"  value="1" required> A<br>
+                      <input  type="radio" [name]="'firstGroup'+(i+1)"  value="3" required> B<br>
+                      <input  type="radio" [name]="'firstGroup'+(i+1)"  value="5" required> C<br>
+                      <input  type="radio" [name]="'firstGroup'+(i+1)"  value="9" required> D<br>
+                    </div>
+                    <div *ngIf="question.label=='label_1'">
+                      <input type="radio" [name]="'firstGroup'+(i+1)" value="1" required> Yes<br>
+                      <input type="radio" [name]="'firstGroup'+(i+1)" value="2" required> No<br>
+                    </div>
+                    <div *ngIf="question.label=='label_2'">
+                      <input  type="radio" [name]="'firstGroup'+(i+1)" value="1" required>0<br>
+                      <input  type="radio" [name]="'firstGroup'+(i+1)" value="2" required>1<br>
+                      <input  type="radio" [name]="'firstGroup'+(i+1)" value="3" required>2<br>
+                      <input  type="radio" [name]="'firstGroup'+(i+1)" value="4" required>3<br>
+                      <input  type="radio" [name]="'firstGroup'+(i+1)" value="5" required>4<br>
+                      <input  type="radio" [name]="'firstGroup'+(i+1)" value="6" required>>5<br>
+                    </div>
+                  </td>
+                </tr>
+                <input  type="hidden" [name]="'firstGroup'"  [value]="listQuestion.firstGroupQuestions.length">
+                <tr>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="listQuestion.secondGroupQuestions.length > 0">
+      <table class="table table-responsive-md table-condensed ">
+        <tr>
+          <td>
+            <span class="suggestion">A</span>: Strongly Agree</td>
+          <td>
+            <span class="suggestion">B</span>: Agree</td>
+          <td>
+            <span class="suggestion">C</span>: Neutral</td>
+          <td>
+            <span class="suggestion">D</span>: Disagree</td>
+          <td>
+            <span class="suggestion">E</span>: Strongly Disagree</td>
+          <td>
+            <span class="suggestion">F</span>: No Basis for Judgment</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="suggestion">A</span>: Hoàn toàn đồng ý</td>
+          <td>
+            <span class="suggestion">B</span>: Đồng ý</td>
+          <td>
+            <span class="suggestion">C</span>: Trung lập</td>
+          <td>
+            <span class="suggestion">D</span>: Không đồng ý</td>
+          <td>
+            <span class="suggestion">E</span>: Không hoàn toàn đồng ý</td>
+          <td>
+            <span class="suggestion">F</span>: Không có cơ sở để đánh giá</td>
+        </tr>
+      </table>
+
+      <div class="row">
+        <div class="card">
+          <div class="card-header bg-dark text-white">
+            <p>Question </p>
+          </div>
+          <div class="card-body">
+            <table class="table table-responsive-md table-bordered table-striped ">
+              <thead>
+                <tr>
+                  <th style="color: black;font-size: 1.03em">
+                    <strong>No.</strong>
+                  </th>
+                  <th style="color: black; font-size:1.03em">Question/Câu hỏi</th>
+
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let question of listQuestion.secondGroupQuestions ; let i = index">
+                  <td>{{i+1+listQuestion.firstGroupQuestions.length}}</td>
+                  <input  type="hidden" [name]="'secondGroupQSeq'+(i+1)" [value]="question.idSeq">
+                  <td class="w-75">{{question.engContent}}<br>
+                  {{question.vnContent}}</td>
+                  <td>
+                    <div *ngIf="question.label == null">
+                      <input  type="radio" [name]="'secondGroup'+(i+1)" value="1" required> A<br>
+                      <input  type="radio" [name]="'secondGroup'+(i+1)" value="2" required> B<br>
+                      <input  type="radio" [name]="'secondGroup'+(i+1)" value="3" required> C<br>
+                      <input  type="radio" [name]="'secondGroup'+(i+1)" value="4" required> D<br>
+                      <input  type="radio" [name]="'secondGroup'+(i+1)" value="5" required> E<br>
+                      <input  type="radio" [name]="'secondGroup'+(i+1)" value="6" required> F<br>
+                    </div>
+                    <div *ngIf="question.label=='label_1'">
+                      <input type="radio" [name]="'secondGroup'+(i+1)" value="1" required> Yes<br>
+                      <input type="radio" [name]="'secondGroup'+(i+1)" value="2" required> No<br>
+                    </div>
+                    <div *ngIf="question.label=='label_2'">
+                      <input  type="radio" [name]="'secondGroup'+(i+1)" value="1" required>0<br>
+                      <input  type="radio" [name]="'secondGroup'+(i+1)" value="2" required>1<br>
+                      <input  type="radio" [name]="'secondGroup'+(i+1)" value="3" required>2<br>
+                      <input  type="radio" [name]="'secondGroup'+(i+1)" value="4" required>3<br>
+                      <input  type="radio" [name]="'secondGroup'+(i+1)" value="5" required>4<br>
+                      <input  type="radio" [name]="'secondGroup'+(i+1)" value="6" required>>5<br>
+                    </div>
+                  </td>
+                </tr>
+                <input  type="hidden" [name]="'secondGroup'"  [value]="listQuestion.secondGroupQuestions.length">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div *ngIf="listQuestion.tutor==true"><!-- false is correct -->
+        <p class="percentEnglish"><strong>What is the percentage of time instructor delivers instruction in English in class?<BR>
+          Giảng viên sử dụng bao nhiêu phần trăm tiếng Anh để giảng bài?</strong></p>
+        <p>
+          <span class="percentEnglish">
+            <input  type="radio" [name]="'percentEnglish'" value="1" required>100%
+            <input  type="radio" [name]="'percentEnglish'" value="2" required>Around 90%
+            <input  type="radio" [name]="'percentEnglish'" value="3" required>Around 70%
+            <input  type="radio" [name]="'percentEnglish'" value="4" required>Around 50%
+            <input  type="radio" [name]="'percentEnglish'" value="5" required>Around 25%
+            <input  type="radio" [name]="'percentEnglish'" value="6" required>0%
+          </span></p>
+      
+        <p class="percentEnglish"><strong>What is the percentage of time you use English in class?<BR>
+          Trong lớp học bạn sử dụng bao nhiêu phần trăm tiếng Anh?</strong></p>
+        <p>
+          <span class="percentEnglish">
+            <input  type="radio" [name]="'percentEnglishSV'" value="1" required>100%
+            <input  type="radio" [name]="'percentEnglishSV'" value="2" required>Around 90%
+            <input  type="radio" [name]="'percentEnglishSV'" value="3" required>Around 70%
+            <input  type="radio" [name]="'percentEnglishSV'" value="4" required>Around 50%
+            <input  type="radio" [name]="'percentEnglishSV'" value="5" required>Around 25%
+            <input  type="radio" [name]="'percentEnglishSV'" value="6" required>0%
+          </span></p> 
+          <p>Other comment (Nhận xét khác)</p>
+            <p>
+              <label>
+                <textarea [name]="'comment'" id="textarea" cols="90" rows="5">no comment</textarea>
+              </label>
+            </p>
+
+    </div>
+
+    <div class="row" style="float: right">
+        <input type = "submit" value = "submit" class="btn btn-lg btn-success" style="border-radius: 2rem ">
+    </div>
+  </div>
+</form>

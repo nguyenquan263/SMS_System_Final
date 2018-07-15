@@ -1,0 +1,7 @@
+.card .table tbody td:last-child, .card .table thead th:last-child {
+    display: table-cell;
+}
+*{
+   font-size: 1.04em !important;
+   font-family: Arial !important;
+}

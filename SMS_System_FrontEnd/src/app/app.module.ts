@@ -31,7 +31,8 @@ import { TuitionFeeComponent } from './tuition-fee/tuition-fee.component';
 import { OtherSeoiComponent } from './other-seoi/other-seoi.component';
 import { EslSeoiListingComponent } from './esl-seoi-listing/esl-seoi-listing.component';
 import { EslSeoiValuationComponent } from './esl-seoi-valuation/esl-seoi-valuation.component';
-
+import { AasSeoiComponent } from './aas-seoi/aas-seoi.component';
+import { AasSeoiEvaluationformComponent } from './aas-seoi-evaluationform/aas-seoi-evaluationform.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +59,8 @@ import { EslSeoiValuationComponent } from './esl-seoi-valuation/esl-seoi-valuati
     OtherSeoiComponent,
     EslSeoiListingComponent,
     EslSeoiValuationComponent,
+    AasSeoiComponent,
+    AasSeoiEvaluationformComponent
   ],
   imports: [
     BrowserModule,
@@ -165,7 +168,15 @@ import { EslSeoiValuationComponent } from './esl-seoi-valuation/esl-seoi-valuati
             path:'ESLSEOIEvaluation',
             component:EslSeoiValuationComponent
           },
-          
+          {
+            path:'AASSeoiEvalutaion',
+            component:AasSeoiEvaluationformComponent
+            // data: { className: '',classID:'',instructorName:'',instructorId:'' }
+          },
+          {
+            path:'AASSeoi',
+            component:AasSeoiComponent
+          },
 
         ]
       },
