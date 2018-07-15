@@ -15,7 +15,6 @@ import vn.edu.saigontech.source.Security.SecurityConstant;
 import vn.edu.saigontech.source.Model.User;
 import vn.edu.saigontech.source.Service.ServiceImpl.UserService;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.*;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 
@@ -36,13 +35,8 @@ public class LoginSecurityController {
 
 		String username = login.getUserName();
 		String password = login.getPassword();
-		System.out.println("before call userService.getUserIDbyUsernameandPassword(username, password);");
+		
 		int result = userService.getUserIDbyUsernameandPassword(username, password);
-		System.out.println("after call userService.getUserIDbyUsernameandPassword(username, password);");
-
-//		if (result == -1) {
-//			throw new ServletException("Invalid login. Please check your name and password.");
-//		}
 
 		jwtToken = Jwts.builder().setExpiration(new Date(System.currentTimeMillis() + SecurityConstant.EXPIRATION_TIME)).setSubject(username).claim("roles", "user").setIssuedAt(new Date())
 				.signWith(SignatureAlgorithm.HS256, SecurityConstant.SECRET_KEY).compact();

@@ -15,11 +15,11 @@ public class SmsSystemApplication {
 	}
 	
 	
-//	@Bean
-//	public FilterRegistrationBean OAuth2Filter() {
-//		final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-//		registrationBean.setFilter(new JwtFilter());
-//		registrationBean.addUrlPatterns("/*");
-//		return registrationBean;
-//	}
+	@Bean
+	public FilterRegistrationBean OAuth2Filter() {
+		final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+		registrationBean.setFilter(new JwtFilter());
+		registrationBean.addUrlPatterns("/*");
+		return registrationBean;
+	}
 }
