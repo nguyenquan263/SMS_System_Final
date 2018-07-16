@@ -31,7 +31,7 @@ public class JwtFilter extends GenericFilterBean {
         if (allowedPath)
         {
         	chain.doFilter(req, res);
-        }
+        } else 
 		if ("OPTIONS".equals(request.getMethod())) {
 			response.setStatus(HttpServletResponse.SC_OK);
 			chain.doFilter(req, res);

@@ -69,17 +69,18 @@ export class LoginComponent implements OnInit {
     "userName": this.inputUsername,
     "password": this.inputPassword
     }
-    this.http.post(this.serverLink+'/login', user).subscribe(
-      res => {
-         let result = res.text().split(" ");
-        if (result[1] == "-1")
+    this.http.post(this.serverLink+'/login', user).toPromise()
+    .then(res =>res.json())
+    .then(resJson => {
+        
+        if (resJson.studentID == "-1")
         {
           $("#warningMes").html('Invalid username or password. Please check them again');
         }
         else
         {
-          cookie.set('loginID', result[1]);
-          cookie.set('token', result[0]);
+          cookie.set('loginID', resJson.studentID);
+          cookie.set('token', resJson.token);
           router.navigate(['/']);
         }
          
