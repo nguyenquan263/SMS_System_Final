@@ -1,0 +1,854 @@
+
+
+  <h3 id="requestAASStatus"></h3>
+
+  <!-- Step 1 of 7 -->
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#step17">
+    Launch Step 1 of 7
+  </button> -->
+
+  <!-- Modal -->
+  <div class="modal fade" data-backdrop="static" id="step17" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-success" id="exampleModalLabel">PLEASE PROVIDE US WITH YOUR INFORMATION BELOW. IT WILL BE KEPT AT SAIGONTECH AFTER YOU GRADUATE FOR FUTURE REFERENCE.</h5>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid" style="border:1px solid green">
+            <div class="row mt-2">
+              <div class="col">
+                <b>[STEP 1 OF 7] Tell us about your personal information.</b>
+              </div>
+            </div>
+            <div class="form-group row mt-5">
+              <label class="text-right col-4 col-form-label">Student Name: |</label>
+              <div class="col-8">
+                <input class="form-control" type="text" id="studentNameTF">
+              </div>
+            </div>
+            <div class="form-group row mt-2">
+              <label class="text-right col-4 col-form-label">ID#: |</label>
+              <div class="col-8">
+                <input class="form-control" type="text" id="idTF">
+              </div>
+            </div>
+            <div class="form-group row mt-2">
+              <label class="text-right col-4 col-form-label">Year Of Graduation: |</label>
+              <div class="col-8">
+                <input class="form-control" type="text" id="yearOfGradTF">
+              </div>
+            </div>
+            <div class="form-group row mt-2">
+              <label class="text-right col-4 col-form-label">Postal Address *: |</label>
+              <div class="col-8">
+                <input class="form-control" type="text" id="postalAddressTF">
+              </div>
+            </div>
+            <div class="form-group row mt-2">
+              <label class="text-right col-4 col-form-label">Phone Number *: |</label>
+              <div class="col-8">
+                <input class="form-control" type="text" id="phoneNumberTF">
+              </div>
+            </div>
+            <div class="form-group row mt-2">
+              <label class="text-right col-4 col-form-label">Email(Not Saigontech Email) *: |</label>
+              <div class="col-8">
+                <input class="form-control" type="text" id="emailTF">
+              </div>
+            </div>
+            <div class="form-group row mt-2">
+              <label class="text-right col-4 col-form-label">Specialization: |</label>
+              <div class="col-8">
+                <input class="form-control" type="text" id="specTF">
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="next17BTN">NEXT</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Step 2 of 7 -->
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#step27">
+    Launch Step 2 of 7
+  </button> -->
+
+  <!-- Modal -->
+  <div class="modal fade" data-backdrop="static" id="step27" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-success" id="exampleModalLabel">PLEASE PROVIDE US WITH YOUR INFORMATION BELOW. IT WILL BE KEPT AT SAIGONTECH AFTER YOU GRADUATE FOR FUTURE REFERENCE.</h5>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid" style="border:1px solid green">
+            <div class="row mt-2">
+              <div class="col">
+                <b>[STEP 2 OF 7] POST - GRADUATION INFORMATION (Please select at least one option)</b>
+              </div>
+            </div>
+
+            <div class="row mt-4">
+              <div class="col">
+                <p>Are you (choose one or more option): </p>
+              </div>
+
+            </div>
+
+            <div class="row ml-2 mt-4 mb-4">
+              <div class="col-6 container">
+                <div >
+                  <input class="form-check-input" type="checkbox" id="seekingStuCB" name="step27CBs" value="Seeking advance study.">
+                  <label class="form-check-label">Seeking advance study.</label>
+                </div>
+                <div >
+                  <input class="form-check-input" type="checkbox" id="seekingWorCB" name="step27CBs" value="Seeking work.">
+                  <label class="form-check-label">Seeking work.</label>
+                </div>
+                <div >
+                  <input class="form-check-input" type="checkbox" id="studyingCB" name="step27CBs" value="Studying at Saigontech.">
+                  <label class="form-check-label">Studying at Saigontech.</label>
+                </div>
+
+                <div >
+                  <input class="form-check-input" type="checkbox" id="otherWorkCB" name="step27CBs" value="Other:">
+                  <label class="form-check-label">Other: </label>
+
+                </div>
+
+                <div class="col-8">
+                  <input class="form-control" type="text" id="otherWorkTF" disabled>
+                </div>
+
+              </div>
+              <div class="col-6 container">
+                <div >
+                  <input class="form-check-input" type="checkbox" id="stuHighCB" name="step27CBs" value="Studying Higher Degree.">
+                  <label class="form-check-label">Studying Higher Degree.</label>
+                </div>
+                <div >
+                  <input class="form-check-input" type="checkbox" id="employedCB" name="step27CBs" value="Employed.">
+                  <label class="form-check-label">Employed.</label>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="back27BTN" class="btn btn-danger">BACK</button>
+          <button type="button" id="next27BTN" class="btn btn-primary">NEXT</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Step 3 of 7 -->
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#step37">
+    Launch Step 3 of 7
+  </button> -->
+
+  <!-- Modal -->
+  <div class="modal fade" data-backdrop="static" id="step37" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-success" id="exampleModalLabel">PLEASE PROVIDE US WITH YOUR INFORMATION BELOW. IT WILL BE KEPT AT SAIGONTECH AFTER YOU GRADUATE FOR FUTURE REFERENCE.</h5>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid" style="border:1px solid green">
+            <div class="row mt-2">
+              <div class="col">
+                <b>[STEP 3 OF 7] Are you seeking for advanced study? (If not, please click the NEXT button to skip this section.)</b>
+              </div>
+            </div>
+
+            <div class="row ml-2 mt-2">
+              <div class="col">
+                <div class="mt-2">
+                  <input class="form-check-input" type="checkbox" id="USCB" name="step37CBs" value="Studying Higher Degree.">
+                  <label class="form-check-label"> The US</label>
+                </div>
+                <div class="mt-2">
+                  <input class="form-check-input" type="checkbox" id="SingaporeCB" name="step37CBs" value="Employed.">
+                  <label class="form-check-label"> Singapore</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="mt-2">
+                  <input class="form-check-input" type="checkbox" id="UKCB" name="step37CBs" value="Studying Higher Degree.">
+                  <label class="form-check-label"> The UK</label>
+                </div>
+                <div class="mt-2">
+                  <input class="form-check-input" type="checkbox" id="FranceCB" name="step37CBs" value="Employed.">
+                  <label class="form-check-label"> France</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="mt-2">
+                  <input class="form-check-input" type="checkbox" id="AustraliaCB" name="step37CBs" value="Studying Higher Degree.">
+                  <label class="form-check-label"> Australia</label>
+                </div>
+                <div class="mt-2">
+                  <input class="form-check-input" type="checkbox" id="otherCountryCB" name="step37CBs" value="Employed.">
+                  <label class="form-check-label"> Other: </label>
+                </div>
+                <div class="col-8 mb-4">
+                  <input class="form-control" type="text" id="otherCoutryTF" disabled>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="back37BTN" class="btn btn-danger">BACK</button>
+          <button type="button" id="next37BTN" class="btn btn-primary">NEXT</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 4 of 7 -->
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#step47">
+    Launch Step 4 of 7
+  </button> -->
+
+  <!-- Modal -->
+  <div class="modal fade" data-backdrop="static" id="step47" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-success" id="exampleModalLabel">PLEASE PROVIDE US WITH YOUR INFORMATION BELOW. IT WILL BE KEPT AT SAIGONTECH AFTER YOU GRADUATE FOR FUTURE REFERENCE.</h5>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid" style="border:1px solid green">
+            <div class="row mt-2">
+              <div class="col">
+                <b>[STEP 4 OF 7] Are you seeking for higher degree? (If not, please click the NEXT button to skip this section.)</b>
+              </div>
+            </div>
+
+            <div class="form-group row mt-2">
+              <label class=" col-4 col-form-label">Name of University: </label>
+              <div class="col-8">
+                <input class="form-control" type="text" id="newUniversityNameTF">
+              </div>
+            </div>
+
+
+            <div class="row mt-2">
+              <div class="col">
+                <b>Country of this university: </b>
+              </div>
+            </div>
+
+
+            <div class="row ml-2 mt-2">
+              <div class="col">
+                <div class="form-check mt-2">
+                  <input class="form-check-input" type="radio" id="USCB" name="step47CBs" value="Studying Higher Degree.">
+                  <label class="form-check-label"> The US</label>
+                </div>
+                <div class="form-check mt-2">
+                  <input class="form-check-input" type="radio" id="Singapore47CB" name="step47CBs" value="Employed.">
+                  <label class="form-check-label"> Singapore</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-check mt-2">
+                  <input class="form-check-input" type="radio" id="UK47CB" name="step47CBs" value="Studying Higher Degree.">
+                  <label class="form-check-label"> The UK</label>
+                </div>
+                <div class="form-check mt-2">
+                  <input class="form-check-input" type="radio" id="France47CB" name="step47CBs" value="Employed.">
+                  <label class="form-check-label"> France</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-check mt-2">
+                  <input class="form-check-input" type="radio" id="Australia47CB" name="step47CBs" value="Studying Higher Degree.">
+                  <label class="form-check-label"> Australia</label>
+                </div>
+                <div class="form-check mt-2">
+                  <input class="form-check-input" type="radio" id="otherCountry47CB" name="step47CBs" value="Employed.">
+                  <label class="form-check-label"> Other: </label>
+                </div>
+                <div class="col-8 mb-4">
+                  <input class="form-control" type="text" id="otherCoutry47TF" disabled>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="back47BTN" class="btn btn-danger">BACK</button>
+          <button type="button" id="next47BTN" class="btn btn-primary">NEXT</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Step 5 of 7 -->
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#step57">
+    Launch Step 5 of 7
+  </button> -->
+
+  <!-- Modal -->
+  <div class="modal fade" data-backdrop="static" id="step57" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-success" id="exampleModalLabel">PLEASE PROVIDE US WITH YOUR INFORMATION BELOW. IT WILL BE KEPT AT SAIGONTECH AFTER YOU GRADUATE FOR FUTURE REFERENCE.</h5>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid" style="border:1px solid green">
+            <div class="row mt-2">
+              <div class="col">
+                <b>[STEP 5 OF 7] Are you seeking for job? (If not, please click the NEXT button to skip this section.)</b>
+              </div>
+            </div>
+
+            <div class="container mt-3">
+              <div class="row">
+                <div class="col">
+                  <b>Job Application</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-8 mt-2">
+                  <p>How many applications have you made for employment? </p>
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+
+                    <input class="form-control" type="number" id="numApplicationTF">
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-2">
+                <div class="col-8">
+                  <p>Did you have an interview for the job you applied for? </p>
+                </div>
+                <div class="col-2 form-check">
+                  <input class="form-check-input" type="radio" name="gotInterview57RB" id="yes57RB" value="Yes">
+                  <label class="form-check-label" for="exampleRadios1">
+                    Yes
+                  </label>
+                </div>
+                <div class="col-2 form-check">
+                  <input class="form-check-input" type="radio" name="gotInterview57RB" id="no57RB" value="No">
+                  <label class="form-check-label" for="exampleRadios2">
+                    No
+                  </label>
+                </div>
+              </div>
+
+              <div class="row mt-2">
+                <div class="col-12">
+                  <p>If you were offered the job, what your strong points that impressed the interviewer to make the job offer?</p>
+                </div>
+
+              </div>
+
+              <div class="row ml-2 mt-2">
+                <div class="col-6 container">
+                  <div >
+                    <input class="form-check-input" type="checkbox" id="seekingStuCB" name="step27CBs" value="Seeking advance study.">
+                    <label class="form-check-label">Knowledge of IT.</label>
+                  </div>
+                  <div >
+                    <input class="form-check-input" type="checkbox" id="seekingWorCB" name="step27CBs" value="Seeking work.">
+                    <label class="form-check-label">General Appearance.</label>
+                  </div>
+                  <div >
+                    <input class="form-check-input" type="checkbox" id="studyingCB" name="step27CBs" value="Studying at Saigontech.">
+                    <label class="form-check-label">Exprerience at IT.</label>
+                  </div>
+
+                  <div>
+                    <input class="form-check-input" type="checkbox" id="otherWorkCB" name="step27CBs" value="Other:">
+                    <label class="form-check-label">Other: </label>
+
+                  </div>
+
+                  <div class="col-8">
+                    <input class="form-control" type="text" id="otherWorkTF" disabled>
+                  </div>
+
+                </div>
+                <div class="col-6 container">
+                  <div >
+                    <input class="form-check-input" type="checkbox" id="stuHighCB" name="step27CBs" value="Studying Higher Degree.">
+                    <label class="form-check-label">Fluency in English.</label>
+                  </div>
+                  <div >
+                    <input class="form-check-input" type="checkbox" id="employedCB" name="step27CBs" value="Employed.">
+                    <label class="form-check-label">Ability to work in team.</label>
+                  </div>
+                  <div >
+                    <input class="form-check-input" type="checkbox" id="employedCB" name="step27CBs" value="Employed.">
+                    <label class="form-check-label">Communication skill.</label>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row mt-2">
+                <div class="col-12">
+                  <p>What were your weak points in the interview?</p>
+                </div>
+
+              </div>
+
+              <div class="row ml-2 mt-2 mb-3">
+                <div class="col-6 container">
+                  <div >
+                    <input class="form-check-input" type="checkbox" id="seekingStuCB" name="step27CBs" value="Seeking advance study.">
+                    <label class="form-check-label">Lack of knowledge of IT.</label>
+                  </div>
+                  <div >
+                    <input class="form-check-input" type="checkbox" id="seekingWorCB" name="step27CBs" value="Seeking work.">
+                    <label class="form-check-label">General Appearance.</label>
+                  </div>
+                  <div >
+                    <input class="form-check-input" type="checkbox" id="studyingCB" name="step27CBs" value="Studying at Saigontech.">
+                    <label class="form-check-label">Lack of exprerience at IT.</label>
+                  </div>
+
+                  <div >
+                    <input class="form-check-input" type="checkbox" id="otherWorkCB" name="step27CBs" value="Other:">
+                    <label class="form-check-label">Other: </label>
+
+                  </div>
+
+                  <div class="col-8">
+                    <input class="form-control" type="text" id="otherWorkTF" disabled>
+                  </div>
+
+                </div>
+                <div class="col-6 container">
+                  <div >
+                    <input class="form-check-input" type="checkbox" id="stuHighCB" name="step27CBs" value="Studying Higher Degree.">
+                    <label class="form-check-label">Lack of English background.</label>
+                  </div>
+                  <div >
+                    <input class="form-check-input" type="checkbox" id="employedCB" name="step27CBs" value="Employed.">
+                    <label class="form-check-label">Inability to work in team.</label>
+                  </div>
+                  <div >
+                    <input class="form-check-input" type="checkbox" id="employedCB" name="step27CBs" value="Employed.">
+                    <label class="form-check-label">Lack of communication skill.</label>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="back57BTN" class="btn btn-danger">BACK</button>
+          <button type="button" id="next57BTN" class="btn btn-primary">NEXT</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 6 of 7 -->
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#step67">
+    Launch Step 6 of 7
+  </button> -->
+
+  <!-- Modal -->
+  <div class="modal fade" data-backdrop="static" id="step67" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-success" id="exampleModalLabel">PLEASE PROVIDE US WITH YOUR INFORMATION BELOW. IT WILL BE KEPT AT SAIGONTECH AFTER YOU GRADUATE FOR FUTURE REFERENCE.</h5>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid" style="border:1px solid green">
+            <div class="row mt-2">
+              <div class="col">
+                <b>[STEP 6 OF 7] Are you employed? (If not, please click the NEXT button to skip this section.)</b>
+              </div>
+            </div>
+
+            <div class="container mt-3">
+              <div class="row">
+                <div class="col-5 mt-2">
+                  <p>Your job title: </p>
+                </div>
+                <div class="col-7">
+                  <div class="form-group">
+
+                    <input class="form-control" type="text" id="numApplicationTF">
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-2">
+                <div class="col-5">
+                  <p>Job is: </p>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-3 form-check">
+                  <input class="form-check-input" type="radio" name="gotInterview57RB" id="yes57RB" value="Yes">
+                  <label class="form-check-label" for="exampleRadios1">
+                    Full time
+                  </label>
+                </div>
+                <div class="col-3 form-check">
+                  <input class="form-check-input" type="radio" name="gotInterview57RB" id="no57RB" value="No">
+                  <label class="form-check-label" for="exampleRadios2">
+                    Part Time
+                  </label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6 mt-2">
+                  <p>Current Salary (VND/Month): </p>
+                </div>
+                <div class="col-3">
+                  <div class="form-group">
+
+                    <input class="form-control" type="number" id="numApplicationTF">
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">Employer Information: </div>
+              </div>
+
+              <div class="row mt-4">
+                <div class="col-1"></div>
+                <div class="col-4 mt-2">
+                  <p>Employer Name: </p>
+                </div>
+                <div class="col-7">
+                  <div class="form-group">
+
+                    <input class="form-control" type="text" id="numApplicationTF">
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-1"></div>
+                <div class="col-4 mt-2">
+                  <p>Address: </p>
+                </div>
+                <div class="col-7">
+                  <div class="form-group">
+
+                    <input class="form-control" type="text" id="numApplicationTF">
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-2">
+                <div class="col-8">
+                  <p>Size of the company: </p>
+                </div>
+
+              </div>
+              <div class="row ml-5">
+                <div class="container">
+                  <div class="row">
+                    <div class="col form-check">
+                      <input class="form-check-input" type="radio" name="gotInterview57RB" id="yes57RB" value="Yes">
+                      <label class="form-check-label" for="exampleRadios1">
+                        Solo (You are self-employed as a solo pratitioner).
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col form-check">
+                      <input class="form-check-input" type="radio" name="gotInterview57RB" id="no57RB" value="No">
+                      <label class="form-check-label" for="exampleRadios2">
+                        2-10.
+                      </label>
+                    </div>
+                    <div class="col form-check">
+                      <input class="form-check-input" type="radio" name="gotInterview57RB" id="yes57RB" value="Yes">
+                      <label class="form-check-label" for="exampleRadios1">
+                        11-25.
+                      </label>
+                    </div>
+                    <div class="col form-check">
+                      <input class="form-check-input" type="radio" name="gotInterview57RB" id="no57RB" value="No">
+                      <label class="form-check-label" for="exampleRadios2">
+                        26-50.
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col form-check">
+                      <input class="form-check-input" type="radio" name="gotInterview57RB" id="yes57RB" value="Yes">
+                      <label class="form-check-label" for="exampleRadios1">
+                        51-100.
+                      </label>
+                    </div>
+                    <div class="col form-check">
+                      <input class="form-check-input" type="radio" name="gotInterview57RB" id="no57RB" value="No">
+                      <label class="form-check-label" for="exampleRadios2">
+                        101-500.
+                      </label>
+                    </div>
+                    <div class="col form-check">
+                      <input class="form-check-input" type="radio" name="gotInterview57RB" id="yes57RB" value="Yes">
+                      <label class="form-check-label" for="exampleRadios1">
+                        501+.
+                      </label>
+                    </div>
+
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-2">
+                <div class="col-8">
+                  <p>Employer's business field: </p>
+                </div>
+
+              </div>
+              <div class="row mt-2 ml-3">
+                <div class="col-8">
+                  <p>IT: </p>
+                </div>
+
+              </div>
+              <div class="row ml-5">
+                <div class="container">
+                  <div class="row">
+                    <div class="col">
+                      <input class="form-check-input" type="checkbox" name="gotInterview57RB" id="yes57RB" value="Yes">
+                      <label class="form-check-label" for="exampleRadios1">
+                        Computer Hardware/Software.
+                      </label>
+                    </div>
+                    <div class="col">
+                      <input class="form-check-input" type="checkbox" name="gotInterview57RB" id="yes57RB" value="Yes">
+                      <label class="form-check-label" for="exampleRadios1">
+                        IT consulting.
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col">
+                      <input class="form-check-input" type="checkbox" name="gotInterview57RB" id="yes57RB" value="Yes">
+                      <label class="form-check-label" for="exampleRadios1">
+                        Tele communication.
+                      </label>
+                    </div>
+                    <div class="col">
+                      <input class="form-check-input" type="checkbox" name="gotInterview57RB" id="yes57RB" value="Yes">
+                      <label class="form-check-label" for="exampleRadios1">
+                        Other:
+                      </label>
+                      <input class="form-control" type="text" id="numApplicationTF" disabled>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row mt-2 ml-3">
+                <div class="col-8">
+                  <p>Other: </p>
+                </div>
+
+              </div>
+              <div class="row ml-5">
+                <div class="container">
+                  <div class="row">
+                    <div class="col">
+                      <input class="form-check-input" type="checkbox" name="gotInterview57RB" id="yes57RB" value="Yes">
+                      <label class="form-check-label" for="exampleRadios1">
+                        Distribution and Sales.
+                      </label>
+                    </div>
+                    <div class="col">
+                      <input class="form-check-input" type="checkbox" name="gotInterview57RB" id="yes57RB" value="Yes">
+                      <label class="form-check-label" for="exampleRadios1">
+                        Manufactoring.
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col">
+                      <input class="form-check-input" type="checkbox" name="gotInterview57RB" id="yes57RB" value="Yes">
+                      <label class="form-check-label" for="exampleRadios1">
+                        Services.
+                      </label>
+                    </div>
+                    <div class="col">
+                      <input class="form-check-input" type="checkbox" name="gotInterview57RB" id="yes57RB" value="Yes">
+                      <label class="form-check-label" for="exampleRadios1">
+                        Other:
+                      </label>
+                      <input class="form-control" type="text" id="numApplicationTF" disabled>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row mt-2 ml-3">
+                <div class="col-8">
+                  <p>Type of job: </p>
+                </div>
+
+              </div>
+              <div class="row ml-5">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-4">
+                      <input class="form-check-input" type="checkbox" name="gotInterview57RB" id="yes57RB" value="Yes">
+                      <label class="form-check-label" for="exampleRadios1">
+                        IT Staff.
+                      </label>
+                    </div>
+                    <div class="col-4">
+                      <input class="form-check-input" type="checkbox" name="gotInterview57RB" id="yes57RB" value="Yes">
+                      <label class="form-check-label" for="exampleRadios1">
+                        IT Management.
+                      </label>
+                    </div>
+
+                    <div class="col-4">
+                      <input class="form-check-input" type="checkbox" name="gotInterview57RB" id="yes57RB" value="Yes">
+                      <label class="form-check-label" for="exampleRadios1">
+                        IT Consulting.
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-4">
+                      <input class="form-check-input" type="checkbox" name="gotInterview57RB" id="yes57RB" value="Yes">
+                      <label class="form-check-label" for="exampleRadios1">
+                        Self-Employed.
+                      </label>
+                    </div>
+                    <div class="col-8">
+                      <input class="form-check-input" type="checkbox" name="gotInterview57RB" id="yes57RB" value="Yes">
+                      <label class="form-check-label" for="exampleRadios1">
+                        Business Development/Sale/Marketing.
+                      </label>
+
+                    </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+
+              <div class="row mt-2">
+                <div class="col-3">
+                  Other (describe):
+                </div>
+                <div class="col-2">
+                  <input class="form-check-input" type="checkbox" name="gotInterview57RB" id="yes57RB" value="Yes">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <textarea class="form-control" rows="5" id="comment" disabled></textarea>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="back67BTN" class="btn btn-danger">BACK</button>
+          <button type="button" id="next67BTN" class="btn btn-primary">NEXT</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 7 of 7 -->
+  <!-- <button type="button" data-backdrop="static" class="btn btn-primary" data-toggle="modal" data-target="#step77">
+    Launch Step 7 of 7
+  </button> -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="step77" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-success" id="exampleModalLabel">PLEASE PROVIDE US WITH YOUR INFORMATION BELOW. IT WILL BE KEPT AT SAIGONTECH AFTER YOU GRADUATE FOR FUTURE REFERENCE.</h5>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid" style="border:1px solid green">
+            <div class="row mt-2">
+              <div class="col">
+                <b>[STEP 7 OF 7] Give us some comments. (Press Submit to finish your request.)</b>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col">
+                <div class="form-group">
+                  <textarea class="form-control" rows="10" id="comment"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-2 mb-4">
+              <div class="col text-center">
+                <button type="button" class="btn btn-success">SUBMIT</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="back77BTN" class="btn btn-danger">BACK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

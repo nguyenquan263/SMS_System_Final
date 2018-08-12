@@ -33,6 +33,7 @@ import { EslSeoiListingComponent } from './esl-seoi-listing/esl-seoi-listing.com
 import { EslSeoiValuationComponent } from './esl-seoi-valuation/esl-seoi-valuation.component';
 import { AasSeoiComponent } from './aas-seoi/aas-seoi.component';
 import { AasSeoiEvaluationformComponent } from './aas-seoi-evaluationform/aas-seoi-evaluationform.component';
+import { RequestAasDegreeComponent } from './request-aas-degree/request-aas-degree.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +61,8 @@ import { AasSeoiEvaluationformComponent } from './aas-seoi-evaluationform/aas-se
     EslSeoiListingComponent,
     EslSeoiValuationComponent,
     AasSeoiComponent,
-    AasSeoiEvaluationformComponent
+    AasSeoiEvaluationformComponent,
+    RequestAasDegreeComponent
   ],
   imports: [
     BrowserModule,
@@ -177,6 +179,10 @@ import { AasSeoiEvaluationformComponent } from './aas-seoi-evaluationform/aas-se
             path:'AASSeoi',
             component:AasSeoiComponent
           },
+          {
+            path:'requestAASDegree',
+            component:RequestAasDegreeComponent
+          }
 
         ]
       },
